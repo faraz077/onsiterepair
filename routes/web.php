@@ -7,25 +7,26 @@ use App\Http\Controllers\website\buydeviceController;
 use App\Http\Controllers\website\selldeviceController;
 use App\Http\Controllers\website\repairadeviceController;
 use App\Http\Controllers\website\trackorderController;
+use App\Http\Controllers\dashboard\DashboardController;
+use App\Http\Controllers\dashboard\DeviceController;
+use App\Http\Controllers\dashboard\ModelController;
+use App\Http\Controllers\dashboard\IssueController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+
 
 Route::get('/', function () {
     return view('welcome');
 });
-
 Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('/about-us', aboutusController::class);
-Route::resource('contact-us', contactusController::class);
+Route::resource('/buy-device', buydeviceController::class);
+Route::resource('/ontact-us', contactusController::class);
+Route::resource('/dashboard-panel', DashboardController::class);
+Route::resource('/devices', DeviceController::class);
+Route::resource('/models', ModelController::class);
+Route::resource('/issues', IssueController::class);
+
+
+
 

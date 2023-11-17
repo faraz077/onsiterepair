@@ -10,10 +10,13 @@
         <link rel="dns-prefetch" href="//fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="{{asset('css/app.css')}}">
+          <link rel="stylesheet" type="text/css" href="{{asset('slick/slick.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{asset('slick/slick-theme.css')}}">
         <!-- font- family -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <!-- Scripts -->
         @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     </head>
@@ -78,9 +81,77 @@
                     </div>
                 </div>
             </header>
-    
+        </div>
                 @yield('content')
          
-        </div>
+
+
+         <footer>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="column-1">
+                            <div class="logo">
+                                <img src="{{asset('img/white-logo.png')}}" alt="" >
+                                <p class="about-footer">
+                                    OnSiteRepairs is your go-to solution for convenient smartphone repairs. Our expert technicians come to your doorstep, offering quick and quality fixes for cracked screens, battery issues, and more. Say goodbye to the hassle of repair shops and hello to the future of on-the-spot phone repairs with OnSiteRepairs!
+                                </p>
+                                <ul>
+                                    <li><a href=""><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href=""><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href=""><i class="fa fa-instagram"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <h3>Help</h3>
+                        <ul>
+                            <li><a href="#">Customer Support</a></li>
+                            <li><a href="#">Delivery Details</a></li>
+                            <li><a href="#">Terms & Conditions</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2">
+                        <h3>SITE MAP</h3>
+                        <ul>
+                            <li><a href="#">Devices We Repair</a></li>
+                            <li><a href="#">Solution</a></li>
+                            <li><a href="#">Location</a></li>
+                            <li><a href="#">Career</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2">
+                        <select name="" id="">
+                            <option value="english">English</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+             
+         </footer>
+    
+
+
+          <script src="https://code.jquery.com/jquery-3.6.0.min.js" type="text/javascript"></script>
+  <script src="https://code.jquery.com/jquery-migrate-3.4.0.min.js"></script>
+  <script src="{{asset('slick/slick.js')}}" type="text/javascript" charset="utf-8"></script>
+
+  <script type="text/javascript">
+    $(document).on('ready', function() {
+      $(".regular").slick({
+        dots: true,
+        infinite: true,
+        slidesToShow:4,
+        slidesToScroll: 3
+      });
+
+      $(".lazy").slick({
+        lazyLoad: 'ondemand', // ondemand progressive anticipated
+        infinite: true
+      });
+    });
+</script>
     </body>
 </html>

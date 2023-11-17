@@ -1,0 +1,1 @@
+issues.blade.php
