@@ -7,18 +7,18 @@
         <meta name="description" content="">
         <meta name="author" content="">
         <!-- Le styles -->
-        <link rel="stylesheet" href="{{ asset('dashboard/assets/css/style.css')}}">
-        <link rel="stylesheet" href="{{ asset('dashboard/assets/css/loader-style.css')}}">
-        <link rel="stylesheet" href="{{ asset('dashboard/assets/css/bootstrap.css')}}">
-        <link rel="stylesheet" type="text/css" href="{{ asset('dashboard/assets/js/progress-bar/number-pb.css') }}">
+        <link rel="stylesheet" href="{{ asset('public/dashboard/assets/css/style.css')}}">
+        <link rel="stylesheet" href="{{ asset('public/dashboard/assets/css/loader-style.css')}}">
+        <link rel="stylesheet" href="{{ asset('public/dashboard/assets/css/bootstrap.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('public/dashboard/assets/js/progress-bar/number-pb.css') }}">
 
 
-    <link href="{{ asset('assets/js/footable/css/footable.core.css?v=2-0-1')}}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/js/footable/css/footable.standalone.css')}}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/js/footable/css/footable-demos.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('public/dashboard/assets/js/footable/css/footable.core.css?v=2-0-1')}}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('public/dashboard/assets/js/footable/css/footable.standalone.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('public/dashboard/assets/js/footable/css/footable-demos.css')}}" rel="stylesheet" type="text/css" />
 
-    <link rel="stylesheet" href="{{ asset('assets/js/dataTable/lib/jquery.dataTables/css/DT_bootstrap.css')}}" />
-    <link rel="stylesheet" href="{{ asset('assets/js/dataTable/css/datatables.responsive.css')}}" />
+    <link rel="stylesheet" href="{{ asset('public/dashboard/assets/js/dataTable/lib/jquery.dataTables/css/DT_bootstrap.css')}}" />
+    <link rel="stylesheet" href="{{ asset('public/dashboard/assets/js/dataTable/css/datatables.responsive.css')}}" />
         <style type="text/css">
         canvas#canvas4 {
         position: relative;
@@ -30,7 +30,7 @@
         <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
         <!-- Fav and touch icons -->
-        <link rel="shortcut icon" href="{{ asset('dashboard/assets/ico/minus.png') }}">
+        <link rel="shortcut icon" href="{{ asset('public/dashboard/assets/ico/minus.png') }}">
     </head>
     <body>
         <!-- Preloader -->
@@ -138,32 +138,32 @@
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a class="tooltip-tip ajax-load" href="/dashboard-panel" title="Dashboard">
+                                                    <a class="tooltip-tip ajax-load" href="{{ route('home') }}" title="Dashboard">
                                                         <i class="icon-window"></i>
                                                         <span>Dashboard</span>
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a class="tooltip-tip ajax-load" href="/devices" title="Blog App">
+                                                    <a class="tooltip-tip ajax-load" href="{{ route('devices.index') }}" title="Blog App">
                                                         <i class="icon-document-edit"></i>
                                                         <span>Devices</span>
                                                     </a>
 
                                                 </li>
                                                    <li>
-                                                    <a class="tooltip-tip ajax-load" href="/manufacturer" title="Social">
+                                                    <a class="tooltip-tip ajax-load" href="{{ route('manufacturer.index') }}" title="Social">
                                                         <i class="icon-feed"></i>
-                                                        <span>Manifacturer</span>
+                                                        <span>Manufacturer</span>
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a class="tooltip-tip ajax-load" href="/models" title="Social">
+                                                    <a class="tooltip-tip ajax-load" href="{{ route('models.index') }}" title="Social">
                                                         <i class="icon-feed"></i>
                                                         <span>Models</span>
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a class="tooltip-tip ajax-load" href="/issues" title="Media">
+                                                    <a class="tooltip-tip ajax-load" href="{{ route('issues.index') }}" title="Media">
                                                         <i class="icon-camera"></i>
                                                         <span>Issues</span>
                                                     </a>
@@ -372,22 +372,22 @@
                             </div>
                             <!-- END OF RIGHT SLIDER CONTENT-->
                             <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.js"></script>
-                            <script src="{{asset('dashboard/assets/js/progress-bar/src/jquery.velocity.min.js') }}"></script>
-                            <script src="{{asset('dashboard/assets/js/progress-bar/number-pb.js') }}"></script>
-                            <script src="{{asset('dashboard/assets/js/progress-bar/progress-app.js') }}"></script>
+                            <script src="{{asset('public/dashboard/assets/js/progress-bar/src/jquery.velocity.min.js') }}"></script>
+                            <script src="{{asset('public/dashboard/assets/js/progress-bar/number-pb.js') }}"></script>
+                            <script src="{{asset('public/dashboard/assets/js/progress-bar/progress-app.js') }}"></script>
                             <!-- MAIN EFFECT -->
-                            <script type="text/javascript" src="{{asset('dashboard/assets/js/preloader.js') }}"></script>
-                            <script type="text/javascript" src="{{asset('dashboard/assets/js/bootstrap.js') }}"></script>
-                            <script type="text/javascript" src="{{asset('dashboard/assets/js/app.js') }}"></script>
-                            <script type="text/javascript" src="{{asset('dashboard/assets/js/load.js') }}"></script>
-                            <script type="text/javascript" src="{{asset('dashboard/assets/js/main.js') }}"></script>
+                            <script type="text/javascript" src="{{asset('public/dashboard/assets/js/preloader.js') }}"></script>
+                            <script type="text/javascript" src="{{asset('public/dashboard/assets/js/bootstrap.js') }}"></script>
+                            <script type="text/javascript" src="{{asset('public/dashboard/assets/js/app.js') }}"></script>
+                            <script type="text/javascript" src="{{asset('public/dashboard/assets/js/load.js') }}"></script>
+                            <script type="text/javascript" src="{{asset('public/dashboard/assets/js/main.js') }}"></script>
                             <!-- GAGE -->
-                            <script type="text/javascript" src="{{ asset('dashboard/assets/js/chart/jquery.flot.js') }}"></script>
-                            <script type="text/javascript" src="{{ asset('dashboard/assets/js/chart/jquery.flot.resize.js') }}"></script>
-                            <script type="text/javascript" src="{{ asset('dashboard/assets/js/chart/realTime.js') }}"></script>
-                            <script type="text/javascript" src="{{ asset('dashboard/assets/js/speed/canvasgauge-coustom.js') }}"></script>
-                            <script type="text/javascript" src="{{ asset('dashboard/assets/js/countdown/jquery.countdown.js') }}"></script>
-                            <script src="{{ asset('dashboard/assets/js/jhere-custom.js')}}"></script>
+                            <script type="text/javascript" src="{{ asset('public/dashboard/assets/js/chart/jquery.flot.js') }}"></script>
+                            <script type="text/javascript" src="{{ asset('public/dashboard/assets/js/chart/jquery.flot.resize.js') }}"></script>
+                            <script type="text/javascript" src="{{ asset('public/dashboard/assets/js/chart/realTime.js') }}"></script>
+                            <script type="text/javascript" src="{{ asset('public/dashboard/assets/js/speed/canvasgauge-coustom.js') }}"></script>
+                            <script type="text/javascript" src="{{ asset('public/dashboard/assets/js/countdown/jquery.countdown.js') }}"></script>
+                            <script src="{{ asset('public/dashboard/assets/js/jhere-custom.js')}}"></script>
                             <script>
                             var gauge4 = new Gauge("canvas4", {
                             'mode': 'needle',
@@ -412,7 +412,7 @@
                             type: 'smart',
                             zoom: 10
                             }).jHERE('marker', [52.500556, 13.338889], {
-                            icon: 'assets/img/marker.png',
+                            icon: 'public/dashboard/assets/img/marker.png',
                             anchor: {
                             x: 12,
                             y: 32
@@ -467,12 +467,12 @@
 
                               <!-- /MAIN EFFECT -->
     <!-- GAGE -->
-    <script type="text/javascript" src="{{ asset('dashboard/assets/js/toggle_close.js') }}"></script>
-    <script src="{{ asset('dashboard/assets/js/footable/js/footable.js?v=2-0-1') }}" type="text/javascript"></script>
-    <script src="{{ asset('dashboard/assets/js/footable/js/footable.sort.js?v=2-0-1') }}" type="text/javascript"></script>
-    <script src="{{ asset('dashboard/assets/js/footable/js/footable.filter.js?v=2-0-1') }}" type="text/javascript"></script>
-    <script src="{{ asset('dashboard/assets/js/footable/js/footable.paginate.js?v=2-0-1') }}" type="text/javascript"></script>
-    <script src="{{ asset('dashboard/assets/js/footable/js/footable.paginate.js?v=2-0-1') }}" type="text/javascript"></script>
+    <script type="text/javascript" src="{{ asset('public/dashboard/assets/js/toggle_close.js') }}"></script>
+    <script src="{{ asset('public/dashboard/assets/js/footable/js/footable.js?v=2-0-1') }}" type="text/javascript"></script>
+    <script src="{{ asset('public/dashboard/assets/js/footable/js/footable.sort.js?v=2-0-1') }}" type="text/javascript"></script>
+    <script src="{{ asset('public/dashboard/assets/js/footable/js/footable.filter.js?v=2-0-1') }}" type="text/javascript"></script>
+    <script src="{{ asset('public/dashboard/assets/js/footable/js/footable.paginate.js?v=2-0-1') }}" type="text/javascript"></script>
+    <script src="{{ asset('public/dashboard/assets/js/footable/js/footable.paginate.js?v=2-0-1') }}" type="text/javascript"></script>
 
 
 

@@ -16,7 +16,7 @@
                 <div id="paper-top">
                     <div class="col-sm-3">
                         <h2 class="tittle-content-header">
-                            <i class="icon-map"></i> 
+                            <i class="icon-map"></i>
                             <span>Add Manufacturer
                             </span>
                         </h2>
@@ -119,7 +119,8 @@
                             <div class="body-nest" id="validation">
                                 <div class="form_center">
 
-                                    <form action="contact" id="contact-form" class="form-horizontal">
+                                    <form action="{{ route('manufacturer.store') }}" id="contact-form" method="POST" class="form-horizontal" enctype="multipart/form-data">
+                                        @csrf
                                         <fieldset>
 
 
@@ -127,18 +128,24 @@
                                                 <label class="control-label" for="name">Manufacturer Name</label>
                                                 <div class="controls">
                                                     <input type="text" class="form-control" name="name" id="name">
+                                                    @error('name')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
                                                 </div>
                                             </div>
 
                                                   <div class="control-group">
                                                 <label class="control-label" for="name">Select Device</label>
                                                 <div class="controls">
-                                                  <select name="" id="" class="form-control">
-                                                      <option value="">Laptop</option>
-                                                      <option value="">Phone</option>
-                                                      <option value="">Watches</option>
-                                                      <option value="">Airbuds</option>
+                                                  <select name="device_id" id="" class="form-control">
+                                                      <option value="">select device</option>
+                                                      @foreach ($devices as $device)
+                                                        <option value="{{ $device->id }}">{{ $device->name }}</option>
+                                                      @endforeach
                                                   </select>
+                                                  @error('device_id')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
                                                 </div>
                                             </div>
 
@@ -146,16 +153,14 @@
                                             <div class="control-group">
                                                 <label class="control-label" for="email">Upload Image</label>
                                                 <div class="controls">
-                                                    <input type="file" class="form-control" name="email" id="email">
+                                                    <input type="file" class="form-control" name="image" id="image">
+                                                    @error('image')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
                                                 </div>
                                             </div>
-                                       
-                                            <div class="control-group">
-                                                <label class="control-label" for="message">Your Message</label>
-                                                <div class="controls">
-                                                    <textarea class="form-control" name="message" id="message" rows="3"></textarea>
-                                                </div>
-                                            </div>
+
+
                                             <div class="form-actions" style="margin:20px 0 0 0;">
                                                 <button type="submit" class="btn btn-primary">Submit</button>
                                                 <button type="reset" class="btn">Cancel</button>
@@ -175,7 +180,7 @@
 
 
 
-           
+
 
 
             <!-- /END OF CONTENT -->

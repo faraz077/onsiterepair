@@ -15,7 +15,7 @@
 					We <span>repair your gadgets</span> at your doorstep
 					</h1>
 					<p>Is your smartphone, tablet, or laptop acting up? Don't worry, <span>OnSiteRepairs</span> got you covered. </p>
-					
+
 					<div class="get-aqoute">
 						<div class="line"></div>
 						<a href="">Get Qoute</a>
@@ -23,7 +23,7 @@
 				</div>
 			</div>
 			<div class="col-lg-6">
-				
+
 				<div class="hero-img-section">
 					<img src="{{asset('img/hero-img.png')}}" alt="" class="img-fluid">
 				</div>
@@ -37,7 +37,7 @@
 		<div class="row">
 			<div class="col-lg-6 d-flex align-items-center">
 				<div class="left">
-					<img class="img-fluid" src="{{asset('img/three-step-img.png')}}" alt="">
+					<img class="img-fluid" src="{{asset('public/img/three-step-img.png')}}" alt="">
 				</div>
 			</div>
 			<div class="col-lg-6">
@@ -77,7 +77,7 @@
 			<div class="col-lg-5 testimonial-main">
 				<div class="testimonial-heading">
 					<div class="line">
-						
+
 					</div>
 					<br>
 					<h1>What our customer say</h1>
@@ -110,7 +110,7 @@
 			<h3>“They work fast”</h3>
 			<p class="testimonial">OnSiteRepair team work really fast & efficient. The guy sent by them, fixed my phone in less than 30 mins</p>
 			<div class="user-icon d-flex align-items-center">
-				<div class="img"><img src="{{asset('img/user-2.png')}}" alt="" class="img-fluid"></div>
+				<div class="img"><img src="{{asset('public/img/user-2.png')}}" alt="" class="img-fluid"></div>
 				<div class="desc">
 					<h4>Nickolas J.</h4>
 					<p>iPhone 14 ProMax</p>
@@ -140,7 +140,7 @@
 			<h3>“OnSiteRepairs is the best!”</h3>
 			<p class="testimonial">OnSiteRepair sent the guy in no time. I highly recommend them.</p>
 			<div class="user-icon d-flex align-items-center">
-				<div class="img"><img src="{{asset('img/user-3.png')}}" alt="" class="img-fluid"></div>
+				<div class="img"><img src="{{asset('public/img/user-3.png')}}" alt="" class="img-fluid"></div>
 				<div class="desc">
 					<h4>Maria Drew</h4>
 					<p>Samsung S23 Ultra</p>
@@ -170,7 +170,7 @@
 			<h3>“Nailed it!”</h3>
 			<p class="testimonial">OnSiteRepair team, are doing the really awesome work by bringing this innovative idea that really saves my time.</p>
 			<div class="user-icon d-flex align-items-center">
-				<div class="img"><img src="{{asset('img/user-1.png')}}" alt="" class="img-fluid"></div>
+				<div class="img"><img src="{{asset('public/img/user-1.png')}}" alt="" class="img-fluid"></div>
 				<div class="desc">
 					<h4>Ali Waseem</h4>
 					<p>Google Pixel 7 Pro</p>
@@ -200,7 +200,7 @@
 			<h3>“They work fast”</h3>
 			<p class="testimonial">OnSiteRepair team work really fast & efficient. The guy sent by them, fixed my phone in less than 30 mins</p>
 			<div class="user-icon d-flex align-items-center">
-				<div class="img"><img src="{{asset('img/user-2.png')}}" alt="" class="img-fluid"></div>
+				<div class="img"><img src="{{asset('public/img/user-2.png')}}" alt="" class="img-fluid"></div>
 				<div class="desc">
 					<h4>Nickolas J.</h4>
 					<p>iPhone 14 ProMax</p>
@@ -230,7 +230,7 @@
 			<h3>“OnSiteRepairs is the best!”</h3>
 			<p class="testimonial">OnSiteRepair sent the guy in no time. I highly recommend them.</p>
 			<div class="user-icon d-flex align-items-center">
-				<div class="img"><img src="{{asset('img/user-3.png')}}" alt="" class="img-fluid"></div>
+				<div class="img"><img src="{{asset('public/img/user-3.png')}}" alt="" class="img-fluid"></div>
 				<div class="desc">
 					<h4>Maria Drew</h4>
 					<p>Samsung S23 Ultra</p>
@@ -260,7 +260,7 @@
 			<h3>“Nailed it!”</h3>
 			<p class="testimonial">OnSiteRepair team, are doing the really awesome work by bringing this innovative idea that really saves my time.</p>
 			<div class="user-icon d-flex align-items-center">
-				<div class="img"><img src="{{asset('img/user-1.png')}}" alt="" class="img-fluid"></div>
+				<div class="img"><img src="{{asset('public/img/user-1.png')}}" alt="" class="img-fluid"></div>
 				<div class="desc">
 					<h4>Ali Waseem</h4>
 					<p>Google Pixel 7 Pro</p>
@@ -280,7 +280,7 @@
 				<br>
 				<h1>What we repair</h1>
 			</div>
-			
+
 				<div class="list">
 					<ul>
 					<li><a href="#">Microphone Repair</a></li>
@@ -303,11 +303,11 @@
 		</div>
 		<div class="col-lg-6 p-0 d-flex justify-content-end">
 			<div class="right">
-				<img src="{{asset('img/what-we-repair.png')}}" alt="" class="right-img-repair">
+				<img src="{{asset('public/img/what-we-repair.png')}}" alt="" class="right-img-repair">
 			</div>
 		</div>
 	</div>
 </div>
-	
+
 </section>
 @endsection

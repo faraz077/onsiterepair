@@ -2,26 +2,21 @@
 
 namespace App\Http\Controllers\dashboard;
 
-use App\Models\Model;
+use App\Models\Device;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Issue;
+use App\Models\Manufacturer;
 use Illuminate\Support\Facades\Validator;
 
-class IssueController extends Controller
+class ManufacturerController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $issues = Issue::with('manufacturer.device.model')->get();
-        // dd($issues);
-        return view('dashboard.issues', compact('issues'));
+        $manufacturers = Manufacturer::with('device')->get();
+        return view('dashboard.manufacturers', compact('manufacturers'));
     }
 
     /**
@@ -29,8 +24,8 @@ class IssueController extends Controller
      */
     public function create()
     {
-        $models = Model::all();
-        return view('dashboard.add-issues', compact('models'));
+        $devices = Device::all();
+        return view('dashboard.add-manufacturer', compact('devices'));
 
     }
 
@@ -43,15 +38,15 @@ class IssueController extends Controller
         // Validation rules
         $rules = [
             'name' => 'required|string|max:255',
-            'model_id' => 'required',
+            'device_id' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ];
 
         // Custom error messages
         $messages = [
-            'name.required' => 'The issue name is required.',
-            'name.max' => 'The issue name should not exceed 255 characters.',
-            'model_id.required' => 'The model name is required.',
+            'name.required' => 'The manufacturer name is required.',
+            'name.max' => 'The manufacturer name should not exceed 255 characters.',
+            'device_id.required' => 'The device name is required.',
             'image.required' => 'An image is required.',
             'image.image' => 'The uploaded file must be an image.',
             'image.mimes' => 'The image must be of type jpeg, png, jpg, or gif.',
@@ -72,27 +67,26 @@ class IssueController extends Controller
         // If validation passes, proceed with storing the data
 
         // Example: Storing the device
-        $issue = new Issue;
-        $issue->name = $request->input('name');
-        $issue->model_id = $request->input('model_id');
+        $manufacturer = new Manufacturer;
+        $manufacturer->name = $request->input('name');
+        $manufacturer->device_id = $request->input('device_id');
 
         // Example: Handling image upload
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
-            $image->move(public_path('images/issues'), $imageName);
-            $issue->image = $imageName;
+            $image->move(public_path('images/manufacturers'), $imageName);
+            $manufacturer->image = $imageName;
         }
 
         // Save the device
-        $issue->save();
+        $manufacturer->save();
 
         // Redirect with success message
         return redirect()
-            ->route('issues.index')
-            ->with('success', 'Issue created successfully');
+            ->route('manufacturer.index')
+            ->with('success', 'Manufacturer created successfully');
     }
-
 
     /**
      * Display the specified resource.
@@ -107,7 +101,7 @@ class IssueController extends Controller
      */
     public function edit(string $id)
     {
-         return view('dashboard.edit-issues');
+        return view('dashboard.edit-manufacturer');
     }
 
     /**

@@ -16,7 +16,7 @@
                 <div id="paper-top">
                     <div class="col-sm-3">
                         <h2 class="tittle-content-header">
-                            <i class="icon-map"></i> 
+                            <i class="icon-map"></i>
                             <span>Add Issue
                             </span>
                         </h2>
@@ -119,7 +119,8 @@
                             <div class="body-nest" id="validation">
                                 <div class="form_center">
 
-                                    <form action="contact" id="contact-form" class="form-horizontal">
+                                    <form action="{{ route('issues.store') }}" id="contact-form" method="POST" class="form-horizontal" enctype="multipart/form-data">
+                                        @csrf
                                         <fieldset>
 
 
@@ -127,32 +128,35 @@
                                                 <label class="control-label" for="name">Issue Name</label>
                                                 <div class="controls">
                                                     <input type="text" class="form-control" name="name" id="name">
+                                                    @error('name')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
                                                 </div>
                                             </div>
-                                               <div class="control-group">
+                                              <div class="control-group">
                                                 <label class="control-label" for="name">Select Model</label>
                                                 <div class="controls">
-                                                  <select name="" id="" class="form-control">
-                                                      <option value="">iPhone 11 pro max</option>
-                                                      <option value="">Samsung A23</option>
-                                                      <option value="">Vivo S1</option>
-                                                      <option value="">Goolge plus XL</option>
-                                                  </select>
-                                                </div>
+                                                    <select name="model_id" id="" class="form-control">
+                                                        <option value="">select Model</option>
+                                                        @foreach ($models as $model)
+                                                          <option value="{{ $model->id }}">{{ $model->name }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                    @error('model_id')
+                                                          <span class="text-danger">{{ $message }}</span>
+                                                      @enderror
+                                                  </div>
                                             </div>
                                             <div class="control-group">
-                                                <label class="control-label" for="email">Upload Image</label>
+                                                <label class="control-label" for="image">Upload Image</label>
                                                 <div class="controls">
-                                                    <input type="file" class="form-control" name="email" id="email">
+                                                    <input type="file" class="form-control" name="image" id="image">
+                                                    @error('image')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
                                                 </div>
                                             </div>
-                                       
-                                            <div class="control-group">
-                                                <label class="control-label" for="message">Your Message</label>
-                                                <div class="controls">
-                                                    <textarea class="form-control" name="message" id="message" rows="3"></textarea>
-                                                </div>
-                                            </div>
+
                                             <div class="form-actions" style="margin:20px 0 0 0;">
                                                 <button type="submit" class="btn btn-primary">Submit</button>
                                                 <button type="reset" class="btn">Cancel</button>
@@ -172,7 +176,7 @@
 
 
 
-           
+
 
 
             <!-- /END OF CONTENT -->
