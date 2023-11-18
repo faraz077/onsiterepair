@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class ModelController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      */
@@ -21,7 +25,7 @@ class ModelController extends Controller
     public function create()
     {
         return view('dashboard.add-models');
-        
+
     }
 
     /**

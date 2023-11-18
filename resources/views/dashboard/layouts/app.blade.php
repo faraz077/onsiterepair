@@ -56,8 +56,8 @@
                 </div>
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div id="bs-example-navbar-collapse-1" class="collapse navbar-collapse">
-                    
-                    
+
+
                     <ul style="margin-right:0;" class="nav navbar-nav navbar-right">
                         <li>
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
@@ -78,8 +78,12 @@
                                             </li>
                                             <li class="divider"></li>
                                             <li>
-                                                <a href="#">
+                                                <a href="{{ route('logout') }}"  onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">
                                                     <span class="entypo-logout"></span>&#160;&#160;Logout</a>
+                                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                                        @csrf
+                                                    </form>
                                                 </li>
                                             </ul>
                                         </li>
@@ -119,10 +123,10 @@
                             <div id="skin-select">
                                 <div id="logo ">
                                     <h1>On Site Repair
-                                    
+
                                     </h1>
                                 </div>
-                                
+
                                 <div class="skin-part">
                                     <div id="tree-wrap">
                                         <div class="side-bar">
@@ -144,7 +148,7 @@
                                                         <i class="icon-document-edit"></i>
                                                         <span>Devices</span>
                                                     </a>
-                                                    
+
                                                 </li>
                                                 <li>
                                                     <a class="tooltip-tip ajax-load" href="/models" title="Social">
@@ -166,7 +170,7 @@
                                                         <i data-toggle="tooltip" class="entypo-cog pull-right config-wrap"></i>
                                                     </a>
                                                 </li>
-                                                
+
                                                 <li>
                                                     <a class="tooltip-tip ajax-load" href="mail.html" title="Mail">
                                                         <i class="icon-mail"></i>
@@ -179,7 +183,7 @@
                                                         <i class="icon-document-new"></i>
                                                         <span>Appointments</span>
                                                     </a>
-                                                    
+
                                                 </li>
                                                 <li>
                                                     <a class="tooltip-tip ajax-load" href="icon.html" title="Icons">
@@ -188,7 +192,7 @@
                                                         <div class="noft-blue" style="display: inline-block; float: none;">New</div>
                                                     </a>
                                                 </li>
-                                                
+
                                                 <li>
                                                     <a class="tooltip-tip " href="login.html" title="login">
                                                         <i class="icon-download"></i>
@@ -209,7 +213,7 @@
                                                         <span>Website Controllers</span>
                                                     </a>
                                                     <ul>
-                                                        
+
                                                         <h3>
                                                         <span>Visitors</span>
                                                         </h3>
@@ -220,7 +224,7 @@
                                         </div>
                                     </div>
                                     <!-- END OF SIDE MENU -->
-                                    
+
                                     @yield('content')
                                     <!-- FOOTER -->
                                     <div class="footer-space"></div>

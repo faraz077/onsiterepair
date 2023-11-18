@@ -22,7 +22,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('/about-us', aboutusController::class);
 Route::resource('/buy-device', buydeviceController::class);
 Route::resource('/ontact-us', contactusController::class);
-Route::resource('/dashboard-panel', DashboardController::class);
+// Route::resource('/dashboard-panel', DashboardController::class);
 Route::resource('/devices', DeviceController::class);
 Route::resource('/models', ModelController::class);
 Route::resource('/issues', IssueController::class);

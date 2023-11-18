@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class DeviceController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      */
@@ -45,7 +49,7 @@ class DeviceController extends Controller
     public function edit(string $id)
     {
         return view('dashboard.edit-device');
-        
+
     }
 
     /**
