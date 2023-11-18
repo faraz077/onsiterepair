@@ -129,6 +129,17 @@
                                                     <input type="text" class="form-control" name="name" id="name">
                                                 </div>
                                             </div>
+                                              <div class="control-group">
+                                                <label class="control-label" for="name">Select Manufacturer</label>
+                                                <div class="controls">
+                                                  <select name="" id="" class="form-control">
+                                                      <option value="">Apple</option>
+                                                      <option value="">Samsung</option>
+                                                      <option value="">Vivo</option>
+                                                      <option value="">Goolge plus</option>
+                                                  </select>
+                                                </div>
+                                            </div>
                                             <div class="control-group">
                                                 <label class="control-label" for="email">Upload Image</label>
                                                 <div class="controls">

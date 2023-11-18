@@ -20,7 +20,8 @@ class IssueController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.add-issues');
+        
     }
 
     /**
@@ -28,7 +29,8 @@ class IssueController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       
+        
     }
 
     /**
@@ -44,7 +46,7 @@ class IssueController extends Controller
      */
     public function edit(string $id)
     {
-        //
+         return view('dashboard.edit-issues');
     }
 
     /**

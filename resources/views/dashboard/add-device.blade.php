@@ -56,6 +56,7 @@
                                     <a href="#">
                                         <span class="entypo-heart margin-iconic"></span>Favorite</a>
                                 </li>
+
                                 <li>
                                     <a href="#">
                                         <span class="entypo-cog margin-iconic"></span>Setting</a>
@@ -129,6 +130,7 @@
                                                     <input type="text" class="form-control" name="name" id="name">
                                                 </div>
                                             </div>
+                                       
                                             <div class="control-group">
                                                 <label class="control-label" for="email">Upload Image</label>
                                                 <div class="controls">
