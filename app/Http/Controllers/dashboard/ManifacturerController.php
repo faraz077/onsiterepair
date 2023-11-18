@@ -5,18 +5,14 @@ namespace App\Http\Controllers\dashboard;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class IssueController extends Controller
+class ManifacturerController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('dashboard.issues');
+        return view('dashboard.manufacturers');
     }
 
     /**
@@ -24,7 +20,7 @@ class IssueController extends Controller
      */
     public function create()
     {
-        return view('dashboard.add-issues');
+        return view('dashboard.add-manufacturer');
         
     }
 
@@ -33,8 +29,7 @@ class IssueController extends Controller
      */
     public function store(Request $request)
     {
-       
-        
+        //
     }
 
     /**
@@ -50,7 +45,7 @@ class IssueController extends Controller
      */
     public function edit(string $id)
     {
-         return view('dashboard.edit-issues');
+        return view('dashboard.edit-manufacturer');
     }
 
     /**

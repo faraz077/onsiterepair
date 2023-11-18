@@ -17,7 +17,7 @@
                     <div class="col-sm-3">
                         <h2 class="tittle-content-header">
                             <i class="icon-map"></i> 
-                            <span>Add Model
+                            <span>Add Manufacturer
                             </span>
                         </h2>
 
@@ -80,7 +80,7 @@
                 </li>
                 <li><i class="fa fa-lg fa-angle-right"></i>
                 </li>
-                <li><a href="#" title="Sample page 1">Add Model</a>
+                <li><a href="#" title="Sample page 1">Add Manufacturer</a>
                 </li>
                 <li class="pull-right">
                     <div class="input-group input-widget">
@@ -100,7 +100,7 @@
                         <div class="nest" id="validationClose">
                             <div class="title-alt">
                                 <h6>
-                                    Add Model</h6>
+                                    Add Manufacturer</h6>
                                 <div class="titleClose">
                                     <a class="gone" href="#validationClose">
                                         <span class="entypo-cancel"></span>
@@ -124,20 +124,9 @@
 
 
                                             <div class="control-group">
-                                                <label class="control-label" for="name">Model Name</label>
+                                                <label class="control-label" for="name">Manufacturer Name</label>
                                                 <div class="controls">
                                                     <input type="text" class="form-control" name="name" id="name">
-                                                </div>
-                                            </div>
-                                              <div class="control-group">
-                                                <label class="control-label" for="name">Select Manufacturer</label>
-                                                <div class="controls">
-                                                  <select name="" id="" class="form-control">
-                                                      <option value="">Apple</option>
-                                                      <option value="">Samsung</option>
-                                                      <option value="">Vivo</option>
-                                                      <option value="">Goolge plus</option>
-                                                  </select>
                                                 </div>
                                             </div>
                                             <div class="control-group">

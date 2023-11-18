@@ -150,6 +150,12 @@
                                                     </a>
 
                                                 </li>
+                                                   <li>
+                                                    <a class="tooltip-tip ajax-load" href="/manufacturer" title="Social">
+                                                        <i class="icon-feed"></i>
+                                                        <span>Manifacturer</span>
+                                                    </a>
+                                                </li>
                                                 <li>
                                                     <a class="tooltip-tip ajax-load" href="/models" title="Social">
                                                         <i class="icon-feed"></i>

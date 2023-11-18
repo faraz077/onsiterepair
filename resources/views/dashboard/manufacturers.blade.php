@@ -17,7 +17,7 @@
                     <div class="col-sm-3">
                         <h2 class="tittle-content-header">
                             <i class="icon-map"></i> 
-                            <span>Add Issue
+                            <span>Add Manutacturer
                             </span>
                         </h2>
 
@@ -80,7 +80,7 @@
                 </li>
                 <li><i class="fa fa-lg fa-angle-right"></i>
                 </li>
-                <li><a href="#" title="Sample page 1">Add Issue</a>
+                <li><a href="#" title="Sample page 1">Add Manutacturer</a>
                 </li>
                 <li class="pull-right">
                     <div class="input-group input-widget">
@@ -100,7 +100,7 @@
                         <div class="nest" id="validationClose">
                             <div class="title-alt">
                                 <h6>
-                                    <a class="btn btn-success" href="/issues/create" >Add Issue</a></h6>
+                                    <a class="btn btn-success" href="/manufacturer/create" >Add Manutacturer</a></h6>
                                 <div class="titleClose">
                                     <a class="gone" href="#validationClose">
                                         <span class="entypo-cancel"></span>
@@ -125,7 +125,7 @@
                         <div class="nest" id="FilteringClose">
                             <div class="title-alt">
                                 <h6>
-                                    All Issues</h6>
+                                    All Manutacturers</h6>
                                 <div class="titleClose">
                                     <a class="gone" href="#FilteringClose">
                                         <span class="entypo-cancel"></span>
@@ -167,7 +167,7 @@
                                     <thead>
                                         <tr>
                                             <th data-toggle="true">
-                                               Issues Name
+                                               Manutacturers Name
                                             </th>
                                             <th>
                                                 Image
@@ -193,7 +193,7 @@
                                                 <span class="status-metro status-active" title="Active">Active</span>
                                             </td>
 
-                                            <td><a href="/edit.Issue/1" class="btn btn-info">Edit</a></td>
+                                            <td><a href="/edit-manufacturer/1" class="btn btn-info">Edit</a></td>
                                             <td><a href="" class="btn btn-danger">Delete</a></td>
                                         </tr>
                                               <tr>
