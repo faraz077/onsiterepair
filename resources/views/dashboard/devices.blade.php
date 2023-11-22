@@ -16,7 +16,7 @@
                 <div id="paper-top">
                     <div class="col-sm-3">
                         <h2 class="tittle-content-header">
-                            <i class="icon-map"></i> 
+                            <i class="icon-map"></i>
                             <span>Add Device
                             </span>
                         </h2>
@@ -91,7 +91,17 @@
             </ul>
 
             <!-- END OF BREADCRUMB -->
+            @if(session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
 
+            @if(session('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+            @endif
 
 
             <div class="content-wrap">
@@ -100,7 +110,7 @@
                         <div class="nest" id="validationClose">
                             <div class="title-alt">
                                 <h6>
-                                    <a class="btn btn-success" href="/devices/create" >Add Device</a></h6>
+                                    <a class="btn btn-success" href="{{ route('devices.create') }}" >Add Device</a></h6>
                                 <div class="titleClose">
                                     <a class="gone" href="#validationClose">
                                         <span class="entypo-cancel"></span>
@@ -117,7 +127,7 @@
 
 
                             <div class="body-nest" id="validation">
-                       
+
 
             <div class="content-wrap">
                 <div class="row">
@@ -167,14 +177,15 @@
                                     <thead>
                                         <tr>
                                             <th data-toggle="true">
+                                                #
+                                             </th>
+                                            <th data-toggle="true">
                                                Devices Name
                                             </th>
                                             <th>
                                                 Image
                                             </th>
-                                            <th data-hide="phone,tablet">
-                                                Status
-                                            </th>
+
                                             <th data-hide="phone,tablet">
                                                 Edit
                                             </th>
@@ -184,79 +195,22 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @foreach ($devices as $device)
+
                                         <tr>
-                                            <td>Isidra</td>
-                                            <td><a href="#">Boudreaux</a>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $device->name }}</td>
+                                            <td>
+                                                <img src="{{ asset('public/images/devices/' . $device->image) }}" alt="{{ $device->name }}" height="50" width="50">
                                             </td>
-                                           
-                                            <td data-value="1">
-                                                <span class="status-metro status-active" title="Active">Active</span>
-                                            </td>
+
 
                                             <td><a href="/edit.device/1" class="btn btn-info">Edit</a></td>
                                             <td><a href="" class="btn btn-danger">Delete</a></td>
                                         </tr>
-                                              <tr>
-                                            <td>Isidra</td>
-                                            <td><a href="#">Boudreaux</a>
-                                            </td>
-                                           
-                                            <td data-value="1">
-                                                <span class="status-metro status-active" title="Active">Active</span>
-                                            </td>
+                                        @endforeach
 
-                                            <td><a href="" class="btn btn-info">Edit</a></td>
-                                            <td><a href="" class="btn btn-danger">Delete</a></td>
-                                        </tr>
-                                              <tr>
-                                            <td>Isidra</td>
-                                            <td><a href="#">Boudreaux</a>
-                                            </td>
-                                           
-                                            <td data-value="1">
-                                                <span class="status-metro status-active" title="Active">Active</span>
-                                            </td>
 
-                                            <td><a href="" class="btn btn-info">Edit</a></td>
-                                            <td><a href="" class="btn btn-danger">Delete</a></td>
-                                        </tr>
-                                              <tr>
-                                            <td>Isidra</td>
-                                            <td><a href="#">Boudreaux</a>
-                                            </td>
-                                           
-                                            <td data-value="1">
-                                                <span class="status-metro status-active" title="Active">Active</span>
-                                            </td>
-
-                                            <td><a href="" class="btn btn-info">Edit</a></td>
-                                            <td><a href="" class="btn btn-danger">Delete</a></td>
-                                        </tr>
-                                              <tr>
-                                            <td>Isidra</td>
-                                            <td><a href="#">Boudreaux</a>
-                                            </td>
-                                           
-                                            <td data-value="1">
-                                                <span class="status-metro status-active" title="Active">Active</span>
-                                            </td>
-
-                                            <td><a href="" class="btn btn-info">Edit</a></td>
-                                            <td><a href="" class="btn btn-danger">Delete</a></td>
-                                        </tr>
-                                              <tr>
-                                            <td>Isidra</td>
-                                            <td><a href="#">Boudreaux</a>
-                                            </td>
-                                           
-                                            <td data-value="1">
-                                                <span class="status-metro status-active" title="Active">Active</span>
-                                            </td>
-
-                                            <td><a href="" class="btn btn-info">Edit</a></td>
-                                            <td><a href="" class="btn btn-danger">Delete</a></td>
-                                        </tr>
-                                      
                                     </tbody>
                                 </table>
 
@@ -282,7 +236,7 @@
 
 
 
-           
+
 
 
             <!-- /END OF CONTENT -->

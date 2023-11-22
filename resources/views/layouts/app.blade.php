@@ -9,9 +9,9 @@
         <!-- Fonts -->
         <link rel="dns-prefetch" href="//fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="{{asset('css/app.css')}}">
-          <link rel="stylesheet" type="text/css" href="{{asset('slick/slick.css')}}">
-  <link rel="stylesheet" type="text/css" href="{{asset('slick/slick-theme.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{asset('public/css/app.css')}}">
+          <link rel="stylesheet" type="text/css" href="{{asset('public/slick/slick.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{asset('public/slick/slick-theme.css')}}">
         <!-- font- family -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,7 +26,7 @@
                 <div class="top-bar bg-dark">
                     <div class="container-fluid">
                         <div class="row">
-                            
+
                             <div class="col-lg-6"></div>
                             <div class="col-lg-6">
                                 <ul class="d-flex align-items-center justify-content-center">
@@ -47,7 +47,7 @@
                             <div class="col-lg-12">
                                 <nav class="navbar navbar-expand-lg">
                                     <div class="container-fluid">
-                                        <a class="navbar-brand" href="#"><img src="{{asset('img/header-logo.png')}}" alt=""></a>
+                                        <a class="navbar-brand" href="#"><img src="{{asset('public/img/header-logo.png')}}" alt=""></a>
                                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
                                         <span class="navbar-toggler-icon"></span>
                                         </button>
@@ -60,10 +60,10 @@
                                                 <li class="nav-item">
                                                     <a class="nav-link" href="#">Buy a Device</a>
                                                 </li>
-                                            
+
                                                 <li class="nav-item">
                                                     <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Sell a Device</a>
-                                                    
+
                                                 </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">About Us</a>
@@ -83,7 +83,7 @@
             </header>
         </div>
                 @yield('content')
-         
+
 
 
          <footer>
@@ -92,7 +92,7 @@
                     <div class="col-lg-6">
                         <div class="column-1">
                             <div class="logo">
-                                <img src="{{asset('img/white-logo.png')}}" alt="" >
+                                <img src="{{asset('public/img/white-logo.png')}}" alt="" >
                                 <p class="about-footer">
                                     OnSiteRepairs is your go-to solution for convenient smartphone repairs. Our expert technicians come to your doorstep, offering quick and quality fixes for cracked screens, battery issues, and more. Say goodbye to the hassle of repair shops and hello to the future of on-the-spot phone repairs with OnSiteRepairs!
                                 </p>
@@ -129,14 +129,14 @@
                     </div>
                 </div>
             </div>
-             
+
          </footer>
-    
+
 
 
           <script src="https://code.jquery.com/jquery-3.6.0.min.js" type="text/javascript"></script>
   <script src="https://code.jquery.com/jquery-migrate-3.4.0.min.js"></script>
-  <script src="{{asset('slick/slick.js')}}" type="text/javascript" charset="utf-8"></script>
+  <script src="{{asset('public/slick/slick.js')}}" type="text/javascript" charset="utf-8"></script>
 
   <script type="text/javascript">
     $(document).on('ready', function() {

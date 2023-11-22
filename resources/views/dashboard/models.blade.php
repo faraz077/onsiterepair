@@ -16,7 +16,7 @@
                 <div id="paper-top">
                     <div class="col-sm-3">
                         <h2 class="tittle-content-header">
-                            <i class="icon-map"></i> 
+                            <i class="icon-map"></i>
                             <span>Add Model
                             </span>
                         </h2>
@@ -91,7 +91,17 @@
             </ul>
 
             <!-- END OF BREADCRUMB -->
+            @if(session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
 
+            @if(session('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+            @endif
 
 
             <div class="content-wrap">
@@ -100,7 +110,7 @@
                         <div class="nest" id="validationClose">
                             <div class="title-alt">
                                 <h6>
-                                    <a class="btn btn-success" href="/models/create" >Add Model</a></h6>
+                                    <a class="btn btn-success" href="{{ route('models.create') }}" >Add Model</a></h6>
                                 <div class="titleClose">
                                     <a class="gone" href="#validationClose">
                                         <span class="entypo-cancel"></span>
@@ -117,7 +127,7 @@
 
 
                             <div class="body-nest" id="validation">
-                       
+
 
             <div class="content-wrap">
                 <div class="row">
@@ -167,96 +177,47 @@
                                     <thead>
                                         <tr>
                                             <th data-toggle="true">
+                                                #
+                                             </th>
+                                            <th data-toggle="true">
                                                Models Name
                                             </th>
                                             <th>
                                                 Image
                                             </th>
-                                            <th data-hide="phone,tablet">
-                                                Status
+                                            <th >
+                                                Manufacturer
                                             </th>
-                                            <th data-hide="phone,tablet">
+                                            <th >
+                                                Device type
+                                            </th>
+                                            <th >
                                                 Edit
                                             </th>
-                                            <th data-hide="phone">
+                                            <th >
                                                Delete
                                             </th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @foreach ($models as $model)
                                         <tr>
-                                            <td>Isidra</td>
-                                            <td><a href="#">Boudreaux</a>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $model->name }}</td>
+                                            <td>
+                                                <img src="{{ asset('public/images/models/' . $model->image) }}" alt="{{ $model->name }}" height="50" width="50">
                                             </td>
-                                           
-                                            <td data-value="1">
-                                                <span class="status-metro status-active" title="Active">Active</span>
-                                            </td>
+                                            <td>{{ $model->manufacturer->name }}</td>
+                                            <td>{{ $model->manufacturer->device->name }}</td>
 
-                                            <td><a href="/edit.Model/1" class="btn btn-info">Edit</a></td>
+
+
+                                            <td><a href="/edit-manufacturer/1" class="btn btn-info">Edit</a></td>
                                             <td><a href="" class="btn btn-danger">Delete</a></td>
                                         </tr>
-                                              <tr>
-                                            <td>Isidra</td>
-                                            <td><a href="#">Boudreaux</a>
-                                            </td>
-                                           
-                                            <td data-value="1">
-                                                <span class="status-metro status-active" title="Active">Active</span>
-                                            </td>
+                                        @endforeach
 
-                                            <td><a href="" class="btn btn-info">Edit</a></td>
-                                            <td><a href="" class="btn btn-danger">Delete</a></td>
-                                        </tr>
-                                              <tr>
-                                            <td>Isidra</td>
-                                            <td><a href="#">Boudreaux</a>
-                                            </td>
-                                           
-                                            <td data-value="1">
-                                                <span class="status-metro status-active" title="Active">Active</span>
-                                            </td>
 
-                                            <td><a href="" class="btn btn-info">Edit</a></td>
-                                            <td><a href="" class="btn btn-danger">Delete</a></td>
-                                        </tr>
-                                              <tr>
-                                            <td>Isidra</td>
-                                            <td><a href="#">Boudreaux</a>
-                                            </td>
-                                           
-                                            <td data-value="1">
-                                                <span class="status-metro status-active" title="Active">Active</span>
-                                            </td>
-
-                                            <td><a href="" class="btn btn-info">Edit</a></td>
-                                            <td><a href="" class="btn btn-danger">Delete</a></td>
-                                        </tr>
-                                              <tr>
-                                            <td>Isidra</td>
-                                            <td><a href="#">Boudreaux</a>
-                                            </td>
-                                           
-                                            <td data-value="1">
-                                                <span class="status-metro status-active" title="Active">Active</span>
-                                            </td>
-
-                                            <td><a href="" class="btn btn-info">Edit</a></td>
-                                            <td><a href="" class="btn btn-danger">Delete</a></td>
-                                        </tr>
-                                              <tr>
-                                            <td>Isidra</td>
-                                            <td><a href="#">Boudreaux</a>
-                                            </td>
-                                           
-                                            <td data-value="1">
-                                                <span class="status-metro status-active" title="Active">Active</span>
-                                            </td>
-
-                                            <td><a href="" class="btn btn-info">Edit</a></td>
-                                            <td><a href="" class="btn btn-danger">Delete</a></td>
-                                        </tr>
-                                      
                                     </tbody>
                                 </table>
 
@@ -282,7 +243,7 @@
 
 
 
-           
+
 
 
             <!-- /END OF CONTENT -->
