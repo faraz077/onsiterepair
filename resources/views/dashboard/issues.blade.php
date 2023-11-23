@@ -22,7 +22,6 @@
                         </h2>
 
                     </div>
-
                     <div class="col-sm-7">
                         <div class="devider-vertical visible-lg"></div>
                         <div class="tittle-middle-header">
