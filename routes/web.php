@@ -12,6 +12,8 @@ use App\Http\Controllers\website\trackorderController;
 use App\Http\Controllers\dashboard\DashboardController;
 use App\Http\Controllers\website\repairadeviceController;
 use App\Http\Controllers\dashboard\ManufacturerController;
+use App\Http\Controllers\website\QouteController;
+
 
 
 
@@ -29,6 +31,8 @@ Route::resource('/devices', DeviceController::class);
 Route::resource('/manufacturer', ManufacturerController::class);
 Route::resource('/models', ModelController::class);
 Route::resource('/issues', IssueController::class);
+Route::resource('/instant-price-qoute', QouteController::class);
+
 
 
 
