@@ -174,15 +174,9 @@ $(document).ready(function(){
         $('.instant-form-three-section').show();
     });
 
-    // Example: You can customize this part based on your actual form structure and classes
-    // When an issue is selected, you might want to perform some action or submit the form
     $('.instant-form-three-section .item').click(function(){
-        // Perform actions or submit the form
-        // For demonstration, let's just log the selected issue
         var selectedIssue = $(this).find('h5').text();
         console.log('Selected Issue: ' + selectedIssue);
-
-        // You can redirect or perform other actions based on the selected issue
     });
 });
 </script>
