@@ -25,11 +25,11 @@
 </div>
 </section>
 
-
-
 <section class="instant-form-first-section">
+<h3>Select your device</h3>
+
 	<div class="container">
-		
+
 	<div class="row">
 		<div class="col-lg-3">
 			<div class="item">
@@ -60,15 +60,16 @@
 </section>
 
 
-
 <section class="instant-form-two-section">
+<h3>select model</h3>
+
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12">
 				<h6>Smart Phones <i class="	fa fa-angle-right"></i></h6>
 			</div>
 		</div>
-		
+
 	<div class="row">
 		<div class="col-lg-3">
 			<div class="item">
@@ -94,7 +95,7 @@
 				<h5>Tablets</h5>
 			</div>
 		</div>
-	
+
 		<div class="col-lg-3">
 			<div class="item">
 				<img src="{{ asset('public/images/manufacturers/Nokia.png')}}" alt="" class="img-fluid">
@@ -138,8 +139,9 @@
 </section>
 
 
-
 <section class="instant-form-three-section">
+<h3>select issue</h3>
+
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12 d-flex">
@@ -150,7 +152,7 @@
 
 			</div>
 		</div>
-		
+
 	<div class="row">
 		<div class="col-lg-3">
 			<div class="item">
@@ -176,7 +178,7 @@
 				<h5>Charging Pin</h5>
 			</div>
 		</div>
-	
+
 		<div class="col-lg-3">
 			<div class="item">
 				<img src="{{ asset('public/images/issues/password.png')}}" alt="" class="img-fluid">

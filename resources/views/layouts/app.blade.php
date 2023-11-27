@@ -153,5 +153,33 @@
       });
     });
 </script>
+
+<!-- Add this script at the end of your Blade file, just before the closing body tag -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<script>
+$(document).ready(function(){
+    // Hide sections initially
+    $('.instant-form-two-section, .instant-form-three-section').hide();
+
+    // When a device is selected, show the next section
+    $('.instant-form-first-section .item').click(function(){
+        $('.instant-form-first-section').hide();
+        $('.instant-form-two-section').show();
+    });
+
+    // When a model is selected, show the next section
+    $('.instant-form-two-section .item').click(function(){
+        $('.instant-form-two-section').hide();
+        $('.instant-form-three-section').show();
+    });
+
+    $('.instant-form-three-section .item').click(function(){
+        var selectedIssue = $(this).find('h5').text();
+        console.log('Selected Issue: ' + selectedIssue);
+    });
+});
+</script>
+
     </body>
 </html>
