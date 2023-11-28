@@ -2,6 +2,80 @@
 @section('content')
 
 
+
+
+<!-- hero section started -->
+<section class="hero-section">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-lg-12">
+				<h3 class="p-5 text-center licensed">We are licensed and accredited by Government of Dubai</h3>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-6 d-flex align-items-center">
+				<div class="hero-content-section repair-done-fast">
+					<h1>
+					Repair <br> <span>done </span> fast
+					</h1>
+					<p><span>OnSiteRepairs</span> is your go-to solution for convenient smartphone repairs. Our expert technicians come to your doorstep, offering quick and quality fixes for cracked screens, battery issues, and more.</p>
+
+				
+				</div>
+			</div>
+			<div class="col-lg-6">
+
+				<div class="hero-img-section">
+					<img src="{{asset('public/img/repair-done-fast.png')}}" alt="" class="img-fluid">
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- what we repair section -->
+<section class="what-we-repair our-common-repair">
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-lg-6 d-flex align-items-center">
+			<div class="left">
+			<div class="heading-section">
+				<div class="line"></div>
+				<br>
+				<h1>Our most common repairs</h1>
+			</div>
+
+				<div class="list">
+					<ul>
+					<li><a href="#">Microphone Repair</a></li>
+					<li><a href="#">Camera Repair</a></li>
+					<li><a href="#">Screen Repair</a></li>
+					<li><a href="#">Button Repair</a></li>
+					<li><a href="#">Battery Repair</a></li>
+				</ul>
+
+					<ul>
+					<li><a href="#">Front Glass Repair</a></li>
+					<li><a href="#">Rear Glass Repair</a></li>
+					<li><a href="#">Charging Port Repair</a></li>
+					<li><a href="#">Speaker Repair</a></li>
+				</ul>
+				</div>
+			</div>
+
+
+		</div>
+		<div class="col-lg-6 p-0 d-flex justify-content-end">
+			<div class="right">
+				<img src="{{asset('public/img/what-we-repair.png')}}" alt="" class="right-img-repair">
+				<img src="{{asset('public/img/what-we-repair-shadow.png')}}" alt="" class="right-img-repair-shadow">
+
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+</section>
 <section class="instant-form-head-section">
 <div class="container instant-form-section">
 	<div class="row">

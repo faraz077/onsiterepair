@@ -18,14 +18,14 @@
 
 					<div class="get-aqoute">
 						<div class="line"></div>
-						<a href="">Get Qoute</a>
+						<a href="instant-price-qoute">Get Qoute</a>
 					</div>
 				</div>
 			</div>
 			<div class="col-lg-6">
 
 				<div class="hero-img-section">
-					<img src="{{asset('img/hero-img.png')}}" alt="" class="img-fluid">
+					<img src="{{asset('public/img/hero-img.png')}}" alt="" class="img-fluid">
 				</div>
 			</div>
 		</div>
@@ -37,7 +37,9 @@
 		<div class="row">
 			<div class="col-lg-6 d-flex align-items-center">
 				<div class="left">
-					<img class="img-fluid" src="{{asset('public/img/three-step-img.png')}}" alt="">
+					<img class="img-fluid three-step-img" src="{{asset('public/img/three-step-img.png')}}" alt="">
+					<img class="img-fluid three-step-shadow" src="{{asset('public/img/three-shadow.png')}}" alt="">
+
 				</div>
 			</div>
 			<div class="col-lg-6">
@@ -304,6 +306,9 @@
 		<div class="col-lg-6 p-0 d-flex justify-content-end">
 			<div class="right">
 				<img src="{{asset('public/img/what-we-repair.png')}}" alt="" class="right-img-repair">
+				<img src="{{asset('public/img/what-we-repair-shadow.png')}}" alt="" class="right-img-repair-shadow">
+
+				
 			</div>
 		</div>
 	</div>
