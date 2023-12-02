@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
+
         <title>{{ config('app.name', 'Laravel') }}</title>
         <!-- Fonts -->
         <link rel="dns-prefetch" href="//fonts.bunny.net">
@@ -148,36 +149,168 @@ $(document).ready(function(){
     $('.instant-form-four-section, .instant-form-five-section').hide();
     $('.qoute-form-section').hide();
 
-    
 
 
 
-    // When a device is selected, show the next section
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
     $('.instant-form-first-section .item').click(function(){
-        $('.instant-form-first-section').hide(1000);
-        $('.instant-form-two-section').show(1000);
-        $('.instant-form-subheading').text('Select Company');
+    var device_id = $(this).data('device-id');
+
+    // Ajax request to store device_id in session and get manufacturers
+    $.ajax({
+        url: '{{ route("store-device-in-session") }}',
+        method: 'POST',
+        data: { device_id: device_id },
+        success: function(response) {
+            console.log(response);
+
+            // Update the HTML with the retrieved manufacturers
+            var manufacturersContainer = $('#manufacturers-container');
+            manufacturersContainer.empty(); // Clear existing content
+
+            $.each(response.manufacturers, function(index, manufacturer) {
+                var manufacturerHtml = '<div class="col-lg-3">';
+                manufacturerHtml += '<div class="item" data-manufacturer-id="' + manufacturer.id + '">';
+                manufacturerHtml += '<img src="{{ asset('public/images/manufacturers/') }}/' + manufacturer.image + '" alt="" class="img-fluid">';
+                manufacturerHtml += '<h5>' + manufacturer.name + '</h5>';
+                manufacturerHtml += '</div>';
+                manufacturerHtml += '</div>';
+
+                manufacturersContainer.append(manufacturerHtml);
+            });
+
+            $('.instant-form-first-section').hide(1000);
+            $('.instant-form-two-section').show(1000);
+            $('.instant-form-subheading').text('Select Company');
+        },
+        error: function(error) {
+            console.error(error);
+        }
     });
-       // When a manufacture  is selected, show the next section
-     $('.instant-form-two-section .item').click(function(){
-        $('.instant-form-two-section').hide(1000);
-        $('.instant-form-three-section').show(1000);
-        $('.instant-form-subheading').text('Select Model');
-        $('.line2').addClass('line');
+});
 
 
+
+       // When a manufacturer is selected, show the next section
+$(document).on('click', '.instant-form-two-section .item', function(){
+    var manufacturer_id = $(this).data('manufacturer-id'); // Assuming you have a data attribute for manufacturer_id
+
+    // Ajax request to store manufacturer_id in session and get models
+    $.ajax({
+        url: '{{ route("store-manufacturer-in-session") }}',
+        method: 'POST',
+        data: { manufacturer_id: manufacturer_id },
+        success: function(response) {
+            console.log(response);
+
+            // Update the HTML with the retrieved models
+            var modelsContainer = $('#models-container');
+            modelsContainer.empty(); // Clear existing content
+
+            $.each(response.models, function(index, model) {
+                var modelHtml = '<div class="col-lg-3">';
+                modelHtml += '<div class="item" data-model-id="' + model.id + '">';
+                modelHtml += '<img src="{{ asset('public/images/models/') }}/' + model.image + '" alt="" class="img-fluid">';
+                modelHtml += '<h5>' + model.name + '</h5>';
+                modelHtml += '</div>';
+                modelHtml += '</div>';
+
+                modelsContainer.append(modelHtml);
+            });
+
+            // Show the third section
+            $('.instant-form-two-section').hide(1000);
+            $('.instant-form-three-section').show(1000);
+            $('.instant-form-subheading').text('Select Model');
+        },
+        error: function(error) {
+            console.error(error);
+        }
     });
-
- 
-    $('.instant-form-three-section .item').click(function(){
-        $('.instant-form-first-section').hide(1000);
-        $('.instant-form-two-section').hide(1000);
-        $('.instant-form-three-section').hide(1000);
-        $('.instant-form-four-section').show(1000);
-        $('.instant-form-subheading').text('Select  Issue');
+});
 
 
+
+           // When a model is selected, show the next section
+$(document).on('click', '.instant-form-three-section .item', function(){
+    var model_id = $(this).data('model-id');
+
+
+    $.ajax({
+        url: '{{ route("store-model-in-session") }}',
+        method: 'POST',
+        data: { model_id: model_id },
+        success: function(response) {
+            console.log(response);
+
+            var issuesContainer = $('#issues-container');
+            issuesContainer.empty(); // Clear existing content
+
+            $.each(response.issues, function(index, issue) {
+                var issueHtml = '<div class="col-lg-3">';
+                issueHtml += '<div class="item" data-issue-id="' + issue.id + '">';
+                issueHtml += '<img src="{{ asset('public/images/issues/') }}/' + issue.image + '" alt="" class="img-fluid">';
+                issueHtml += '<h5>' + issue.name + '</h5>';
+                issueHtml += '</div>';
+                issueHtml += '</div>';
+
+                issuesContainer.append(issueHtml);
+            });
+
+            // Show the forth section
+            $('.instant-form-three-section').hide(1000);
+            $('.instant-form-four-section').show(1000);
+            $('.instant-form-subheading').text('Select Issue');
+        },
+        error: function(error) {
+            console.error(error);
+        }
     });
+});
+
+
+           // When a model is selected, show the next section
+           $(document).on('click', '.instant-form-four-section .item', function(){
+    var issue_id = $(this).data('issue-id');
+
+
+    $.ajax({
+        url: '{{ route("store-issue-in-session") }}',
+        method: 'POST',
+        data: { issue_id: issue_id },
+        success: function(response) {
+            console.log(response);
+
+            // var issuesContainer = $('#issues-container');
+            // issuesContainer.empty(); // Clear existing content
+
+            // $.each(response.issues, function(index, issue) {
+            //     var issueHtml = '<div class="col-lg-3">';
+            //     issueHtml += '<div class="item" data-issue-id="' + issue.id + '">';
+            //     issueHtml += '<img src="{{ asset('public/images/issues/') }}/' + issue.image + '" alt="" class="img-fluid">';
+            //     issueHtml += '<h5>' + issue.name + '</h5>';
+            //     issueHtml += '</div>';
+            //     issueHtml += '</div>';
+
+            //     issuesContainer.append(issueHtml);
+            // });
+
+            // Show the forth section
+            $('.instant-form-four-section').hide(1000);
+            $('.instant-form-five-section').show(1000);
+            $('.instant-form-subheading').text('Select  Location');
+            $('.line3').addClass('line');
+        },
+        error: function(error) {
+            console.error(error);
+        }
+    });
+});
 
         $('.instant-form-four-section .item').click(function(){
         $('.instant-form-first-section').hide(1000);
@@ -196,7 +329,7 @@ $(document).ready(function(){
         $('.instant-form-five-section').hide(1000);
         $('.qoute-form-section').show(1000);
         $('.instant-form-subheading').text('Finaly Place the Order');
-       
+
         $('.line3').addClass('line-after');
 
 
@@ -205,7 +338,7 @@ $(document).ready(function(){
 
 
        // When a model is selected, show the next section
-   
+
 
     $('.instant-form-three-section .item').click(function(){
         var selectedIssue = $(this).find('h5').text();

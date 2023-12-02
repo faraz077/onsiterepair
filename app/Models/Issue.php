@@ -10,6 +10,7 @@ class Issue extends Model
 {
     use HasFactory;
 
+
     public function model(): BelongsTo
     {
         return $this->belongsTo(Model::class);
