@@ -47,7 +47,7 @@
                             <div class="col-lg-12">
                                 <nav class="navbar navbar-expand-lg">
                                     <div class="container-fluid">
-                                        <a class="navbar-brand" href="#"><img src="{{asset('public/img/header-logo.png')}}" alt=""></a>
+                                        <a class="navbar-brand" href="/onsiterepair"><img src="{{asset('public/img/header-logo.png')}}" alt=""></a>
                                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
                                         <span class="navbar-toggler-icon"></span>
                                         </button>
@@ -55,21 +55,25 @@
                                             <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
 
                                                 <li class="nav-item">
-                                                    <a class="nav-link active" aria-current="page" href="#">Repair a Device</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link" href="#">Buy a Device</a>
+                                                    <a class="nav-link active" aria-current="page" href="/onsiterepair">Home</a>
                                                 </li>
 
                                                 <li class="nav-item">
-                                                    <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Sell a Device</a>
+                                                    <a class="nav-link active" aria-current="page" href="instant-price-qoute">Repair a Device</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="buy-device">Buy a Device</a>
+                                                </li>
+
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="sell-device" tabindex="-1" aria-disabled="true">Sell a Device</a>
 
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">About Us</a>
+                                                    <a class="nav-link" href="about-us" tabindex="-1" aria-disabled="true">About Us</a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Contact Us</a>
+                                                    <a class="nav-link" href="contact-us" tabindex="-1" aria-disabled="true">Contact Us</a>
                                                 </li>
                                             </ul>
                                             <button class="sign-in-btn"><a href="">Sign in</a></button>
@@ -83,9 +87,6 @@
             </header>
         </div>
                 @yield('content')
-
-
-
          <footer>
             <div class="container-fluid">
                 <div class="row">
@@ -133,10 +134,85 @@
          </footer>
 
 
-
-          <script src="https://code.jquery.com/jquery-3.6.0.min.js" type="text/javascript"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" type="text/javascript"></script>
   <script src="https://code.jquery.com/jquery-migrate-3.4.0.min.js"></script>
   <script src="{{asset('public/slick/slick.js')}}" type="text/javascript" charset="utf-8"></script>
+
+  <!-- Add this script at the end of your Blade file, just before the closing body tag -->
+
+<script>
+$(document).ready(function(){
+    // Hide sections initially
+    $('.instant-form-two-section, .instant-form-three-section').hide();
+    $('.instant-form-three-section, .instant-form-four-section').hide();
+    $('.instant-form-four-section, .instant-form-five-section').hide();
+    $('.qoute-form-section').hide();
+
+    
+
+
+
+    // When a device is selected, show the next section
+    $('.instant-form-first-section .item').click(function(){
+        $('.instant-form-first-section').hide(1000);
+        $('.instant-form-two-section').show(1000);
+        $('.instant-form-subheading').text('Select Company');
+    });
+       // When a manufacture  is selected, show the next section
+     $('.instant-form-two-section .item').click(function(){
+        $('.instant-form-two-section').hide(1000);
+        $('.instant-form-three-section').show(1000);
+        $('.instant-form-subheading').text('Select Model');
+        $('.line2').addClass('line');
+
+
+    });
+
+ 
+    $('.instant-form-three-section .item').click(function(){
+        $('.instant-form-first-section').hide(1000);
+        $('.instant-form-two-section').hide(1000);
+        $('.instant-form-three-section').hide(1000);
+        $('.instant-form-four-section').show(1000);
+        $('.instant-form-subheading').text('Select  Issue');
+
+
+    });
+
+        $('.instant-form-four-section .item').click(function(){
+        $('.instant-form-first-section').hide(1000);
+        $('.instant-form-two-section').hide(1000);
+        $('.instant-form-three-section').hide(1000);
+        $('.instant-form-four-section').hide(1000);
+        $('.instant-form-five-section').show(1000);
+        $('.instant-form-subheading').text('Select  Location');
+        $('.line3').addClass('line');
+
+
+
+
+    });
+        $('.continue-btn').click(function(){
+        $('.instant-form-five-section').hide(1000);
+        $('.qoute-form-section').show(1000);
+        $('.instant-form-subheading').text('Finaly Place the Order');
+       
+        $('.line3').addClass('line-after');
+
+
+
+        });
+
+
+       // When a model is selected, show the next section
+   
+
+    $('.instant-form-three-section .item').click(function(){
+        var selectedIssue = $(this).find('h5').text();
+        console.log('Selected Issue: ' + selectedIssue);
+    });
+});
+</script>
 
   <script type="text/javascript">
     $(document).on('ready', function() {
@@ -154,32 +230,7 @@
     });
 </script>
 
-<!-- Add this script at the end of your Blade file, just before the closing body tag -->
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
-<script>
-$(document).ready(function(){
-    // Hide sections initially
-    $('.instant-form-two-section, .instant-form-three-section').hide();
-
-    // When a device is selected, show the next section
-    $('.instant-form-first-section .item').click(function(){
-        $('.instant-form-first-section').hide();
-        $('.instant-form-two-section').show();
-    });
-
-    // When a model is selected, show the next section
-    $('.instant-form-two-section .item').click(function(){
-        $('.instant-form-two-section').hide();
-        $('.instant-form-three-section').show();
-    });
-
-    $('.instant-form-three-section .item').click(function(){
-        var selectedIssue = $(this).find('h5').text();
-        console.log('Selected Issue: ' + selectedIssue);
-    });
-});
-</script>
 
     </body>
 </html>

@@ -1,7 +1,11 @@
 @extends('layouts.app')
 @section('content')
+
+
+
+
 <!-- hero section started -->
-<section class="hero-section">
+<section class="hero-section  buy-device-banner">
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-lg-12">
@@ -10,66 +14,72 @@
 		</div>
 		<div class="row">
 			<div class="col-lg-6 d-flex align-items-center">
-				<div class="hero-content-section">
+				<div class="hero-content-section repair-done-fast">
 					<h1>
-					We <span>repair your gadgets</span> at your doorstep
+					<span>Buy </span> <br> Device
 					</h1>
-					<p>Is your smartphone, tablet, or laptop acting up? Don't worry, <span>OnSiteRepairs</span> got you covered. </p>
+					<p><span>OnSiteRepairs</span> offer a wide variety of devices including cell phones and computers for sale. We carry a large inventory or pre-owned phones, iPhones, iPads, laptops. Our products, like our services, are trusted, high quality, and cost efficient.</p>
 
-					<div class="get-aqoute">
-						<div class="line"></div>
-						<a href="">Get Qoute</a>
-					</div>
+				
 				</div>
 			</div>
 			<div class="col-lg-6">
 
 				<div class="hero-img-section">
-					<img src="{{('public/img/hero-img.png')}}" alt="" class="img-fluid">
+					<img src="{{asset('public/img/buy-device-img.png')}}" alt="" class="img-fluid buy-device-img">
+					<img src="{{asset('public/img/buy-device-shadow.png')}}" alt="" class="img-fluid buy-device-shadow">
+
+					
 				</div>
 			</div>
 		</div>
 	</div>
 </section>
+
 <!-- hero section ended  -->
-<section class="three-step-section">
+<section class="three-step-section buy-device-offer">
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-lg-6 d-flex align-items-center">
 				<div class="left">
-					<img class="img-fluid" src="{{('public/img/three-step-img.png')}}" alt="">
+					<img class="img-fluid three-step-img" src="{{asset('public/img/three-step-img.png')}}" alt="">
+					<img class="img-fluid three-step-shadow" src="{{asset('public/img/three-shadow.png')}}" alt="">
+
 				</div>
 			</div>
 			<div class="col-lg-6">
 				<div class="right">
 					<div class="line"></div>
-					<h1>How <span>OnSiteRepairs</span> service works:</h1>
+					<h1>We offer a wide variety of devices</h1>
 					<div class="item">
 						<div class="item-top">
-							<div class="bg-count"><h3>1</h3></div>
-							<h2>Tell us what’s broke?</h2>
+							<div class="bg-count"><h3><i class="	fa fa-angle-right"></i></h3></div>
+							
+							<h2>Fully Inspected & Refurbished</h2>
 						</div>
-						<p>Tell us the brand name, & model of your device. And let us know what happened to it.</p>
+						<p>Checked for hardware and software issues and refurbished to factory standard functionality for a device that feels new.</p>
 					</div>
 					<div class="item">
 						<div class="item-top">
-							<div class="bg-count"><h3>2</h3></div>
-							<h2>Tell us what’s broke?</h2>
+							<div class="bg-count"><h3><i class="	fa fa-angle-right"></i></h3></div>
+							<h2>Higher Savings</h2>
 						</div>
-						<p>Tell us the brand name, & model of your device. And let us know what happened to it.</p>
+						<p>Save up to 30% off retail price when you buy a new device. We have unbeatable prices and a wide selection.</p>
 					</div>
 					<div class="item">
 						<div class="item-top">
-							<div class="bg-count"><h3>3</h3></div>
-							<h2>Tell us what’s broke?</h2>
+							<div class="bg-count"><h3><i class="	fa fa-angle-right"></i></h3></div>
+							
+							<h2>Top Customer Service</h2>
 						</div>
-						<p>Tell us the brand name, & model of your device. And let us know what happened to it.</p>
+						<p>Let us know which device you are looking for and we will have one of our device consultants reach out with some of our current deals!</p>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </section>
+
 <!-- testimonial Section -->
 <section class="testimonial-section">
 	<div class="container-fluid">
@@ -110,7 +120,7 @@
 			<h3>“They work fast”</h3>
 			<p class="testimonial">OnSiteRepair team work really fast & efficient. The guy sent by them, fixed my phone in less than 30 mins</p>
 			<div class="user-icon d-flex align-items-center">
-				<div class="img"><img src="{{('public/img/user-2.png')}}" alt="" class="img-fluid"></div>
+				<div class="img"><img src="{{asset('public/img/user-2.png')}}" alt="" class="img-fluid"></div>
 				<div class="desc">
 					<h4>Nickolas J.</h4>
 					<p>iPhone 14 ProMax</p>
@@ -140,7 +150,7 @@
 			<h3>“OnSiteRepairs is the best!”</h3>
 			<p class="testimonial">OnSiteRepair sent the guy in no time. I highly recommend them.</p>
 			<div class="user-icon d-flex align-items-center">
-				<div class="img"><img src="{{('public/img/user-3.png')}}" alt="" class="img-fluid"></div>
+				<div class="img"><img src="{{asset('public/img/user-3.png')}}" alt="" class="img-fluid"></div>
 				<div class="desc">
 					<h4>Maria Drew</h4>
 					<p>Samsung S23 Ultra</p>
@@ -170,7 +180,7 @@
 			<h3>“Nailed it!”</h3>
 			<p class="testimonial">OnSiteRepair team, are doing the really awesome work by bringing this innovative idea that really saves my time.</p>
 			<div class="user-icon d-flex align-items-center">
-				<div class="img"><img src="{{('public/img/user-1.png')}}" alt="" class="img-fluid"></div>
+				<div class="img"><img src="{{asset('public/img/user-1.png')}}" alt="" class="img-fluid"></div>
 				<div class="desc">
 					<h4>Ali Waseem</h4>
 					<p>Google Pixel 7 Pro</p>
@@ -200,7 +210,7 @@
 			<h3>“They work fast”</h3>
 			<p class="testimonial">OnSiteRepair team work really fast & efficient. The guy sent by them, fixed my phone in less than 30 mins</p>
 			<div class="user-icon d-flex align-items-center">
-				<div class="img"><img src="{{('public/img/user-2.png')}}" alt="" class="img-fluid"></div>
+				<div class="img"><img src="{{asset('public/img/user-2.png')}}" alt="" class="img-fluid"></div>
 				<div class="desc">
 					<h4>Nickolas J.</h4>
 					<p>iPhone 14 ProMax</p>
@@ -230,7 +240,7 @@
 			<h3>“OnSiteRepairs is the best!”</h3>
 			<p class="testimonial">OnSiteRepair sent the guy in no time. I highly recommend them.</p>
 			<div class="user-icon d-flex align-items-center">
-				<div class="img"><img src="{{('public/img/user-3.png')}}" alt="" class="img-fluid"></div>
+				<div class="img"><img src="{{asset('public/img/user-3.png')}}" alt="" class="img-fluid"></div>
 				<div class="desc">
 					<h4>Maria Drew</h4>
 					<p>Samsung S23 Ultra</p>
@@ -260,7 +270,7 @@
 			<h3>“Nailed it!”</h3>
 			<p class="testimonial">OnSiteRepair team, are doing the really awesome work by bringing this innovative idea that really saves my time.</p>
 			<div class="user-icon d-flex align-items-center">
-				<div class="img"><img src="{{('public/img/user-1.png')}}" alt="" class="img-fluid"></div>
+				<div class="img"><img src="{{asset('public/img/user-1.png')}}" alt="" class="img-fluid"></div>
 				<div class="desc">
 					<h4>Ali Waseem</h4>
 					<p>Google Pixel 7 Pro</p>
@@ -269,45 +279,5 @@
 		</div>
 	</div>
 </section>
-<!-- what we repair section -->
-<section class="what-we-repair">
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-lg-6 d-flex align-items-center">
-			<div class="left">
-			<div class="heading-section">
-				<div class="line"></div>
-				<br>
-				<h1>What we repair</h1>
-			</div>
 
-				<div class="list">
-					<ul>
-					<li><a href="#">Microphone Repair</a></li>
-					<li><a href="#">Camera Repair</a></li>
-					<li><a href="#">Screen Repair</a></li>
-					<li><a href="#">Button Repair</a></li>
-					<li><a href="#">Battery Repair</a></li>
-				</ul>
-
-					<ul>
-					<li><a href="#">Front Glass Repair</a></li>
-					<li><a href="#">Rear Glass Repair</a></li>
-					<li><a href="#">Charging Port Repair</a></li>
-					<li><a href="#">Speaker Repair</a></li>
-				</ul>
-				</div>
-			</div>
-
-
-		</div>
-		<div class="col-lg-6 p-0 d-flex justify-content-end">
-			<div class="right">
-				<img src="{{('public/img/what-we-repair.png')}}" alt="" class="right-img-repair">
-			</div>
-		</div>
-	</div>
-</div>
-
-</section>
 @endsection

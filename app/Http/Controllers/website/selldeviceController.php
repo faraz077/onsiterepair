@@ -12,7 +12,7 @@ class selldeviceController extends Controller
      */
     public function index()
     {
-        //
+        return view('sell-device');
     }
 
     /**

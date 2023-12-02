@@ -21,12 +21,14 @@ use App\Http\Controllers\website\QouteController;
 Route::get('/', function () {
     return view('welcome');
 });
+
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::resource('/about-us', aboutusController::class);
+Route::resource('/sell-device', selldeviceController::class);
 Route::resource('/buy-device', buydeviceController::class);
-Route::resource('/ontact-us', contactusController::class);
-// Route::resource('/dashboard-panel', DashboardController::class);
+Route::resource('/about-us', aboutusController::class);
+Route::resource('/contact-us', contactusController::class);
+Route::resource('/dashboard-panel', DashboardController::class);
 Route::resource('/devices', DeviceController::class);
 Route::resource('/manufacturer', ManufacturerController::class);
 Route::resource('/models', ModelController::class);
