@@ -87,9 +87,6 @@
             </header>
         </div>
                 @yield('content')
-
-
-
          <footer>
             <div class="container-fluid">
                 <div class="row">
@@ -147,18 +144,68 @@
 $(document).ready(function(){
     // Hide sections initially
     $('.instant-form-two-section, .instant-form-three-section').hide();
+    $('.instant-form-three-section, .instant-form-four-section').hide();
+    $('.instant-form-four-section, .instant-form-five-section').hide();
+    $('.qoute-form-section').hide();
+
+    
+
+
 
     // When a device is selected, show the next section
     $('.instant-form-first-section .item').click(function(){
-        $('.instant-form-first-section').hide();
-        $('.instant-form-two-section').show();
+        $('.instant-form-first-section').hide(1000);
+        $('.instant-form-two-section').show(1000);
+        $('.instant-form-subheading').text('Select Company');
+    });
+       // When a manufacture  is selected, show the next section
+     $('.instant-form-two-section .item').click(function(){
+        $('.instant-form-two-section').hide(1000);
+        $('.instant-form-three-section').show(1000);
+        $('.instant-form-subheading').text('Select Model');
+        $('.line2').addClass('line');
+
+
     });
 
-    // When a model is selected, show the next section
-    $('.instant-form-two-section .item').click(function(){
-        $('.instant-form-two-section').hide();
-        $('.instant-form-three-section').show();
+ 
+    $('.instant-form-three-section .item').click(function(){
+        $('.instant-form-first-section').hide(1000);
+        $('.instant-form-two-section').hide(1000);
+        $('.instant-form-three-section').hide(1000);
+        $('.instant-form-four-section').show(1000);
+        $('.instant-form-subheading').text('Select  Issue');
+
+
     });
+
+        $('.instant-form-four-section .item').click(function(){
+        $('.instant-form-first-section').hide(1000);
+        $('.instant-form-two-section').hide(1000);
+        $('.instant-form-three-section').hide(1000);
+        $('.instant-form-four-section').hide(1000);
+        $('.instant-form-five-section').show(1000);
+        $('.instant-form-subheading').text('Select  Location');
+        $('.line3').addClass('line');
+
+
+
+
+    });
+        $('.continue-btn').click(function(){
+        $('.instant-form-five-section').hide(1000);
+        $('.qoute-form-section').show(1000);
+        $('.instant-form-subheading').text('Finaly Place the Order');
+       
+        $('.line3').addClass('line-after');
+
+
+
+        });
+
+
+       // When a model is selected, show the next section
+   
 
     $('.instant-form-three-section .item').click(function(){
         var selectedIssue = $(this).find('h5').text();
