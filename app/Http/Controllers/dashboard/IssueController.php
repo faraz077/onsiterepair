@@ -44,12 +44,14 @@ class IssueController extends Controller
         $rules = [
             'name' => 'required|string|max:255',
             'model_id' => 'required',
+            'price' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ];
 
         // Custom error messages
         $messages = [
             'name.required' => 'The issue name is required.',
+            'price.required' => 'Price is required.',
             'name.max' => 'The issue name should not exceed 255 characters.',
             'model_id.required' => 'The model name is required.',
             'image.required' => 'An image is required.',
@@ -74,6 +76,7 @@ class IssueController extends Controller
         // Example: Storing the device
         $issue = new Issue;
         $issue->name = $request->input('name');
+        $issue->price = $request->input('price');
         $issue->model_id = $request->input('model_id');
 
         // Example: Handling image upload

@@ -147,6 +147,17 @@
                                                       @enderror
                                                   </div>
                                             </div>
+
+                                            <div class="control-group">
+                                                <label class="control-label" for="price">Price</label>
+                                                <div class="controls">
+                                                    <input type="number" class="form-control" name="price" id="price">
+                                                    @error('price')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+
                                             <div class="control-group">
                                                 <label class="control-label" for="image">Upload Image</label>
                                                 <div class="controls">

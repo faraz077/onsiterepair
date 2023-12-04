@@ -34,6 +34,11 @@ Route::resource('/manufacturer', ManufacturerController::class);
 Route::resource('/models', ModelController::class);
 Route::resource('/issues', IssueController::class);
 Route::resource('/instant-price-qoute', QouteController::class);
+Route::post('/store-device-in-session', [App\Http\Controllers\website\QouteController::class, 'storeDevice'])->name('store-device-in-session');
+Route::post('/store-manufacturer-in-session', [App\Http\Controllers\website\QouteController::class, 'storeManufacturer'])->name('store-manufacturer-in-session');
+Route::post('/store-model-in-session', [App\Http\Controllers\website\QouteController::class, 'storeModel'])->name('store-model-in-session');
+Route::post('/store-issue-in-session', [App\Http\Controllers\website\QouteController::class, 'storeIssue'])->name('store-issue-in-session');
+
 
 
 
