@@ -161,7 +161,7 @@ $(document).ready(function(){
     $('.instant-form-two-section, .instant-form-three-section').hide();
     $('.instant-form-three-section, .instant-form-four-section').hide();
      $('.instant-form-four-section, .instant-form-five-section').hide();
-    $('.qoute-form-section').hide();
+   
 
 
 

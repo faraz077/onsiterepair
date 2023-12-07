@@ -22,6 +22,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/place-order', function () {
+        return view('quote-information-form');
+    
+});
+
+
+
+
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('/sell-device', selldeviceController::class);
@@ -39,6 +47,7 @@ Route::post('/store-manufacturer-in-session', [App\Http\Controllers\website\Qout
 Route::post('/store-model-in-session', [App\Http\Controllers\website\QouteController::class, 'storeModel'])->name('store-model-in-session');
 Route::post('/store-issues-in-session', [App\Http\Controllers\website\QouteController::class, 'storeIssue'])->name('store-issues-in-session');
 Route::post('/store-location-in-session', [App\Http\Controllers\website\QouteController::class, 'storeLocation'])->name('store-location-in-session');
+// Route::post('/place-order', [App\Http\Controllers\website\QouteController::class, 'placeOrder'])->name('place-order');
 
 
 
