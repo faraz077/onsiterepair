@@ -22,10 +22,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/place-order', function () {
-        return view('quote-information-form');
-    
-});
+// Route::get('/place-order', function () {
+//         return view('quote-information-form');
+
+// });
 
 
 
@@ -47,7 +47,7 @@ Route::post('/store-manufacturer-in-session', [App\Http\Controllers\website\Qout
 Route::post('/store-model-in-session', [App\Http\Controllers\website\QouteController::class, 'storeModel'])->name('store-model-in-session');
 Route::post('/store-issues-in-session', [App\Http\Controllers\website\QouteController::class, 'storeIssue'])->name('store-issues-in-session');
 Route::post('/store-location-in-session', [App\Http\Controllers\website\QouteController::class, 'storeLocation'])->name('store-location-in-session');
-// Route::post('/place-order', [App\Http\Controllers\website\QouteController::class, 'placeOrder'])->name('place-order');
+Route::get('/store-order-data', [App\Http\Controllers\website\QouteController::class, 'storeOrderData'])->name('store-order-data');
 
 
 
