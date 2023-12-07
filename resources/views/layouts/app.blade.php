@@ -196,7 +196,7 @@ $(document).ready(function(){
 
 
 
-       // When a manufacturer is selected, show the next section
+       // When a manu s selected, show the next section
 $(document).on('click', '.instant-form-two-section .item', function(){
     var manufacturer_id = $(this).data('manufacturer-id'); // Assuming you have a data attribute for manufacturer_id
 
