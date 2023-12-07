@@ -16,6 +16,7 @@ class QouteController extends Controller
      */
     public function index()
     {
+
         $devices = Device::all();
         return view('instant-price-qoute', compact('devices'));
     }
@@ -57,11 +58,56 @@ class QouteController extends Controller
 
     public function storeIssue(Request $request)
     {
-        $issue_id = $request->input('issue_id');
-        session(['selected_issue_id' => $issue_id]);
+        $selectedIssues = $request->input('selected_issues');
+
+        // Ensure the session key is initialized if it doesn't exist
+        $existingIssues = session('selected_issues', []);
+
+        // Update the session with the modified array
+        session(['selected_issues' => $selectedIssues]);
 
         return response()->json(['success' => true]);
     }
+
+    public function storeLocation(Request $request)
+    {
+        $selectedLocation = $request->input('selected_location');
+
+        // Store the selected location in the session
+        session(['selected_location' => $selectedLocation]);
+
+
+        $selectedDeviceId = session('selected_device_id');
+        $selectedManufacturerId = session('selected_manufacturer_id');
+        $selectedModelId = session('selected_model_id');
+        $selectedIssues = session('selected_issues');
+        $selectedLocation1 = session('selected_location');
+
+        // Retrieve manufacturers based on the selected device_id
+        $device = Device::where('id', $selectedDeviceId)->first();
+        $manufacturer = Manufacturer::where('id', $selectedManufacturerId)->first();
+
+        // Retrieve models based on the selected manufacturer_id
+        $model = Model::where('id', $selectedModelId)->first();
+
+        // Retrieve issues based on the selected model_id
+        $issues = Issue::whereIn('id', $selectedIssues)->get();
+
+
+        return [
+            'device_id' => $selectedDeviceId,
+            'manufacturer_id' => $selectedManufacturerId,
+            'model_id' => $selectedModelId,
+            'selected_issues' => $selectedIssues,
+            'selected_location' => $selectedLocation1,
+            'device' => $device,
+            'manufacturer' => $manufacturer,
+            'model' => $model,
+            'issues' => $issues,
+        ];
+    }
+
+
 
     /**
      * Show the form for creating a new resource.

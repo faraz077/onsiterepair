@@ -12,6 +12,7 @@ class selldeviceController extends Controller
      */
     public function index()
     {
+        session()->flush();
         return view('sell-device');
     }
 
