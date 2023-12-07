@@ -187,7 +187,7 @@
                                                 <li>
                                                     <a class="tooltip-tip" href="#" title="Extra Pages">
                                                         <i class="icon-document-new"></i>
-                                                        <span>Appointments</span>
+                                                        <span>Order</span>
                                                     </a>
 
                                                 </li>

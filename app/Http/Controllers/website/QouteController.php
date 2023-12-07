@@ -94,17 +94,20 @@ class QouteController extends Controller
         $issues = Issue::whereIn('id', $selectedIssues)->get();
 
 
-        return [
-            'device_id' => $selectedDeviceId,
-            'manufacturer_id' => $selectedManufacturerId,
-            'model_id' => $selectedModelId,
-            'selected_issues' => $selectedIssues,
-            'selected_location' => $selectedLocation1,
-            'device' => $device,
-            'manufacturer' => $manufacturer,
-            'model' => $model,
-            'issues' => $issues,
-        ];
+        // return [
+        //     'device_id' => $selectedDeviceId,
+        //     'manufacturer_id' => $selectedManufacturerId,
+        //     'model_id' => $selectedModelId,
+        //     'selected_issues' => $selectedIssues,
+        //     'selected_location' => $selectedLocation1,
+        //     'device' => $device,
+        //     'manufacturer' => $manufacturer,
+        //     'model' => $model,
+        //     'issues' => $issues,
+        // ];
+
+
+        return view('quote-information-form');
     }
 
 
