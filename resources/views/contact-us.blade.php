@@ -9,7 +9,7 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-lg-8 d-flex align-items-center">
+			<div class="col-lg-6 d-flex align-items-center">
 				<div class="hero-content-section repair-done-fast">
 					<h1>
 					<span>Get in  </span>touch <br><span>with us </span>
@@ -19,18 +19,21 @@
 
 				</div>
 			</div>
-			<div class="col-lg-4">
+			<div class="col-lg-6">
 			<div class="contact-form-section">
 				<h1 class="let-us-heading">Let us know about you!</h1>
 				<form action="">
 					<input type="text" class="form-control text-input" placeholder="Full Name*">
 					<input type="Email" class="form-control text-input" placeholder="Email*">
+					<input type="phone" class="form-control text-input" placeholder="Phone Number*">
+
 					<select name="" id="" class="form-control">
 						<option value="">Dubai</option>
 						<option value="">Saudia</option>
 						<option value="">Oman</option>
 					</select>
 					<textarea name="" id="" cols="30" rows="10" class="form-control"></textarea>
+					<br>
                     <div class="g-recaptcha" data-sitekey="6LeM054nAAAAALK522mBuRuKEph_wYtW5I1R8f7l"></div>
  			       <div class="send-btn-section">
  			       	 <input type="submit" value="send" class="send-btn">

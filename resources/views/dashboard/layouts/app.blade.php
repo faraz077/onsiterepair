@@ -121,10 +121,8 @@
                             <!-- /END OF TOP NAVBAR -->
                             <!-- SIDE MENU -->
                             <div id="skin-select">
-                                <div id="logo ">
-                                    <h1>On Site Repair
-
-                                    </h1>
+                                <div id="logo">
+                                  <img src="{{asset('public/img/white-logo.png')}}" alt="">
                                 </div>
 
                                 <div class="skin-part">
@@ -178,14 +176,14 @@
                                                 </li>
 
                                                 <li>
-                                                    <a class="tooltip-tip ajax-load" href="mail.html" title="Mail">
+                                                    <a class="tooltip-tip ajax-load" href="{{route('contacts.index')}}" title="Mail">
                                                         <i class="icon-mail"></i>
                                                         <span>mail</span>
                                                         <div class="noft-blue">289</div>
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a class="tooltip-tip" href="#" title="Extra Pages">
+                                                    <a class="tooltip-tip" href="{{route('order.index')}}" title="Extra Pages">
                                                         <i class="icon-document-new"></i>
                                                         <span>Order</span>
                                                     </a>

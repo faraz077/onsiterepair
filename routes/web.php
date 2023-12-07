@@ -10,6 +10,9 @@ use App\Http\Controllers\website\contactusController;
 use App\Http\Controllers\website\selldeviceController;
 use App\Http\Controllers\website\trackorderController;
 use App\Http\Controllers\dashboard\DashboardController;
+use App\Http\Controllers\dashboard\OrderController;
+use App\Http\Controllers\dashboard\ContactController;
+
 use App\Http\Controllers\website\repairadeviceController;
 use App\Http\Controllers\dashboard\ManufacturerController;
 use App\Http\Controllers\website\QouteController;
@@ -41,6 +44,9 @@ Route::resource('/devices', DeviceController::class);
 Route::resource('/manufacturer', ManufacturerController::class);
 Route::resource('/models', ModelController::class);
 Route::resource('/issues', IssueController::class);
+Route::resource('/order', OrderController::class);
+Route::resource('/contacts', ContactController::class);
+
 Route::resource('/instant-price-qoute', QouteController::class);
 Route::post('/store-device-in-session', [App\Http\Controllers\website\QouteController::class, 'storeDevice'])->name('store-device-in-session');
 Route::post('/store-manufacturer-in-session', [App\Http\Controllers\website\QouteController::class, 'storeManufacturer'])->name('store-manufacturer-in-session');

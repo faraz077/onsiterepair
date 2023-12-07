@@ -21,19 +21,6 @@
         <!-- Scripts -->
 
         @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-
-        <style>
-            #map {
-                width: 100%;
-                height: 300px;
-                border-radius: 30px;
-                box-shadow: 14px 12px 0px 0px rgba(0, 0, 0, 0.16);
-            }
-            .item.selected {
-                background-color: red; /* Specify the color you want */
-                color: white; /* Specify the text color for better visibility */
-            }
-        </style>
     </head>
     <body>
         <div id="app">
