@@ -157,6 +157,16 @@
                                                     @enderror
                                                 </div>
                                             </div>
+                                                <div class="control-group">
+                                                <label class="control-label" for="price">Timeframe:</label>
+                                                    <input type="text" class="form-control" name="price" id="price">
+                                                </div>
+
+                                                <div class="control-group">
+                                                <label class="control-label" for="price">Warranty:</label>
+                                                    <input type="text" class="form-control" name="price" id="price">
+                                                </div>
+
 
                                             <div class="control-group">
                                                 <label class="control-label" for="image">Upload Image</label>
