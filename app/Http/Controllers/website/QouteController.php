@@ -16,6 +16,7 @@ class QouteController extends Controller
      */
     public function index()
     {
+
         $devices = Device::all();
         return view('instant-price-qoute', compact('devices'));
     }
@@ -57,11 +58,18 @@ class QouteController extends Controller
 
     public function storeIssue(Request $request)
     {
-        $issue_id = $request->input('issue_id');
-        session(['selected_issue_id' => $issue_id]);
+        $selectedIssues = $request->input('selected_issues');
+
+        // Ensure the session key is initialized if it doesn't exist
+        $existingIssues = session('selected_issues', []);
+
+        // Update the session with the modified array
+        session(['selected_issues' => $selectedIssues]);
 
         return response()->json(['success' => true]);
     }
+
+
 
     /**
      * Show the form for creating a new resource.

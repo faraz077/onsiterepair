@@ -29,6 +29,10 @@
                 border-radius: 30px;
                 box-shadow: 14px 12px 0px 0px rgba(0, 0, 0, 0.16);
             }
+            .item.selected {
+                background-color: red; /* Specify the color you want */
+                color: white; /* Specify the text color for better visibility */
+            }
         </style>
     </head>
     <body>
@@ -262,14 +266,14 @@ $(document).on('click', '.instant-form-three-section .item', function(){
             issuesContainer.empty(); // Clear existing content
 
             $.each(response.issues, function(index, issue) {
-                var issueHtml = '<div class="col-lg-3">';
-                issueHtml += '<div class="item" data-issue-id="' + issue.id + '">';
-                issueHtml += '<img src="{{ asset('public/images/issues/') }}/' + issue.image + '" alt="" class="img-fluid">';
-                issueHtml += '<h5>' + issue.name + '</h5>';
-                issueHtml += '</div>';
-                issueHtml += '</div>';
+            var issueHtml = '<div class="col-lg-3">';
+            issueHtml += '<div class="item" data-issue-id="' + issue.id + '">';
+            issueHtml += '<img src="{{ asset('public/images/issues/') }}/' + issue.image + '" alt="" class="img-fluid">';
+            issueHtml += '<h5>' + issue.name + '</h5>';
+            issueHtml += '</div>';
+            issueHtml += '</div>';
 
-                issuesContainer.append(issueHtml);
+            issuesContainer.append(issueHtml);
             });
 
             // Show the forth section
@@ -284,42 +288,54 @@ $(document).on('click', '.instant-form-three-section .item', function(){
 });
 
 
-           // When a model is selected, show the next section
-           $(document).on('click', '.instant-form-four-section .item', function(){
+// Declare the selected issues array
+var selectedIssues = [];
+
+$(document).on('click', '.instant-form-four-section .item', function () {
     var issue_id = $(this).data('issue-id');
 
+    // Toggle the color of the selected issue item
+    $(this).toggleClass('selected');
 
+    // Check if the issue ID is already in the array
+    var index = selectedIssues.indexOf(issue_id);
+
+    if (index !== -1) {
+        // If it is, remove it from the array
+        selectedIssues.splice(index, 1);
+    } else {
+        // If it's not, add it to the array
+        selectedIssues.push(issue_id);
+    }
+
+    // Update the session with the modified array
+    updateSession(selectedIssues);
+});
+
+function updateSession(selectedIssues) {
+    // Add the selected issues to the session using AJAX
     $.ajax({
-        url: '{{ route("store-issue-in-session") }}',
+        url: '{{ route("store-issues-in-session") }}',
         method: 'POST',
-        data: { issue_id: issue_id },
-        success: function(response) {
+        data: { selected_issues: selectedIssues }, // Use the correct variable name here
+        success: function (response) {
             console.log(response);
-
-            // var issuesContainer = $('#issues-container');
-            // issuesContainer.empty(); // Clear existing content
-
-            // $.each(response.issues, function(index, issue) {
-            //     var issueHtml = '<div class="col-lg-3">';
-            //     issueHtml += '<div class="item" data-issue-id="' + issue.id + '">';
-            //     issueHtml += '<img src="{{ asset('public/images/issues/') }}/' + issue.image + '" alt="" class="img-fluid">';
-            //     issueHtml += '<h5>' + issue.name + '</h5>';
-            //     issueHtml += '</div>';
-            //     issueHtml += '</div>';
-
-            //     issuesContainer.append(issueHtml);
-            // });
-
-            // Show the forth section
-            $('.instant-form-four-section').hide(1000);
-            $('.instant-form-five-section').show(1000);
-            $('.instant-form-subheading').text('Select  Location');
-            $('.line3').addClass('line');
         },
-        error: function(error) {
+        error: function (error) {
             console.error(error);
         }
     });
+}
+
+
+
+// When the Continue button is clicked, show the next section
+$('.continue-issue-btn').on('click', function () {
+    // Show the fifth section
+    $('.instant-form-four-section').hide(1000);
+    $('.instant-form-five-section').show(1000);
+    $('.instant-form-subheading').text('Select Location');
+    $('.line3').addClass('line');
 });
 
         $('.instant-form-four-section .item').click(function(){

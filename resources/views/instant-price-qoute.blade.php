@@ -80,57 +80,14 @@
             <!-- issues will be dynamically added here -->
         </div>
     </div>
+    <div class="row d-flex justify-content-center">
+        <div class="col-lg-4">
+            <button class="btn btn-warning continue-issue-btn">Continue</button>
+        </div>
+    </div>
 </section>
 
-{{-- <section class="select-location instant-form-five-section">
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-lg-2"></div>
-			<div class="col-lg-3">
-				<form action="">
-					<div class="location">
-						<label for=""><i class="fa fa-map-marker" aria-hidden="true"></i></label>
-						<input type="text" placeholder="Enter you location" class="form-control">
-					</div>
-					<ul class="google-list">
-						<li class="item active">
-							<h1>Brooklyn</h1>
-							<p>53 W 36TH ST NEW YORK NY 10018-7680 USA</p>
-						</li>
-						<li class="item">
-							<h1>Brooklyn</h1>
-							<p>53 W 36TH ST NEW YORK NY 10018-7680 USA</p>
-						</li>
-						<li class="item">
-							<h1>Brooklyn</h1>
-							<p>53 W 36TH ST NEW YORK NY 10018-7680 USA</p>
-						</li>
-						<li class="item">
-							<h1>Brooklyn</h1>
-							<p>53 W 36TH ST NEW YORK NY 10018-7680 USA</p>
-						</li>
-						<li class="item">
-							<h1>Brooklyn</h1>
-							<p>53 W 36TH ST NEW YORK NY 10018-7680 USA</p>
-						</li>
 
-					</ul>
-				</form>
-			</div>
-			<div class="col-lg-7 d-flex justify-content-center pt-5">
-				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d462561.6574537445!2d55.22748795!3d25.076022449999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f43496ad9c645%3A0xbde66e5084295162!2sDubai%20-%20United%20Arab%20Emirates!5e0!3m2!1sen!2s!4v1701217557531!5m2!1sen!2s" width="600" height="450" style="border:0;border-radius: 30px; box-shadow: 14px 12px 0px 0px rgba(0, 0, 0, 0.16);" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-			</div>
-		</div>
-		<div class="row d-flex justify-content-center">
-			<div class="col-lg-4">
-				<button class="btn btn-warning continue-btn">Continue</button>
-			</div>
-			<br>
-			<br>
-
-		</div>
-	</div>
-</section> --}}
 <section class="select-location instant-form-five-section">
 	<div class="container-fluid">
 		<div class="row">
