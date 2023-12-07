@@ -351,16 +351,31 @@ $('.continue-issue-btn').on('click', function () {
 
 
     });
-        $('.continue-btn').click(function(){
-        $('.instant-form-five-section').hide(1000);
-        $('.qoute-form-section').show(1000);
-        $('.instant-form-subheading').text('Finaly Place the Order');
+    $('.continue-btn').click(function () {
+    // Get the selected location from the input field
+    var selectedLocation = $('#locationInput').val();
 
-        $('.line3').addClass('line-after');
+    // Send the selected location to the server using AJAX
+    $.ajax({
+        url: '{{ route("store-location-in-session") }}',
+        method: 'POST',
+        data: { selected_location: selectedLocation },
+        success: function (response) {
+            console.log(response);
+            // If needed, you can perform additional actions on success
+        },
+        error: function (error) {
+            console.error(error);
+        }
+    });
 
+    // Hide/show sections and update content as needed
+    $('.instant-form-five-section').hide(1000);
+    $('.qoute-form-section').show(1000);
+    $('.instant-form-subheading').text('Finally Place the Order');
+    $('.line3').addClass('line-after');
+});
 
-
-        });
 
 
        // When a model is selected, show the next section

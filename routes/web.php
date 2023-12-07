@@ -38,6 +38,7 @@ Route::post('/store-device-in-session', [App\Http\Controllers\website\QouteContr
 Route::post('/store-manufacturer-in-session', [App\Http\Controllers\website\QouteController::class, 'storeManufacturer'])->name('store-manufacturer-in-session');
 Route::post('/store-model-in-session', [App\Http\Controllers\website\QouteController::class, 'storeModel'])->name('store-model-in-session');
 Route::post('/store-issues-in-session', [App\Http\Controllers\website\QouteController::class, 'storeIssue'])->name('store-issues-in-session');
+Route::post('/store-location-in-session', [App\Http\Controllers\website\QouteController::class, 'storeLocation'])->name('store-location-in-session');
 
 
 
