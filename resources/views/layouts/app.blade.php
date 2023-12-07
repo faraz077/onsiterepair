@@ -160,7 +160,7 @@ $(document).ready(function(){
     // Hide sections initially
     $('.instant-form-two-section, .instant-form-three-section').hide();
     $('.instant-form-three-section, .instant-form-four-section').hide();
-    $('.instant-form-four-section, .instant-form-five-section').hide();
+     $('.instant-form-four-section, .instant-form-five-section').hide();
     $('.qoute-form-section').hide();
 
 
@@ -210,7 +210,7 @@ $(document).ready(function(){
 
 
 
-       // When a manufacturer is selected, show the next section
+       // When a manu s selected, show the next section
 $(document).on('click', '.instant-form-two-section .item', function(){
     var manufacturer_id = $(this).data('manufacturer-id'); // Assuming you have a data attribute for manufacturer_id
 
