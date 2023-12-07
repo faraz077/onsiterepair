@@ -12,11 +12,11 @@
 			<div class="col-lg-8 d-flex align-items-center">
 				<div class="hero-content-section repair-done-fast">
 					<h1>
-					<span>Get in  </span>touch  <br><span>with us </span> 
+					<span>Get in  </span>touch <br><span>with us </span>
 					</h1>
-					<p>You Must be Looking for Professional and Affordable Repair Services. We’re here to help you with all types of phones, laptops, tablets, and computers.  
+					<p>You Must be Looking for Professional and Affordable Repair Services. We’re here to help you with all types of phones, laptops, tablets, and computers.
 					</p><p>Contact us and tell us about the problem your device is experiencing. We’ll be at your service as soon as possible.</p>
-					
+
 				</div>
 			</div>
 			<div class="col-lg-4">
@@ -31,6 +31,7 @@
 						<option value="">Oman</option>
 					</select>
 					<textarea name="" id="" cols="30" rows="10" class="form-control"></textarea>
+                    <div class="g-recaptcha" data-sitekey="6LeM054nAAAAALK522mBuRuKEph_wYtW5I1R8f7l"></div>
  			       <div class="send-btn-section">
  			       	 <input type="submit" value="send" class="send-btn">
  			       </div>

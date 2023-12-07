@@ -82,7 +82,7 @@
     </div>
 </section>
 
-<section class="select-location instant-form-five-section">
+{{-- <section class="select-location instant-form-five-section">
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-lg-2"></div>
@@ -128,6 +128,33 @@
 			<br>
 			<br>
 
+		</div>
+	</div>
+</section> --}}
+<section class="select-location instant-form-five-section">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-lg-2"></div>
+			<div class="col-lg-3">
+				<form action="">
+					<div class="location">
+						<label for=""><i class="fa fa-map-marker" aria-hidden="true"></i></label>
+						<input type="text" id="locationInput" placeholder="Enter your location" class="form-control">
+						<button type="button" id="getLocationBtn" class="btn btn-primary">Get Current Location</button>
+					</div>
+					{{-- <ul class="google-list" id="locationList">
+						<!-- Display location results here -->
+					</ul> --}}
+				</form>
+			</div>
+			<div class="col-lg-7 d-flex justify-content-center pt-5">
+				<div id="map"></div>
+			</div>
+		</div>
+		<div class="row d-flex justify-content-center">
+			<div class="col-lg-4">
+				<button class="btn btn-warning continue-btn">Continue</button>
+			</div>
 		</div>
 	</div>
 </section>
