@@ -938,7 +938,21 @@ border: none;
 }
 .location{
 	display: flex;
+	    height: 50px;
+	  position: relative;
 }
+button#getLocationBtn {
+	position: absolute;
+    left: 0px;
+    top: -80px;
+    width: 30%;
+}
+.location input{
+	position: absolute;
+	right: 0px;	
+	width: 70%;
+} 
+
 .location i{
 	margin-right: 10px;
 } 
@@ -1094,7 +1108,6 @@ section.qoute-form-section {
     width: 100%;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 25px;
     border-bottom: solid 1px lightgray;
 }
 
@@ -1113,7 +1126,7 @@ line-height: normal;
 color: #131313;
 text-align: right;
 font-family: Inter;
-font-size: 18px;
+font-size: 16px;
 font-style: normal;
 font-weight: 600;
 line-height: normal;
@@ -1142,4 +1155,18 @@ font-style: normal;
 font-weight: 700;
 line-height: normal;
 margin-bottom:20px;
+}
+
+.sub-item{
+	margin-bottom: 0px !important; 
+}
+.sub-item p{
+	font-size: 12px !important;
+}
+.current-location-btn {
+	background-color: transparent;
+	border: none;
+}
+.current-location-btn img{
+	width: 50px;
 }

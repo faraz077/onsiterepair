@@ -132,26 +132,30 @@
 	</div>
 </section> --}}
 <section class="select-location instant-form-five-section">
-	<div class="container-fluid">
+	<div class="container">
 		<div class="row">
-			<div class="col-lg-2"></div>
-			<div class="col-lg-3">
+	
+			<div class="col-lg-6">
 				<form action="">
 					<div class="location">
-						<label for=""><i class="fa fa-map-marker" aria-hidden="true"></i></label>
-						<input type="text" id="locationInput" placeholder="Enter your location" class="form-control">
-						<button type="button" id="getLocationBtn" class="btn btn-primary">Get Current Location</button>
+						<button type="button" id="getLocationBtn" class="current-location-btn btn" title="Current Location">
+							<p>
+								Select Your Current Location
+							</p><img src="{{asset('public/img/current-location.webp')}}" alt=""></button>
+						<!-- <label for=""><i class="fa fa-map-marker" aria-hidden="true"></i></label> -->
+						<input type="text" id="locationInput" placeholder="Select your current location" class="form-control">
+						
 					</div>
 					{{-- <ul class="google-list" id="locationList">
 						<!-- Display location results here -->
 					</ul> --}}
 				</form>
 			</div>
-			<div class="col-lg-7 d-flex justify-content-center pt-5">
+			<div class="col-lg-6 d-flex justify-content-center">
 				<div id="map"></div>
 			</div>
 		</div>
-		<div class="row d-flex justify-content-center">
+		<div class="row d-flex justify-content-center pt-5">
 			<div class="col-lg-4">
 				<button class="btn btn-warning continue-btn">Continue</button>
 			</div>
@@ -184,38 +188,78 @@
 			<div class="col-lg-6 d-flex justify-content-end">
 				<div class="qoute-information">
 					<h3>Quote Information</h3>
-					<ul>
-						<li>
-							<h6>
+
+					<ul class="main">
+						<li class="item">
+							<h5>
 								Device:
-							</h6>
-							<h6>Galaxy J7 Pro</h6>
+							</h5>
+							<h5>iPhone Pro Max</h5>
 						</li>
-						<li>
-							<p>
-								Problem:
-							</p>
+					</ul>
+					<ul class="main">
+						<li class="item">
+							<h6>
+								Issue:
+							</h6>
 							<h6>Screen Repair</h6>
 						</li>
-						<li>
+
+						<li class="sub-item"><p>
+								Price:
+							</p>
+							<p><strong>600 ADE</strong></p>
+                       </li>
+			
+						<li class="sub-item">
 							<p>
 								Timeframe:
 							</p>
-							<h6>3 Hours</h6>
+							<p>3 Hours</p>
 						</li>
-						<li>
+						<li class="sub-item">
 							<p>
 								Warranty:
 							</p>
-							<h6>1 year</h6>
+							<p>1 year</p>
 						</li>
-						<li>
-							<p>
-								Price:
-							</p>
-							<h6>600 ADE</h6>
+				
+					</ul>
+								<ul class="main">
+						<li class="item">
+							<h6>
+								Issue:
+							</h6>
+							<h6>On / Off Button</h6>
 						</li>
 
+						<li class="sub-item"><p>
+								Price:
+							</p>
+							<p><strong>600 ADE</strong></p>
+                       </li>
+						<li class="sub-item">
+							<p>
+								Timeframe:
+							</p>
+							<p>3 Hours</p>
+						</li>
+						<li class="sub-item">
+							<p>
+								Warranty:
+							</p>
+							<p>1 year</p>
+						</li>
+				
+					</ul>
+
+
+					<ul>	<li>
+							<h6>
+								Total Price:
+							</h6>
+							<h6>1200 ADE</h6>
+						</li>
 					</ul>
 					<h6>Description:</h6>
 					<p><span>Most Samsung Galaxy repairs are completed in an hour or two. We use premium parts and our technicians are expert trained. We also price match! Find another local shop with better pricing, we'll match it!</span></p>
