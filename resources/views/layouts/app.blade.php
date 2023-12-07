@@ -19,7 +19,17 @@
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <!-- Scripts -->
+
         @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
+        <style>
+            #map {
+                width: 100%;
+                height: 300px;
+                border-radius: 30px;
+                box-shadow: 14px 12px 0px 0px rgba(0, 0, 0, 0.16);
+            }
+        </style>
     </head>
     <body>
         <div id="app">
@@ -346,6 +356,107 @@ $(document).on('click', '.instant-form-three-section .item', function(){
     });
 });
 </script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFr0neA3lI3Pn4h_NPcfqIDI1hnfryAns&libraries=places&callback=initMap" async defer></script>
+<script>
+    // Initialize the map
+    function initMap() {
+        // Default map coordinates (Sheikhupura)
+        var defaultLocation = { lat: 31.7131, lng: 73.9783 };
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+            center: defaultLocation,
+            zoom: 12
+        });
+
+        // Initialize autocomplete for the location input
+        var input = document.getElementById('locationInput');
+        var autocomplete = new google.maps.places.Autocomplete(input);
+
+        // Create a marker for the selected location
+        var marker = new google.maps.Marker({
+            map: map,
+            title: 'Selected Location',
+            icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png' // Use a red pin icon
+        });
+
+        // Listen for the place_changed event
+        autocomplete.addListener('place_changed', function () {
+            var place = autocomplete.getPlace();
+
+            if (place.geometry) {
+                // Update the map center and marker position
+                map.setCenter(place.geometry.location);
+                marker.setPosition(place.geometry.location);
+
+                // Use the Geocoding API to get the exact location name
+                var geocoder = new google.maps.Geocoder;
+                geocoder.geocode({ 'location': place.geometry.location }, function (results, status) {
+                    if (status === 'OK') {
+                        if (results[0]) {
+                            // Update the input field with the exact location name
+                            input.value = results[0].formatted_address;
+
+                            // Display the location name in the list
+                            var locationList = document.getElementById('locationList');
+                            locationList.innerHTML = '<li class="item active"><h3>' + results[0].formatted_address + '</h3></li>';
+                        }
+                    }
+                });
+            }
+        });
+
+        // Function to handle getting the current location
+        function getCurrentLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    function (position) {
+                        var userLocation = {
+                            lat: position.coords.latitude,
+                            lng: position.coords.longitude
+                        };
+
+                        // Set the map center to the user's location
+                        map.setCenter(userLocation);
+                        marker.setPosition(userLocation);
+
+                        // Use the Geocoding API to get the exact location name
+                        var geocoder = new google.maps.Geocoder;
+                        geocoder.geocode({ 'location': userLocation }, function (results, status) {
+                            if (status === 'OK') {
+                                if (results[0]) {
+                                    // Update the input field with the exact location name
+                                    input.value = results[0].formatted_address;
+
+                                    // Display the location name in the list
+                                    var locationList = document.getElementById('locationList');
+                                    locationList.innerHTML = '<li class="item active"><h3>' + results[0].formatted_address + '</h3></li>';
+                                }
+                            }
+                        });
+                    },
+                    function (error) {
+                        if (error.code === error.PERMISSION_DENIED) {
+                            console.error('User denied Geolocation. Please enable location services and try again.');
+                            // You can display a user-friendly message or prompt to enable location services here
+                        } else {
+                            console.error('Error getting location:', error.message);
+                        }
+                    }
+                );
+            } else {
+                console.error('Geolocation is not supported by this browser.');
+            }
+        }
+
+        // Attach the getCurrentLocation function to the button click event
+        document.getElementById('getLocationBtn').addEventListener('click', getCurrentLocation);
+    }
+</script>
+
+
+
+<!-- Include the Google Maps API script with the key -->
 
   <script type="text/javascript">
     $(document).on('ready', function() {
