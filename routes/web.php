@@ -8,7 +8,7 @@ use App\Http\Controllers\dashboard\DeviceController;
 use App\Http\Controllers\website\buydeviceController;
 use App\Http\Controllers\website\contactusController;
 use App\Http\Controllers\website\selldeviceController;
-use App\Http\Controllers\website\trackorderController;
+use App\Http\Controllers\website\TrackorderController;
 use App\Http\Controllers\dashboard\DashboardController;
 use App\Http\Controllers\dashboard\OrderController;
 use App\Http\Controllers\dashboard\ContactController;
@@ -46,6 +46,8 @@ Route::resource('/models', ModelController::class);
 Route::resource('/issues', IssueController::class);
 Route::resource('/order', OrderController::class);
 Route::resource('/contacts', ContactController::class);
+Route::resource('/track-order', TrackorderController::class);
+
 
 Route::resource('/instant-price-qoute', QouteController::class);
 Route::post('/store-device-in-session', [App\Http\Controllers\website\QouteController::class, 'storeDevice'])->name('store-device-in-session');

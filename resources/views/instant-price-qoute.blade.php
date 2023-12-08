@@ -1,6 +1,14 @@
 @extends('layouts.app')
 @section('content')
-
+<section>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-lg-12">
+				<h3 class="pt-5 text-center licensed">We are licensed and accredited by Government of Dubai</h3>
+			</div>
+		</div>
+	</div>
+</section>
 
 <!-- get instant code started  -->
 <section class="instant-form-head-section">
@@ -9,9 +17,11 @@
 			<div class="col-lg-12">
 				<div class="instant-form-section">
 					<div class="progress-bar-qoute d-flex justify-content-center align-items-center">
-						<div class="line"></div>
+						<div class="line1"></div>
 						<div class="line2"></div>
 						<div class="line3"></div>
+						<div class="line4"></div>
+
 					</div>
 				</div>
 			</div>
@@ -26,11 +36,7 @@
 </section>
 <section class="instant-form-first-section">
 	<div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <h6>Smart Phones <i class="fa fa-angle-right"></i></h6>
-            </div>
-        </div>
+     
         <div class="row">
             @foreach($devices as $device)
                 <div class="col-lg-3">
@@ -46,11 +52,7 @@
 </section>
 <section class="instant-form-two-section" style="display: none;">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <h6>Select Company <i class="fa fa-angle-right"></i></h6>
-            </div>
-        </div>
+
         <div class="row" id="manufacturers-container">
             <!-- Manufacturers will be dynamically added here -->
         </div>
@@ -58,11 +60,7 @@
 </section>
 <section class="instant-form-three-section" style="display: none;">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <h6>Select Model <i class="fa fa-angle-right"></i></h6>
-            </div>
-        </div>
+        
         <div class="row" id="models-container">
             <!-- Models will be dynamically added here -->
         </div>
@@ -71,11 +69,7 @@
 
 <section class="instant-form-four-section" style="display: none;">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <h6>Select Issue <i class="fa fa-angle-right"></i></h6>
-            </div>
-        </div>
+   
         <div class="row" id="issues-container">
             <!-- issues will be dynamically added here -->
         </div>
@@ -90,6 +84,7 @@
 
 <section class="select-location instant-form-five-section">
 	<div class="container">
+
 		<div class="row">
 	
 			<div class="col-lg-6">
@@ -123,13 +118,9 @@
 
 
 <!-- hero section started -->
-<section class="hero-section">
+<section class="hero-section mt-5">
 	<div class="container-fluid">
-		<div class="row">
-			<div class="col-lg-12">
-				<h3 class="p-5 text-center licensed">We are licensed and accredited by Government of Dubai</h3>
-			</div>
-		</div>
+
 		<div class="row">
 			<div class="col-lg-6 d-flex align-items-center">
 				<div class="hero-content-section repair-done-fast">
