@@ -5830,3 +5830,89 @@ td.visible-print {
   }
 }
 /*# sourceMappingURL=bootstrap.css.map */
+
+
+
+.order-uer-detail  > thead > tr > th{
+  border-bottom: 0px !important;
+      padding:10px !important;
+}
+
+.order-uer-detail tr , .order-uer-detail td  {
+    border: solid 1px lightgrey;
+    padding:10px !important;
+}
+
+
+.qoute-information{
+  border-radius: 20px;
+border: 1px solid #CCC;
+background: #F1F1F1;
+box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+padding : 20px;
+width:  100%;
+}
+section.qoute-form-section {
+    margin-bottom: 100px;
+}
+.qoute-information ul li{
+    display: inline-flex;
+    list-style: none;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: solid 1px lightgray;
+}
+
+.qoute-information ul li p{
+  color: #787878;
+
+font-family: Inter;
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+  margin:   0px;
+}
+.qoute-information ul li h6{
+
+color: #131313;
+text-align: right;
+font-family: Inter;
+font-size: 16px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+
+
+}
+.qoute-information ul {
+    padding: 0px;
+}
+.qoute-information span {
+    font-size: 12px;
+}
+h4.select-location {
+    font-size: 16px;
+}
+.qoute-information p {
+    font-size: 12px;
+
+}
+
+.qoute-information h3{
+  color: #131313;
+font-family: Inter;
+font-size: 24px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+margin-bottom:20px;
+}
+
+.sub-item{
+  margin-bottom: 0px !important; 
+}
+.sub-item p{
+  font-size: 12px !important;
+}

@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Http\Controllers\website;
+namespace App\Http\Controllers\dashboard;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class TrackorderController extends Controller
+class ContactController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('track-order');
+        return view('dashboard.contact');
     }
 
     /**
@@ -36,7 +36,8 @@ class TrackorderController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return view('dashborad/contact-show');
+        
     }
 
     /**

@@ -21,19 +21,6 @@
         <!-- Scripts -->
 
         @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-
-        <style>
-            #map {
-                width: 100%;
-                height: 300px;
-                border-radius: 30px;
-                box-shadow: 14px 12px 0px 0px rgba(0, 0, 0, 0.16);
-            }
-            .item.selected {
-                background-color: red; /* Specify the color you want */
-                color: white; /* Specify the text color for better visibility */
-            }
-        </style>
     </head>
     <body>
         <div id="app">
@@ -76,14 +63,18 @@
                                                 <li class="nav-item">
                                                     <a class="nav-link active" aria-current="page" href="instant-price-qoute">Repair a Device</a>
                                                 </li>
-                                                <li class="nav-item">
+                                             <!--    <li class="nav-item">
                                                     <a class="nav-link" href="buy-device">Buy a Device</a>
                                                 </li>
 
                                                 <li class="nav-item">
                                                     <a class="nav-link" href="sell-device" tabindex="-1" aria-disabled="true">Sell a Device</a>
 
-                                                </li>
+                                                </li> -->
+                                                 <li class="nav-item">
+                                                    <a class="nav-link" href="track-order" tabindex="-1" aria-disabled="true">Track your Order</a>
+
+                                                </li> 
                                                 <li class="nav-item">
                                                     <a class="nav-link" href="about-us" tabindex="-1" aria-disabled="true">About Us</a>
                                                 </li>
@@ -201,6 +192,8 @@ $(document).ready(function(){
             $('.instant-form-first-section').hide(1000);
             $('.instant-form-two-section').show(1000);
             $('.instant-form-subheading').text('Select Company');
+            $('.line1').addClass('line');
+
         },
         error: function(error) {
             console.error(error);
@@ -241,6 +234,8 @@ $(document).on('click', '.instant-form-two-section .item', function(){
             $('.instant-form-two-section').hide(1000);
             $('.instant-form-three-section').show(1000);
             $('.instant-form-subheading').text('Select Model');
+            $('.line2').addClass('line');
+
         },
         error: function(error) {
             console.error(error);
@@ -280,11 +275,14 @@ $(document).on('click', '.instant-form-three-section .item', function(){
             $('.instant-form-three-section').hide(1000);
             $('.instant-form-four-section').show(1000);
             $('.instant-form-subheading').text('Select Issue');
+            $('.line3').addClass('line');
+
         },
         error: function(error) {
             console.error(error);
         }
     });
+
 });
 
 
@@ -310,6 +308,8 @@ $(document).on('click', '.instant-form-four-section .item', function () {
 
     // Update the session with the modified array
     updateSession(selectedIssues);
+          
+
 });
 
 function updateSession(selectedIssues) {
@@ -335,7 +335,7 @@ $('.continue-issue-btn').on('click', function () {
     $('.instant-form-four-section').hide(1000);
     $('.instant-form-five-section').show(1000);
     $('.instant-form-subheading').text('Select Location');
-    $('.line3').addClass('line');
+    $('.line4').addClass('line');
 });
 
         $('.instant-form-four-section .item').click(function(){
@@ -370,10 +370,11 @@ $('.continue-issue-btn').on('click', function () {
     });
 
     // Hide/show sections and update content as needed
-    // $('.instant-form-five-section').hide(1000);
-    // $('.qoute-form-section').show(1000);
-    // $('.instant-form-subheading').text('Finally Place the Order');
-    // $('.line3').addClass('line-after');
+    $('.instant-form-five-section').hide(1000);
+    $('.qoute-form-section').show(1000);
+    $('.instant-form-subheading').text('Finally Place the Order');
+    $('.line4').addClass('line-after');
+
 });
 
 
@@ -384,6 +385,8 @@ $('.continue-issue-btn').on('click', function () {
     $('.instant-form-three-section .item').click(function(){
         var selectedIssue = $(this).find('h5').text();
         console.log('Selected Issue: ' + selectedIssue);
+        $('.line3').addClass('line');
+
     });
 });
 </script>
