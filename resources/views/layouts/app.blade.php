@@ -152,7 +152,7 @@ $(document).ready(function(){
     $('.instant-form-two-section, .instant-form-three-section').hide();
     $('.instant-form-three-section, .instant-form-four-section').hide();
      $('.instant-form-four-section, .instant-form-five-section').hide();
-   
+
 
 
 
@@ -347,10 +347,9 @@ $('.continue-issue-btn').on('click', function () {
         $('.instant-form-subheading').text('Select  Location');
         $('.line3').addClass('line');
 
-
-
-
     });
+
+
     $('.continue-btn').click(function () {
     // Get the selected location from the input field
     var selectedLocation = $('#locationInput').val();
@@ -362,6 +361,7 @@ $('.continue-issue-btn').on('click', function () {
         data: { selected_location: selectedLocation },
         success: function (response) {
             console.log(response);
+            window.location.href = '{{ route("store-order-data") }}';
             // If needed, you can perform additional actions on success
         },
         error: function (error) {
@@ -374,6 +374,7 @@ $('.continue-issue-btn').on('click', function () {
     $('.qoute-form-section').show(1000);
     $('.instant-form-subheading').text('Finally Place the Order');
     $('.line4').addClass('line-after');
+
 });
 
 

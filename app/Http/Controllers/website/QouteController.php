@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\website;
 
-use App\Http\Controllers\Controller;
-use App\Models\Device;
 use App\Models\Issue;
-use App\Models\Manufacturer;
 use App\Models\Model;
+use App\Models\Order;
+use App\Models\Device;
+use App\Models\Manufacturer;
+use App\Models\OrderedIssue;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class QouteController extends Controller
 {
@@ -77,11 +79,25 @@ class QouteController extends Controller
         session(['selected_location' => $selectedLocation]);
 
 
+
+
+
+        return [
+            'selected_location' => $selectedLocation,
+
+        ];
+
+
+        // return view('quote-information-form');
+    }
+
+    public function storeOrderData()
+    {
         $selectedDeviceId = session('selected_device_id');
         $selectedManufacturerId = session('selected_manufacturer_id');
         $selectedModelId = session('selected_model_id');
         $selectedIssues = session('selected_issues');
-        $selectedLocation1 = session('selected_location');
+        $selectedLocation = session('selected_location');
 
         // Retrieve manufacturers based on the selected device_id
         $device = Device::where('id', $selectedDeviceId)->first();
@@ -92,22 +108,9 @@ class QouteController extends Controller
 
         // Retrieve issues based on the selected model_id
         $issues = Issue::whereIn('id', $selectedIssues)->get();
-
-
-        // return [
-        //     'device_id' => $selectedDeviceId,
-        //     'manufacturer_id' => $selectedManufacturerId,
-        //     'model_id' => $selectedModelId,
-        //     'selected_issues' => $selectedIssues,
-        //     'selected_location' => $selectedLocation1,
-        //     'device' => $device,
-        //     'manufacturer' => $manufacturer,
-        //     'model' => $model,
-        //     'issues' => $issues,
-        // ];
-
-
-        return view('quote-information-form');
+        $totalPrice = $issues->sum('price');
+        // dd($issues);
+        return view('quote-information-form', compact('device','manufacturer','model','issues','totalPrice','selectedLocation'));
     }
 
 
@@ -125,7 +128,57 @@ class QouteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Retrieve data from the session
+        $selectedDeviceId = session('selected_device_id');
+        $selectedManufacturerId = session('selected_manufacturer_id');
+        $selectedModelId = session('selected_model_id');
+        $selectedIssues = session('selected_issues');
+        $selectedLocation = session('selected_location');
+
+        // Validate the request data
+        $request->validate([
+            'contact_through' => 'required|in:phone,whatsapp,email',
+            'customer_name' => 'required|string',
+            'customer_email' => 'required|email',
+            'customer_phone' => 'required|string',
+            'total_price' => 'required|numeric',
+            // Add other validation rules as needed
+        ]);
+        $orderNo = substr(uniqid(), 0, 6);
+        // Create a new Order instance
+        $order = Order::create([
+            'order_no' => $orderNo,
+            'device_id' => $selectedDeviceId,
+            'manufacturer_id' => $selectedManufacturerId,
+            'model_id' => $selectedModelId,
+            'location' => $selectedLocation,
+            'total_price' => $request->input('total_price'),
+            'customer_name' => $request->input('customer_name'),
+            'customer_email' => $request->input('customer_email'),
+            'customer_phone' => $request->input('customer_phone'),
+            'contact_through' => $request->input('contact_through'),
+            'message' => $request->input('message'),
+            'payment_status' => 'unpaid', // Assuming it's unpaid by default
+            'status' => 'on_hold', // Assuming it's unpaid by default
+        ]);
+        $issues = Issue::whereIn('id', $selectedIssues)->get();
+        // Create OrderedIssue instances for each selected issue
+        foreach ($issues as $issue) {
+            OrderedIssue::create([
+                'order_id' => $order->id,
+                'issue_id' => $issue->id,
+                'issue_name' => $issue->name, // Replace with actual data
+                'issue_price' => $issue->price, // Replace with actual data
+                'issue_timeframe' => $issue->timeframe, // Replace with actual data
+                'issue_warranty' => $issue->warranty, // Replace with actual data
+            ]);
+        }
+
+        // Clear the session data after storing it in the database
+        session()->forget(['selected_device_id', 'selected_manufacturer_id', 'selected_model_id', 'selected_issues', 'selected_location']);
+
+        // Redirect or perform additional actions as needed
+        return redirect('/');
     }
 
     /**
