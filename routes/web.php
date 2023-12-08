@@ -45,6 +45,8 @@ Route::resource('/manufacturer', ManufacturerController::class);
 Route::resource('/models', ModelController::class);
 Route::resource('/issues', IssueController::class);
 Route::resource('/order', OrderController::class);
+Route::put('/update-order-status/{orderId}', [App\Http\Controllers\dashboard\OrderController::class, 'updateStatus'])->name('update-order-status');
+Route::put('/update-order-payment-status/{orderId}', [App\Http\Controllers\dashboard\OrderController::class, 'updatePaymentStatus'])->name('update-order-payment-status');
 Route::resource('/contacts', ContactController::class);
 Route::resource('/track-order', TrackorderController::class);
 
@@ -56,6 +58,7 @@ Route::post('/store-model-in-session', [App\Http\Controllers\website\QouteContro
 Route::post('/store-issues-in-session', [App\Http\Controllers\website\QouteController::class, 'storeIssue'])->name('store-issues-in-session');
 Route::post('/store-location-in-session', [App\Http\Controllers\website\QouteController::class, 'storeLocation'])->name('store-location-in-session');
 Route::get('/store-order-data', [App\Http\Controllers\website\QouteController::class, 'storeOrderData'])->name('store-order-data');
+Route::get('/thank-you-page', [App\Http\Controllers\website\QouteController::class, 'thankYou'])->name('thank-you-page');
 
 
 

@@ -74,7 +74,7 @@
                                                  <li class="nav-item">
                                                     <a class="nav-link" href="track-order" tabindex="-1" aria-disabled="true">Track your Order</a>
 
-                                                </li> 
+                                                </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link" href="about-us" tabindex="-1" aria-disabled="true">About Us</a>
                                                 </li>
@@ -308,7 +308,7 @@ $(document).on('click', '.instant-form-four-section .item', function () {
 
     // Update the session with the modified array
     updateSession(selectedIssues);
-          
+
 
 });
 

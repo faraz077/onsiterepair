@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Models\Contact;
 use Illuminate\Http\Request;
 
 class ContactController extends Controller
@@ -12,7 +13,8 @@ class ContactController extends Controller
      */
     public function index()
     {
-        return view('dashboard.contact');
+        $contacts = Contact::all();
+        return view('dashboard.contact', compact('contacts'));
     }
 
     /**
@@ -37,7 +39,7 @@ class ContactController extends Controller
     public function show(string $id)
     {
         return view('dashborad/contact-show');
-        
+
     }
 
     /**
@@ -61,6 +63,14 @@ class ContactController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $contact = Contact::find($id);
+
+        if (!$contact) {
+            return redirect()->route('contacts.index')->with('error', 'Contact not found');
+        }
+
+        $contact->delete();
+
+        return redirect()->route('contacts.index')->with('success', 'Contact deleted successfully');
     }
 }

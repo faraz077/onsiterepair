@@ -89,8 +89,8 @@
                         <div class="nest" id="validationClose">
                             <div class="title-alt">
                                 <h6>
-                               
-                              
+
+
                             </div>
                             <div class="body-nest" id="validation">
                                 <div class="content-wrap">
@@ -100,10 +100,10 @@
                                                 <div class="title-alt">
                                                     <h6>
                                                     Cotnact From Mails</h6>
-                                                  
+
                                                 </div>
                                                 <div class="body-nest" id="Filtering">
-                                                    
+
                                                     <table id="footable-res2" class="demo table" data-filter="#filter" data-filter-text-only="true">
                                                         <thead>
                                                             <tr>
@@ -128,42 +128,23 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            
-                                                            <tr>
-                                                                <td>1</td>
-                                                                <td><a href="">Faraz aqeel</a></td>
-                                                                <td>faraz@gmail.com</td>
-                                                                <td>+923239905077</td>
-                                                                <td>Dubai</td>
-                                                                <td><a href="" class="btn btn-danger">Delete</a></td>
+                                                           @foreach ($contacts as $contact)
+                                                           <tr>
+                                                                <td>{{ $loop->iteration }}</td>
+                                                                <td><a href="">{{ $contact->name }}</a></td>
+                                                                <td>{{ $contact->email }}</td>
+                                                                <td>{{ $contact->phone }}</td>
+                                                                <td>{{ $contact->address ?  $contact->address : 'not specified'}}</td>
+                                                                <td>{{ $contact->message ?  $contact->message : 'not specified'}}</td>
+                                                                <td>
+                                                                    <form action="{{ route('contacts.destroy', $contact->id) }}" method="post" onsubmit="return confirm('Are you sure you want to delete this contact?')">
+                                                                        @csrf
+                                                                        @method('DELETE')
+                                                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                                                    </form>
+                                                                </td>
                                                             </tr>
-                                                            <tr>
-                                                                <td>1</td>
-                                                                <td><a href="">Faraz aqeel</a></td>
-                                                                <td>faraz@gmail.com</td>
-                                                                <td>+923239905077</td>
-                                                                <td>Dubai</td>
-                                                                <td><a href="" class="btn btn-danger">Delete</a></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>1</td>
-                                                                <td><a href="">Faraz aqeel</a></td>
-                                                                <td>faraz@gmail.com</td>
-                                                                <td>+923239905077</td>
-                                                                <td>Dubai</td>
-                                                                
-                                                                <td><a href="" class="btn btn-danger">Delete</a></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>1</td>
-                                                                <td><a href="">Faraz aqeel</a></td>
-                                                                <td>faraz@gmail.com</td>
-                                                                <td>+923239905077</td>
-                                                                <td>Dubai</td>
-                                                                
-                                                                <td><a href="" class="btn btn-danger">Delete</a></td>
-                                                            </tr>
-                                                            
+                                                           @endforeach
                                                         </tbody>
                                                     </table>
                                                 </div>

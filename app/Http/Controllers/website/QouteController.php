@@ -10,6 +10,7 @@ use App\Models\Manufacturer;
 use App\Models\OrderedIssue;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 
 class QouteController extends Controller
 {
@@ -136,7 +137,7 @@ class QouteController extends Controller
         $selectedLocation = session('selected_location');
 
         // Validate the request data
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             'contact_through' => 'required|in:phone,whatsapp,email',
             'customer_name' => 'required|string',
             'customer_email' => 'required|email',
@@ -144,6 +145,12 @@ class QouteController extends Controller
             'total_price' => 'required|numeric',
             // Add other validation rules as needed
         ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)  // Pass the validation errors to the view
+                ->withInput();           // Pass the old input data to the view
+        }
         $orderNo = substr(uniqid(), 0, 6);
         // Create a new Order instance
         $order = Order::create([
@@ -178,7 +185,12 @@ class QouteController extends Controller
         session()->forget(['selected_device_id', 'selected_manufacturer_id', 'selected_model_id', 'selected_issues', 'selected_location']);
 
         // Redirect or perform additional actions as needed
-        return redirect('/');
+        return redirect('/thank-you-page');
+    }
+
+    public function thankYou()
+    {
+        return view('thank-you-page');
     }
 
     /**

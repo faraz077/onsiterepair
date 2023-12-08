@@ -178,8 +178,7 @@
                                                 <li>
                                                     <a class="tooltip-tip ajax-load" href="{{route('contacts.index')}}" title="Mail">
                                                         <i class="icon-mail"></i>
-                                                        <span>mail</span>
-                                                        <div class="noft-blue">289</div>
+                                                        <span>Contacts</span>
                                                     </a>
                                                 </li>
                                                 <li>

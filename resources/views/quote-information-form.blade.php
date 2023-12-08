@@ -3,25 +3,28 @@
 
 <section class="instant-form-head-section">
 	<div class="container instant-form-section">
+
 		<div class="row">
 			<div class="col-lg-12">
-				<div class="instant-form-section">
-					<div class="progress-bar-qoute d-flex justify-content-center align-items-center">
-						<div class="line"></div>
-						<div class="line2"></div>
-						<div class="line3"></div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-lg-12">
-				<h2 class="get-heading">Get instant price quote</h2>
-				<h6 class="device-dec mt-3 instant-form-subheading">Select your device</h6>
+				<h2 class="get-heading">Fill Your Information</h2>
 			</div>
 		</div>
 	</div>
 </section>
+@if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 <section class="qoute-form-section">
 	<form action="{{ route('instant-price-qoute.store') }}" id="contact-form" method="POST" class="form-horizontal" >
         @csrf
