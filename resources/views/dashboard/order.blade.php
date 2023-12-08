@@ -89,8 +89,8 @@
                         <div class="nest" id="validationClose">
                             <div class="title-alt">
                                 <h6>
-                                
-                                
+
+
                             </div>
                             <div class="body-nest" id="validation">
                                 <div class="content-wrap">
@@ -100,10 +100,10 @@
                                                 <div class="title-alt">
                                                     <h6>
                                                     All Orders</h6>
-                                                    
+
                                                 </div>
                                                 <div class="body-nest" id="Filtering">
-                                                    
+
                                                     <table id="footable-res2" class="demo table" data-filter="#filter" data-filter-text-only="true">
                                                         <thead>
                                                             <tr>
@@ -137,52 +137,26 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            
+                                                            @foreach ($orders as $order)
                                                             <tr>
-                                                                <td>1</td>
-                                                                <td><a href="">36258</a></td>
-                                                                <td>faraz aqeel</td>
-                                                                <td>+923239905077</td>
-                                                                <td>iPhone 14 pro max</td>
-                                                                <td>500 ADE</td>
-                                                                <td>12/2/2023</td>
-                                                                <td><a href="" class="btn btn-info">Edit</a></td>
-                                                                <td><a href="" class="btn btn-danger">Delete</a></td>
+                                                                <td>{{ $loop->iteration }}</td>
+                                                                <td><a href="{{ route('order.edit', $order->id) }}">{{ $order->order_no }}</a></td>
+                                                                <td>{{ $order->customer_name }}</td>
+                                                                <td>{{ $order->customer_phone }}</td>
+                                                                <td>{{ $order->model->name }}</td>
+                                                                <td>{{ $order->total_price }}</td>
+                                                                <td>{{ $order->created_at->format('d M, Y') }}</td>
+                                                                <td><a href="{{ route('order.edit', $order->id) }}" class="btn btn-info">Edit</a></td>
+                                                                <td>
+                                                                    <form action="{{ route('order.destroy', $order->id) }}" method="post" onsubmit="return confirm('Are you sure you want to delete this order?')">
+                                                                        @csrf
+                                                                        @method('DELETE')
+                                                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                                                    </form>
+                                                                </td>
                                                             </tr>
-                                                            <tr>
-                                                                <td>2</td>
-                                                                <td><a href="">36258</a></td>
-                                                                <td>faraz aqeel</td>
-                                                                <td>+923239905077</td>
-                                                                <td>iPhone 14 pro max</td>
-                                                                <td>500 ADE</td>
-                                                                <td>12/2/2023</td>
-                                                                <td><a href="" class="btn btn-info">Edit</a></td>
-                                                                <td><a href="" class="btn btn-danger">Delete</a></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>3</td>
-                                                                <td><a href="">36258</a></td>
-                                                                <td>faraz aqeel</td>
-                                                                <td>+923239905077</td>
-                                                                <td>iPhone 14 pro max</td>
-                                                                <td>500 ADE</td>
-                                                                <td>12/2/2023</td>
-                                                                <td><a href="" class="btn btn-info">Edit</a></td>
-                                                                <td><a href="" class="btn btn-danger">Delete</a></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>4</td>
-                                                                <td><a href="">36258</a></td>
-                                                                <td>faraz aqeel</td>
-                                                                <td>+923239905077</td>
-                                                                <td>iPhone 14 pro max</td>
-                                                                <td>500 ADE</td>
-                                                                <td>12/2/2023</td>
-                                                                <td><a href="" class="btn btn-info">Edit</a></td>
-                                                                <td><a href="" class="btn btn-danger">Delete</a></td>
-                                                            </tr>
-                                                            
+                                                            @endforeach
+
                                                         </tbody>
                                                     </table>
                                                 </div>

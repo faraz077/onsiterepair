@@ -89,8 +89,8 @@
                         <div class="nest" id="validationClose">
                             <div class="title-alt">
                                 <h6>
-                                
-                                
+
+
                             </div>
                             <div class="body-nest" id="validation">
                                 <div class="content-wrap">
@@ -100,81 +100,106 @@
                                                 <div class="title-alt">
                                                     <h6>
                                                     All Orders</h6>
-                                                    
+
                                                 </div>
                                                 <div class="body-nest" id="Filtering">
-                                                    
+
                                                     <div class="container-fluid">
                                                         <div class="col-lg-8">
                                                             <h2>User Information</h2>
                                                             <div class="body-nest" id="Filtering">
-                                                                <h3>Order # <span>7442</span> details</h3>
+                                                                <h3>Order # <span>{{ $order->order_no }}</span> details</h3>
                                                                 <br>
                                                                 <table id="footable-res2" class="demo table order-uer-detail" data-filter="#filter" data-filter-text-only="true">
                                                                     <thead>
                                                                         <tr>
                                                                             <th data-toggle="true">
-                                                                                <h5>Order Date :  <span> 12-2-2023</span></h5>
+                                                                                <h5>Order Date :  <span> {{ $order->created_at->format('d M, Y') }}</span></h5>
                                                                             </th>
-                                                                            <th></th>
-                                                                            <th></th>
 
                                                                             <th>
-                                                                                <h5>Billing Detail : <span>Pending</span></h5>
+                                                                                <h5>Status : <span>{{ $order->status }}</span></h5>
                                                                             </th>
-                                                                            
-                                                                            
-                                                                            
+
+                                                                            <th>
+                                                                                <h5>Payment Status : <span>{{ $order->payment_status }}</span></h5>
+                                                                            </th>
+
+
                                                                         </tr>
                                                                         <tr>
                                                                             <th data-toggle="true">
-                                                                                Name :  <span>  Faraz aqeel</span>
+                                                                                Name :  <span>  {{ $order->customer_name }}</span>
                                                                             </th>
                                                                             <th>
-                                                                                Email : <span>faraz@gmail.com</span>
+                                                                                Email : <span>{{ $order->customer_email }}</span>
                                                                             </th>
-                                                                            
+
                                                                             <th data-hide="phone">
-                                                                                Phone : <span> +03239905077</span>
+                                                                                Phone : <span> {{ $order->customer_phone }}</span>
                                                                             </th>
                                                                             <th data-hide="phone">
-                                                                                Contact with user Via : <span> Whats App</span>
+                                                                                Contact with user Via : <span> {{ $order->contact_through }}</span>
                                                                             </th>
-                                                                            
+
                                                                         </tr>
-                                                                        
+
                                                                     </thead>
-                                                                    
+
                                                                 </table>
                                                                 <table class="demo table order-uer-detail" >
                                                                     <tr>
                                                                         <td data-toggle="true">
                                                                             <h4>   Additional Information:</h4>
-                                                                            It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+                                                                            {{ $order->message }}
                                                                         </td>
-                                                                        
+
                                                                     </tr>
                                                                 </table>
                                                                 <h4 class="select-location">User Location</h4>
-                                                                <h5>  <a target="_blank"href="https://www.google.com/maps/place/Value+Wireless+Phone+Trading+L.L.C/@25.2749286,55.3051651,15z/data=!4m6!3m5!1s0x3e5f4391b5daf7ad:0x937d265511aa857a!8m2!3d25.2749286!4d55.3051651!16s%2Fg%2F11pl9tjvwm?entry=ttu">Mr Fix Brooklyn
-                                                                154 Montague St 1 floor, Brooklyn, NY 11201</a>
-                                                            </h5>
+                                                                <h5>
+                                                                    <a target="_blank" href="https://www.google.com/maps/place/{{ urlencode($order->location) }}">
+                                                                    {{ $order->location }}
+                                                                    </a>
+                                                                </h5>
+
                                                             <div class="row">
-                                                                <div class="col-lg-6">
+                                                                <div class="col-lg-4">
                                                                     <div class="order-status">
-                                                                        <label for="">Update the Status
-                                                                            <select name="" id="" class="form-control">
-                                                                                <option value="">On hold</option>
-                                                                                <option value="">Progress</option>
-                                                                                <option value="">Completed</option>
-                                                                                <option value="">Cancelled</option>
-                                                                                <option value="">Pendding Payment</option>
+                                                                        <form method="POST" action="{{ route('update-order-status', ['orderId' => $order->id]) }}">
+                                                                            @csrf
+                                                                            @method('PUT')
+
+                                                                            <label for="order-status">Update the Status</label>
+                                                                            <select name="status" id="order-status" class="form-control">
+                                                                                @foreach(['on_hold', 'processing', 'completed', 'cancelled'] as $status)
+                                                                                    <option value="{{ $status }}" @if($order->status === $status) selected @endif>{{ ucfirst(str_replace('_', ' ', $status)) }}</option>
+                                                                                @endforeach
                                                                             </select>
-                                                                        </label>
-                                                                        <button class="btn btn-info">Update</button>
-                                                                    </div></div>
-                                                                    <div class="col-lg-6">
-                                                                        
+                                                                            <button type="submit" class="btn btn-info">Update</button>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-lg-4">
+                                                                    <div class="order-status">
+                                                                        <form method="POST" action="{{ route('update-order-payment-status', ['orderId' => $order->id]) }}">
+                                                                            @csrf
+                                                                            @method('PUT')
+
+                                                                            <label for="order-status">Update Payment Status</label>
+                                                                            <select name="payment_status" id="order-payment-status" class="form-control">
+                                                                                @foreach(['unpaid', 'paid'] as $status)
+                                                                                    <option value="{{ $status }}" @if($order->payment_status === $status) selected @endif>{{ ucfirst(str_replace('_', ' ', $status)) }}</option>
+                                                                                @endforeach
+                                                                            </select>
+                                                                            <button type="submit" class="btn btn-info">Update</button>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+
+                                                                    <div class="col-lg-4">
+
                                                                         <label class="order-action">Order Action</label>
                                                                         <form action="#" class="order-action-section">
                                                                             <select name="" id="" class="form-control">
@@ -191,84 +216,51 @@
                                                         <div class="col-lg-4">
                                                             <div class="qoute-information">
                                                                 <h3>Quote Information</h3>
-                                                                <ul class="main">
-                                                                    <li class="item">
-                                                                        <h5>
-                                                                        Device:
-                                                                        </h5>
-                                                                        <h5>iPhone Pro Max</h5>
-                                                                    </li>
-                                                                </ul>
-                                                                <ul class="main">
-                                                                    <li class="item">
-                                                                        <h6>
-                                                                        Issue:
-                                                                        </h6>
-                                                                        <h6>Screen Repair</h6>
-                                                                    </li>
-                                                                    <li class="sub-item"><p>
-                                                                        Price:
-                                                                    </p>
-                                                                    <p><strong>600 ADE</strong></p>
-                                                                </li>
-                                                                
-                                                                <li class="sub-item">
-                                                                    <p>
-                                                                        Timeframe:
-                                                                    </p>
-                                                                    <p>3 Hours</p>
-                                                                </li>
-                                                                <li class="sub-item">
-                                                                    <p>
-                                                                        Warranty:
-                                                                    </p>
-                                                                    <p>1 year</p>
-                                                                </li>
-                                                                
-                                                            </ul>
-                                                            <ul class="main">
-                                                                <li class="item">
-                                                                    <h6>
-                                                                    Issue:
-                                                                    </h6>
-                                                                    <h6>On / Off Button</h6>
-                                                                </li>
-                                                                <li class="sub-item"><p>
-                                                                    Price:
-                                                                </p>
-                                                                <p><strong>600 ADE</strong></p>
-                                                            </li>
-                                                            <li class="sub-item">
-                                                                <p>
-                                                                    Timeframe:
-                                                                </p>
-                                                                <p>3 Hours</p>
-                                                            </li>
-                                                            <li class="sub-item">
-                                                                <p>
-                                                                    Warranty:
-                                                                </p>
-                                                                <p>1 year</p>
-                                                            </li>
-                                                            
-                                                        </ul>
+                                                                <!-- Loop through ordered issues -->
+                                                                    <ul class="main">
+                                                                        <li class="item">
+                                                                            <h5>Device:</h5>
+                                                                            <h5>{{ $order->model->name }}</h5>
+                                                                        </li>
+                                                                    </ul>
+                                                                    @foreach ($order->orderedIssues as $issue)
+
+                                                                    <ul class="main">
+                                                                        <li class="item">
+                                                                            <h6>Issue:</h6>
+                                                                            <h6>{{ $issue->issue_name }}</h6>
+                                                                        </li>
+                                                                        <li class="sub-item">
+                                                                            <p>Price:</p>
+                                                                            <p><strong>{{ $issue->issue_price }} ADE</strong></p>
+                                                                        </li>
+                                                                        <li class="sub-item">
+                                                                            <p>Timeframe:</p>
+                                                                            <p>{{ $issue->issue_timeframe }}</p>
+                                                                        </li>
+                                                                        <li class="sub-item">
+                                                                            <p>Warranty:</p>
+                                                                            <p>{{ $issue->issue_warranty }}</p>
+                                                                        </li>
+                                                                    </ul>
+                                                                @endforeach
                                                         <ul>    <li>
                                                             <h6>
                                                             Total Price:
                                                             </h6>
-                                                            <h6>1200 ADE</h6>
+                                                            <h6>{{ $order->total_price }}</h6>
                                                         </li>
                                                     </ul>
-                                                    
+
                                                 </div>
                                                 <br>
-                                                <form action="#">
+                                                {{-- <form action="#">
                                                     <label for="">Private Note</label>
                                                     <br>
                                                     <textarea name="" id="" cols="50" rows="5"></textarea>
                                                     <br>
                                                     <input type="submit" value="update" class="btn btn-success">
-                                                </form>
+                                                </form> --}}
                                             </div>
                                         </div>
                                     </div>
@@ -282,4 +274,32 @@
     </div>
 </div>
 <!-- /END OF CONTENT -->
-@endsection()
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#update-status-btn').on('click', function () {
+            var orderId = $('#order-id').val();
+            var newStatus = $('#order-status').val();
+
+            // Send AJAX request to update status
+            $.ajax({
+                type: 'PUT',
+                url: '/update-order-status/' + orderId, // Adjust the route according to your actual setup
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    status: newStatus
+                },
+                success: function (data) {
+                    // Handle success, e.g., update UI or show a success message
+                    console.log('Status updated successfully:', data);
+                },
+                error: function (error) {
+                    // Handle error, e.g., show an error message
+                    console.error('Error updating status:', error);
+                }
+            });
+        });
+    });
+</script>
+@endsection

@@ -20,26 +20,44 @@
 				</div>
 			</div>
 			<div class="col-lg-6">
-			<div class="contact-form-section">
-				<h1 class="let-us-heading">Let us know about you!</h1>
-				<form action="">
-					<input type="text" class="form-control text-input" placeholder="Full Name*">
-					<input type="Email" class="form-control text-input" placeholder="Email*">
-					<input type="phone" class="form-control text-input" placeholder="Phone Number*">
+			<!-- resources/views/contact.blade.php -->
+            @if(session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+            @endif
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
 
-					<select name="" id="" class="form-control">
-						<option value="">Dubai</option>
-						<option value="">Saudia</option>
-						<option value="">Oman</option>
-					</select>
-					<textarea name="" id="" cols="30" rows="10" class="form-control"></textarea>
-					<br>
+            <div class="contact-form-section">
+                <h1 class="let-us-heading">Let us know about you!</h1>
+                <form action="{{ route('contact-us.store') }}" method="post">
+                    @csrf
+
+                    <input type="text" name="name" class="form-control text-input" placeholder="Full Name*" required>
+                    <input type="email" name="email" class="form-control text-input" placeholder="Email*" required>
+                    <input type="phone" name="phone" class="form-control text-input" placeholder="Phone Number*" required>
+
+                    <input type="text" name="address" class="form-control text-input" placeholder="Address">
+
+                    <textarea name="message" cols="30" rows="10" class="form-control"></textarea>
+                    <br>
+
                     <div class="g-recaptcha" data-sitekey="6LeM054nAAAAALK522mBuRuKEph_wYtW5I1R8f7l"></div>
- 			       <div class="send-btn-section">
- 			       	 <input type="submit" value="send" class="send-btn">
- 			       </div>
-				</form>
-			</div>
+
+                    <div class="send-btn-section">
+                        <input type="submit" value="send" class="send-btn">
+                    </div>
+                </form>
+            </div>
+
 			</div>
 		</div>
 	</div>
