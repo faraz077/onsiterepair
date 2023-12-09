@@ -19,6 +19,8 @@
 						<input type="text" class="form-control">
 						<input type="submit" value="Start Tracking" class="btn btn-warning start-tracking">
 					</form>
+					<br>
+					<br>
 				</div>
 		</div>
 	</div>

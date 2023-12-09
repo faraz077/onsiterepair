@@ -1302,3 +1302,392 @@ section.instant-form-four-section {
 .back-to-home:hover {
     background-color: #2980b9;
 }
+
+
+
+@media 
+  screen and (min-device-width: 500px) and (max-device-width:1600px)
+  {
+
+
+
+	.navbar-nav li a {
+    font-size: 14px;
+}
+
+.navbar-nav li {
+    padding: 0px 0px;
+}
+.sign-in-btn a{
+	    font-size: 14px;
+}
+a.navbar-brand {
+    width: 40%;
+}
+.top-bar a {
+
+    font-size: 12px;
+}
+.top-bar a {
+    margin-left: 10px;
+
+}
+.hero-content-section h1 {
+    font-size: 66.241px;
+}
+
+.get-aqoute a {
+    padding: 16px 22px;
+    font-size: 14px;
+
+}
+
+.three-step-section {
+ 
+    padding: 50px;
+   
+}
+
+
+.three-step-section .right h1 {
+    font-size: 52px;
+    width: 100%;
+}
+
+.three-step-img {
+ 
+    width: 44%;
+}
+
+.three-step-section .item p {
+    
+    font-size: 14px;
+}
+.testimonial-heading h1 {
+    font-size: 48.241px;
+}
+
+.testimonial-section {
+    padding: 50px;
+}
+.what-we-repair .left .list {
+    margin-top: 40px;
+}
+.what-we-repair .right-img-repair {
+
+    bottom: 40%;
+
+}
+.right-img-repair-shadow {
+
+    bottom: 36%;
+
+}
+.about-footer {
+    font-size: 16px;
+    width: 85%;
+    margin-top: 30px;
+
+}
+.what-we-repair .heading-section h1 {
+  
+    font-size: 46px;
+}
+.hero-content-section p {
+    font-size: 18px;
+    width: 85%;
+    margin-top: 20px;
+}
+.hero-content-section h1 {
+    font-size: 44.241px;
+}
+.hero-content-section.repair-done-fast {
+ 
+    display: block;
+  
+}
+
+
+
+
+
+}
+
+
+ @media  (max-device-width:768px){
+	.get-aqoute {
+    margin-top: 50px;
+}
+
+.hero-section .row {
+    flex-direction: column-reverse;
+}
+
+.hero-img-section {
+    margin-top: 0px;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-content-section {
+    margin-top: 50px;
+}
+
+section.three-step-section .row {
+    flex-direction: column-reverse;
+}
+.three-step-img{
+	position: static;
+	width: 100%;
+}
+.three-step-shadow{
+	display: none;
+}
+
+.three-step-section {
+    padding: 100px;
+
+}
+
+.what-we-repair .right-img-repair{
+	position: static;
+	width: 100%;
+}
+
+img.right-img-repair-shadow {
+    display: none;
+}
+
+}
+@media(max-width: 500px){
+
+.hero-section{
+	padding: 0px;
+}
+.hero-content-section h1 {
+
+    font-size: 42px;
+}
+
+.three-step-section .right h1 {
+
+    font-size: 26px;
+    width: 100%;
+    text-align: center;
+}
+.top-bar ul.d-flex.align-items-center.justify-content-center {
+    flex-direction: column;
+}
+.top-bar li {
+    margin-bottom: 10px;
+    margin-left:0px;
+}
+.top-bar select, footer select{
+	margin-left:0px;
+}
+.nav-main-bar {
+    padding: 0px 0px;
+
+}
+a.navbar-brand img{
+	margin-right: 0px;
+	 width: 240px;
+}
+.top-bar a{
+	font-size:16px;
+    margin-left:0px;
+
+}
+ul.navbar-nav.me-auto.my-2.my-lg-0.navbar-nav-scroll {
+    min-height: 210px !important;
+}
+nav.navbar.navbar-expand-lg {
+    padding-bottom: 40px;
+}
+.hero-content-section {
+    margin-top: 20px;
+    text-align: center;
+        padding-bottom: 30px;
+}
+.hero-content-section h1 {
+    font-size: 32px;
+    padding: 0px 20px;	
+}
+.hero-content-section p {
+    font-size: 16px;
+    width: 100%;
+    margin-top: 24px;
+    padding: 0px 0px;
+}
+.slick-list.draggable {
+    overflow: hidden;
+}
+
+.testimonial-heading h1 {
+    
+    font-size: 28.241px;
+  
+}
+
+.sign-in-btn {
+    border: none;
+    padding: 10px 28px 
+}
+.sign-in-btn a {
+
+    font-size: 16px;
+}
+.get-aqoute .line {
+ 
+    width: 80px;
+}
+.three-step-section {
+    padding: 50px;
+}
+.three-step-section .item p {
+   
+    font-size: 14px;
+   
+    width: 100%;
+}
+.three-step-section .item-top h2 {
+       color: #FFF;
+    font-size: 20px;
+    margin-left: 20px;
+}
+.three-step-section .item-top {
+  
+    align-items: center;
+}
+.testimonial-section {
+       padding: 50px 20px 20px 20px;
+}
+.what-we-repair{
+	    padding: 50px 20px;
+}
+.what-we-repair .heading-section h1 {
+    font-size: 28px;
+}
+
+.three-step-section .item {
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+.three-step-section .item-top h3 {
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    color: #fff;
+    position: absolute;
+    top: 13px;
+    right: 19px;
+}
+.bg-count {
+    width: 70px;
+    height: 55px;
+    background: #FEC93D;
+    border-radius: 100%;
+    position: relative;
+}
+.slick-dotted.slick-slider {
+    margin-bottom: 30px !important;
+}
+.what-we-repair .left .list {
+    margin-top: 28px;
+    display: flex;
+}
+.what-we-repair .left li a {
+    font-size: 14px;
+}
+.what-we-repair .left li {
+    padding: 10px;
+    list-style: none;
+}
+footer {
+    padding: 20px;
+}
+
+footer .logo img{
+	width: 250px;
+}
+.about-footer {
+    font-size: 13px;
+    width: 100%;
+}
+
+footer ul a {
+    font-size: 16px;
+    line-height: 32px;
+ 
+}
+.get-aqoute a {
+    padding: 16px 24px;
+    font-size: 12px;
+   
+}
+.get-heading{
+	font-size: 22px;
+}
+h6.device-dec.mt-3.instant-form-subheading {
+    margin-bottom: 50px;
+}
+button#getLocationBtn {
+    position: absolute;
+    left: 0px;
+    top: -80px;
+    width: 40%;
+}
+input#locationInput::placeholder {
+    font-size: 12px !important;
+}
+section.select-location.instant-form-five-section .col-lg-6 {
+    padding: 30px 0px;
+}
+.qoute-information {
+    width: 100%;
+    margin: 50px 0px;
+}
+
+.qoute-form-section .container {
+    border-radius: 0px;
+
+    padding: 50px 10px;
+ 
+}
+textarea.text-area-qoute {
+    width: 100%;
+}
+section.qoute-form-section h3 {
+    font-size: 18px;
+    margin-bottom: 30px;
+    margin-left: 20px;
+}
+button.btn.btn-warning.send-me-qoute {
+    margin-top: 20px;
+}
+section.qoute-form-section .row {
+    flex-direction: column-reverse;
+}
+.let-us-heading {
+    font-size: 32.069px;
+    margin: 0px 20px 30px;
+}
+h3.p-5.text-center.licensed {
+    padding: 30px 0px !important;
+}
+.slider {
+    width: 100%;
+    margin: 10px auto;
+}
+.hero-content-section.repair-done-fast{
+	height: auto;
+}
+.buy-device-img {
+    position: static;
+    width: 100% !important;
+}
+img.img-fluid.buy-device-shadow{
+	display: none;
+}
+}

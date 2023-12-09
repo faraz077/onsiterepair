@@ -497,8 +497,24 @@ $('.continue-issue-btn').on('click', function () {
       $(".regular").slick({
         dots: true,
         infinite: true,
-        slidesToShow:4,
-        slidesToScroll: 3
+        slidesToShow:3,
+        slidesToScroll: 3,
+        responsive: [
+    {
+      // tablet
+      breakpoint: 991,
+      settings: {
+        slidesToShow: 1
+      }
+    },
+    {
+      // mobile portrait
+      breakpoint: 550,
+      settings: {
+        slidesToShow: 1
+      }
+    }
+  ]
       });
 
       $(".lazy").slick({
