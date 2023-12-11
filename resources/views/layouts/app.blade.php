@@ -391,7 +391,7 @@ $('.continue-issue-btn').on('click', function () {
 });
 </script>
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFr0neA3lI3Pn4h_NPcfqIDI1hnfryAns&libraries=places&callback=initMap" async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key={{ config('services.google_maps.key') }}&libraries=places&callback=initMap" async defer></script>
 <script>
     // Initialize the map
     function initMap() {

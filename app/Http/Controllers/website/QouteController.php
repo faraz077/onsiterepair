@@ -151,7 +151,8 @@ class QouteController extends Controller
                 ->withErrors($validator)  // Pass the validation errors to the view
                 ->withInput();           // Pass the old input data to the view
         }
-        $orderNo = substr(uniqid(), 0, 6);
+        $orderNo = time() . rand(1000, 9999);
+        // dd($orderNo);
         // Create a new Order instance
         $order = Order::create([
             'order_no' => $orderNo,
