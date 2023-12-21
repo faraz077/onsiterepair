@@ -14,9 +14,7 @@ class IssueController extends Controller
     {
         $this->middleware('auth');
     }
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
         $issues = Issue::with('manufacturer.device.model')->get();

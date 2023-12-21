@@ -14,9 +14,7 @@ class ModelController extends Controller
     {
         $this->middleware('auth');
     }
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
         $models = Model::with('manufacturer.device')->get();

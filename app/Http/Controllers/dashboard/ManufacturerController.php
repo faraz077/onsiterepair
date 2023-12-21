@@ -10,9 +10,11 @@ use Illuminate\Support\Facades\Validator;
 
 class ManufacturerController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $manufacturers = Manufacturer::with('device')->get();
