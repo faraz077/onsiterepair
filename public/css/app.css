@@ -1303,10 +1303,57 @@ section.instant-form-four-section {
     background-color: #2980b9;
 }
 
+.technician-topbar{
+background: #023B60;
+padding: 20px;
+}
+.technician-topbar h4{
+	color: #fff;
+	margin:0px;
+}
+
+.technician-topbar a{
+	color: #fff;
+	background: #c52f31;
+	padding: 10px 30px;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+
+.left-sidebar{
+	background: #c52f31;
+
+	padding: 20px;
+}
+
+.left-sidebar h3{
+	color:#fff;
+}
+
+
+.left-sidebar li{
+	padding:10px;
+	list-style: none;
+	border-bottom:solid 1px lightgray;
+}
+.left-sidebar li a{
+	color:#fff;
+	font-size: 16px;
+	text-decoration: none;
+	text-transform: capitalize;
+
+}
+
+
+
+
+
+
+/*responsives code started*/
 
 
 @media 
-  screen and (min-device-width: 500px) and (max-device-width:1600px)
+  screen and (min-device-width: 500px) and (max-device-width:1800px)
   {
 
 
@@ -1322,7 +1369,7 @@ section.instant-form-four-section {
 	    font-size: 14px;
 }
 a.navbar-brand {
-    width: 40%;
+    width: 30%;
 }
 .top-bar a {
 
@@ -1414,7 +1461,34 @@ a.navbar-brand {
 }
 
 
+
+
+@media(min-width:1300px){
+	.navbar-nav li {
+    padding: 0px 5px;
+}
+
+
+.navbar-nav li a {
+    font-size: 18px;
+}
+}
+
+
+@media(min-width:1600px){
+
+	.navbar-nav li a {
+    font-size: 20px;
+}
+
+.navbar-nav li {
+    padding: 0px 16px;
+}
+
+}
+
  @media  (max-device-width:768px){
+
 	.get-aqoute {
     margin-top: 50px;
 }
@@ -1460,6 +1534,10 @@ img.right-img-repair-shadow {
 
 }
 @media(max-width: 500px){
+.instant-form-first-section .item img {
+  max-height: 50px;
+    min-height: 50px;
+}
 
 .hero-section{
 	padding: 0px;
@@ -1491,7 +1569,7 @@ img.right-img-repair-shadow {
 }
 a.navbar-brand img{
 	margin-right: 0px;
-	 width: 240px;
+	 width: 180px;
 }
 .top-bar a{
 	font-size:16px;
@@ -1499,18 +1577,16 @@ a.navbar-brand img{
 
 }
 ul.navbar-nav.me-auto.my-2.my-lg-0.navbar-nav-scroll {
-    min-height: 210px !important;
+    min-height: 180px !important;
 }
-nav.navbar.navbar-expand-lg {
-    padding-bottom: 40px;
-}
+
 .hero-content-section {
     margin-top: 20px;
     text-align: center;
         padding-bottom: 30px;
 }
 .hero-content-section h1 {
-    font-size: 32px;
+    font-size: 24px;
     padding: 0px 20px;	
 }
 .hero-content-section p {
@@ -1674,7 +1750,11 @@ section.qoute-form-section .row {
     margin: 0px 20px 30px;
 }
 h3.p-5.text-center.licensed {
-    padding: 30px 0px !important;
+        padding: 30px 0px !important;
+    font-size: 16px;
+}
+
+
 }
 .slider {
     width: 100%;
@@ -1690,4 +1770,125 @@ h3.p-5.text-center.licensed {
 img.img-fluid.buy-device-shadow{
 	display: none;
 }
+.instant-form-first-section .item{
+        margin: 10px 0px;
 }
+
+.instant-form-first-section .item{
+    border-radius : 0px;
+}
+.instant-form-first-section .item h5 {
+    font-size: 14px;
+}
+
+
+.instant-form-five-section .col-lg-4 , .instant-form-four-section .col-lg-4{
+
+	display: flex;
+	justify-content: center;
+}
+
+
+.instant-form-five-section button.btn.btn-warning.continue-btn , .instant-form-four-section button{
+	width: 70% !important;
+}
+
+.instant-form-two-section .item{
+        margin: 10px 0px !important;
+}
+
+.instant-form-two-section .item{
+    border-radius : 0px !important;
+}
+
+
+.instant-form-two-section .item img {
+    max-height: 90px;
+    min-height: 90px;
+}
+
+
+.instant-form-three-section  .item{
+        margin: 10px 0px !important;
+}
+.instant-form-three-section .item{
+    border-radius : 0px !important;
+}
+
+.instant-form-three-section  .item img {
+    max-height: 90px;
+    min-height: 90px;
+}
+
+
+
+.instant-form-four-section  .item{
+        margin: 10px 0px !important;
+}
+.instant-form-four-section .item{
+    border-radius : 0px !important;
+}
+
+.instant-form-four-section  .item img {
+    max-height: 90px;
+    min-height: 90px;
+}
+button.btn.btn-warning.continue-issue-btn {
+    margin: 50px 0px;
+
+
+}
+
+
+section.hero-section.mt-5 {
+    padding-top: 50px;
+}
+
+
+.hero-content-section p span{
+	    font-size: 14px;
+}
+.navbar-nav li a{
+	font-size: 14px;
+}
+
+button.sign-in-btn {
+    margin-bottom: 20px;
+}
+footer h3{
+	font-size: 18px;
+	margin-top:20px;
+}
+footer ul a{
+	font-size: 14px;
+}
+
+
+section.hero-section.mt-5.repair-page-section .row {
+    flex-direction: column;
+    padding-bottom: 20px;
+}
+
+
+section.hero-section.mt-5.repair-page-section .row  br{
+display: none;
+}
+
+.licensed{
+font-size: 16px;
+} 
+
+.instant-form-subheading {
+    font-size: 16px;
+}
+}
+
+
+
+.wndfal-brand img {
+    width: 100px;
+}
+header.wndfal-header.wndfal-sticky .container {
+    max-width: 1280px;
+}
+

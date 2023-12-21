@@ -25,7 +25,7 @@
 			<div class="col-lg-6">
 
 				<div class="hero-img-section">
-					<img src="{{asset('public/img/hero-img.png')}}" alt="" class="img-fluid">
+					<img src="{{asset('public/img/hero-img.PNG')}}" alt="" class="img-fluid">
 				</div>
 			</div>
 		</div>

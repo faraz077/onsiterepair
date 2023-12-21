@@ -9,10 +9,11 @@ use App\Http\Controllers\website\buydeviceController;
 use App\Http\Controllers\website\contactusController;
 use App\Http\Controllers\website\selldeviceController;
 use App\Http\Controllers\website\TrackorderController;
+use App\Http\Controllers\website\TechnicianController;
+
 use App\Http\Controllers\dashboard\DashboardController;
 use App\Http\Controllers\dashboard\OrderController;
 use App\Http\Controllers\dashboard\ContactController;
-
 use App\Http\Controllers\website\repairadeviceController;
 use App\Http\Controllers\dashboard\ManufacturerController;
 use App\Http\Controllers\website\QouteController;
@@ -39,6 +40,7 @@ Route::resource('/sell-device', selldeviceController::class);
 Route::resource('/buy-device', buydeviceController::class);
 Route::resource('/about-us', aboutusController::class);
 Route::resource('/contact-us', contactusController::class);
+Route::resource('/technician', TechnicianController::class);
 Route::resource('/dashboard-panel', DashboardController::class);
 Route::resource('/devices', DeviceController::class);
 Route::resource('/manufacturer', ManufacturerController::class);

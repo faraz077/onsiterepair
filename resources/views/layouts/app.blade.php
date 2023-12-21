@@ -6,7 +6,7 @@
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>On Site Repairs</title>
         <!-- Fonts -->
         <link rel="dns-prefetch" href="//fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
@@ -18,6 +18,10 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!-- Latest compiled and minified CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
         <!-- Scripts -->
 
         @vite(['resources/sass/app.scss', 'resources/js/app.js'])
@@ -49,7 +53,7 @@
                             <div class="col-lg-12">
                                 <nav class="navbar navbar-expand-lg">
                                     <div class="container-fluid">
-                                        <a class="navbar-brand" href="/onsiterepair"><img src="{{asset('public/img/header-logo.png')}}" alt=""></a>
+                                        <a class="navbar-brand" href="/"><img src="{{asset('public/img/header-logo.png')}}" alt=""></a>
                                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
                                         <span class="navbar-toggler-icon"></span>
                                         </button>
@@ -57,7 +61,7 @@
                                             <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
 
                                                 <li class="nav-item">
-                                                    <a class="nav-link active" aria-current="page" href="/onsiterepair">Home</a>
+                                                    <a class="nav-link active" aria-current="page" href="/">Home</a>
                                                 </li>
 
                                                 <li class="nav-item">
@@ -143,6 +147,8 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" type="text/javascript"></script>
   <script src="https://code.jquery.com/jquery-migrate-3.4.0.min.js"></script>
   <script src="{{asset('public/slick/slick.js')}}" type="text/javascript" charset="utf-8"></script>
+  <!-- Latest compiled JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
   <!-- Add this script at the end of your Blade file, just before the closing body tag -->
 
@@ -179,7 +185,7 @@ $(document).ready(function(){
             manufacturersContainer.empty(); // Clear existing content
 
             $.each(response.manufacturers, function(index, manufacturer) {
-                var manufacturerHtml = '<div class="col-lg-3">';
+                var manufacturerHtml = '<div class="col-lg-3 col-6">';
                 manufacturerHtml += '<div class="item" data-manufacturer-id="' + manufacturer.id + '">';
                 manufacturerHtml += '<img src="{{ asset('public/images/manufacturers/') }}/' + manufacturer.image + '" alt="" class="img-fluid">';
                 manufacturerHtml += '<h5>' + manufacturer.name + '</h5>';
@@ -220,7 +226,7 @@ $(document).on('click', '.instant-form-two-section .item', function(){
             modelsContainer.empty(); // Clear existing content
 
             $.each(response.models, function(index, model) {
-                var modelHtml = '<div class="col-lg-3">';
+                var modelHtml = '<div class="col-lg-3 col-6">';
                 modelHtml += '<div class="item" data-model-id="' + model.id + '">';
                 modelHtml += '<img src="{{ asset('public/images/models/') }}/' + model.image + '" alt="" class="img-fluid">';
                 modelHtml += '<h5>' + model.name + '</h5>';
@@ -261,7 +267,7 @@ $(document).on('click', '.instant-form-three-section .item', function(){
             issuesContainer.empty(); // Clear existing content
 
             $.each(response.issues, function(index, issue) {
-            var issueHtml = '<div class="col-lg-3">';
+            var issueHtml = '<div class="col-lg-3 col-6">';
             issueHtml += '<div class="item" data-issue-id="' + issue.id + '">';
             issueHtml += '<img src="{{ asset('public/images/issues/') }}/' + issue.image + '" alt="" class="img-fluid">';
             issueHtml += '<h5>' + issue.name + '</h5>';
