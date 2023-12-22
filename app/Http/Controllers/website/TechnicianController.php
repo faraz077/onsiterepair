@@ -15,6 +15,40 @@ class TechnicianController extends Controller
         return view('technician-profile-page');
     }
 
+
+     public function newOrder()
+    {
+        return view('technician-new-order-page');
+    }
+
+
+
+       public function completeOrder()
+    {
+        return view('technician-completed-orderpage');
+    }
+
+         public function profileEdit()
+    {
+        return view('technician-profile-edit');
+    }
+
+             public function technicianOrderDetail()
+    {
+        return view('technician-order-detail');
+    }
+
+             public function 
+technicianActiveOrderDetail()
+    {
+        return view('technician-active-order-detail');
+    }
+
+
+
+
+
+
     /**
      * Show the form for creating a new resource.
      */
