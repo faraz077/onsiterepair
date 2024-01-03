@@ -22,7 +22,7 @@
 					<ul>
 						<li><a href="technician">dashboard</a></li>
 						<li><a href="technician-new-order">Active order</a></li>
-						<li><a href="technician-completed-order">complete order</a></li>
+						<li><a href="technician-complete-order">complete order</a></li>
 						<li><a href="">Edit profile</a></li>
 					</ul>
 				</div>

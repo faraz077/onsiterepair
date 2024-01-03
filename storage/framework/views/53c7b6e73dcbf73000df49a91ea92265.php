@@ -175,6 +175,16 @@
                                                     </a>
                                                 </li>
 
+
+                                                  <li>
+                                                    <a class="tooltip-tip ajax-load" href="<?php echo e(route('reg-technician.index')); ?>" title="Mail">
+                                                        <i class="icon-mail"></i>
+                                                        <span>Technician</span>
+                                                    </a>
+                                                </li>
+
+
+
                                                 <li>
                                                     <a class="tooltip-tip ajax-load" href="<?php echo e(route('contacts.index')); ?>" title="Mail">
                                                         <i class="icon-mail"></i>

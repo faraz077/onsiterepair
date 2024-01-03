@@ -10,12 +10,13 @@ use App\Http\Controllers\website\contactusController;
 use App\Http\Controllers\website\selldeviceController;
 use App\Http\Controllers\website\TrackorderController;
 use App\Http\Controllers\website\TechnicianController;
-
 use App\Http\Controllers\dashboard\DashboardController;
 use App\Http\Controllers\dashboard\OrderController;
 use App\Http\Controllers\dashboard\ContactController;
 use App\Http\Controllers\website\repairadeviceController;
 use App\Http\Controllers\dashboard\ManufacturerController;
+use App\Http\Controllers\dashboard\TechnicianRegController;
+
 use App\Http\Controllers\website\QouteController;
 
 
@@ -47,8 +48,9 @@ Route::resource('/manufacturer', ManufacturerController::class);
 Route::resource('/models', ModelController::class);
 Route::resource('/issues', IssueController::class);
 Route::resource('/order', OrderController::class);
-Route::get('/technician-new-order', [App\Http\Controllers\website\TechnicianController::class, 'newOrder'])->name('technician-new-order');
+Route::resource('/reg-technician', TechnicianRegController::class);
 
+Route::get('/technician-new-order', [App\Http\Controllers\website\TechnicianController::class, 'newOrder'])->name('technician-new-order');
 Route::get('/technician-complete-order', [App\Http\Controllers\website\TechnicianController::class, 'completeOrder'])->name('technician-active-order');
 Route::get('/technician-profile-edit', [App\Http\Controllers\website\TechnicianController::class, 'profileEdit'])->name('technician-profile-edit');
 Route::get('/technician-order-detail', [App\Http\Controllers\website\TechnicianController::class, 'technicianOrderDetail'])->name('technician-order-detail');
