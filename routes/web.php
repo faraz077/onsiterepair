@@ -36,12 +36,12 @@ Route::get('/', function () {
 
 
 Auth::routes();
+
+Route::middleware(['auth'])->group(function () {
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::resource('/sell-device', selldeviceController::class);
-Route::resource('/buy-device', buydeviceController::class);
-Route::resource('/about-us', aboutusController::class);
-Route::resource('/contact-us', contactusController::class);
-Route::resource('/technician', TechnicianController::class);
+
+Route::resource('/contacts', ContactController::class);
 Route::resource('/dashboard-panel', DashboardController::class);
 Route::resource('/devices', DeviceController::class);
 Route::resource('/manufacturer', ManufacturerController::class);
@@ -67,7 +67,14 @@ Route::get('/technician-active-order-detail', [App\Http\Controllers\website\Tech
 
 Route::put('/update-order-status/{orderId}', [App\Http\Controllers\dashboard\OrderController::class, 'updateStatus'])->name('update-order-status');
 Route::put('/update-order-payment-status/{orderId}', [App\Http\Controllers\dashboard\OrderController::class, 'updatePaymentStatus'])->name('update-order-payment-status');
-Route::resource('/contacts', ContactController::class);
+
+});
+
+Route::resource('/sell-device', selldeviceController::class);
+Route::resource('/buy-device', buydeviceController::class);
+Route::resource('/about-us', aboutusController::class);
+Route::resource('/contact-us', contactusController::class);
+
 Route::resource('/track-order', TrackorderController::class);
 
 
