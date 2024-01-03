@@ -214,16 +214,25 @@
                                                                       <div class="col-lg-4">
 
                                                                         <label class="order-action">Assigned this order </label>
-                                                                        <form action="#" class="order-action-section">
-                                                                  
-                                                                          <select name="" id="" class="form-control">
-                                                                              <option value="">Fahad</option>
-                                                                              <option value="">Faisal</option>
-                                                                              <option value="">Abdullah</option>
+                                                                        <form action="{{ route('orders.updateTechnician', $order->id) }}" method="POST" class="order-action-section">
+                                                                            @csrf
 
-                                                                          </select>
-                                                                            <input type="submit" value="update" class="btn btn-info">
+                                                                            @if ($order->technician)
+                                                                                <p>Assigned Technician: {{ $order->technician->name }}</p>
+                                                                            @endif
+
+                                                                            <select name="technician_id" class="form-control">
+                                                                                <option value="">Select Technician</option>
+                                                                                @foreach ($technicians as $technician)
+                                                                                    <option value="{{ $technician->id }}" {{ $order->technician_id == $technician->id ? 'selected' : '' }}>
+                                                                                        {{ $technician->name }}
+                                                                                    </option>
+                                                                                @endforeach
+                                                                            </select>
+
+                                                                            <input type="submit" value="Update" class="btn btn-info">
                                                                         </form>
+
                                                                     </div>
                                                                 </div>
                                                             </div>

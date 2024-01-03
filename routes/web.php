@@ -50,23 +50,11 @@ Route::resource('/issues', IssueController::class);
 Route::resource('/order', OrderController::class);
 Route::resource('/reg-technician', TechnicianRegController::class);
 
-Route::get('/technician-new-order', [App\Http\Controllers\website\TechnicianController::class, 'newOrder'])->name('technician-new-order');
-Route::get('/technician-complete-order', [App\Http\Controllers\website\TechnicianController::class, 'completeOrder'])->name('technician-active-order');
-Route::get('/technician-profile-edit', [App\Http\Controllers\website\TechnicianController::class, 'profileEdit'])->name('technician-profile-edit');
-Route::get('/technician-order-detail', [App\Http\Controllers\website\TechnicianController::class, 'technicianOrderDetail'])->name('technician-order-detail');
-Route::get('/technician-active-order-detail', [App\Http\Controllers\website\TechnicianController::class, 'technicianActiveOrderDetail'])->name('technician-active-order-detail');
-
-
-
-
-
-
-
-
 
 
 Route::put('/update-order-status/{orderId}', [App\Http\Controllers\dashboard\OrderController::class, 'updateStatus'])->name('update-order-status');
 Route::put('/update-order-payment-status/{orderId}', [App\Http\Controllers\dashboard\OrderController::class, 'updatePaymentStatus'])->name('update-order-payment-status');
+Route::post('/orders/update-technician/{orderId}', [App\Http\Controllers\dashboard\OrderController::class, 'updateTechnician'])->name('orders.updateTechnician');
 
 });
 
@@ -90,4 +78,24 @@ Route::get('/thank-you-page', [App\Http\Controllers\website\QouteController::cla
 
 
 
+// Technician login routes
+Route::get('/technician/login', [App\Http\Controllers\website\TechnicianAuthController::class, 'showLoginForm'])->name('technician.login');
+Route::post('/technician/login', [App\Http\Controllers\website\TechnicianAuthController::class, 'login'])->name('technician.login.post');
+
+// // Technician register routes
+// Route::get('/technician/register', [App\Http\Controllers\website\TechnicianAuthController::class, 'showRegistrationForm'])->name('technician.register');
+// Route::post('/technician/register', [App\Http\Controllers\website\TechnicianAuthController::class, 'register'])->name('technician.register.post');
+
+
+Route::middleware(['auth:technician'])->group(function () {
+    Route::get('/technician-new-order', [App\Http\Controllers\website\TechnicianController::class, 'newOrder'])->name('technician-new-order');
+    Route::get('/technician-complete-order', [App\Http\Controllers\website\TechnicianController::class, 'completeOrder'])->name('technician-active-order');
+    Route::get('/technician-profile-edit', [App\Http\Controllers\website\TechnicianController::class, 'profileEdit'])->name('technician-profile-edit');
+    Route::get('/technician-order-detail', [App\Http\Controllers\website\TechnicianController::class, 'technicianOrderDetail'])->name('technician-order-detail');
+    Route::get('/technician-active-order-detail', [App\Http\Controllers\website\TechnicianController::class, 'technicianActiveOrderDetail'])->name('technician-active-order-detail');
+
+
+
+    Route::post('/technician/logout', [App\Http\Controllers\website\TechnicianAuthController::class, 'logout'])->name('technician.logout');
+});
 

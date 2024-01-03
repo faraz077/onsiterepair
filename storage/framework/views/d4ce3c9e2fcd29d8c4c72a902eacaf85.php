@@ -212,6 +212,32 @@
                                                                             <input type="submit" value="update" class="btn btn-info">
                                                                         </form>
                                                                     </div>
+
+
+                                                                      <div class="col-lg-4">
+
+                                                                        <label class="order-action">Assigned this order </label>
+                                                                        <form action="<?php echo e(route('orders.updateTechnician', $order->id)); ?>" method="POST" class="order-action-section">
+                                                                            <?php echo csrf_field(); ?>
+
+                                                                            <?php if($order->technician): ?>
+                                                                                <p>Assigned Technician: <?php echo e($order->technician->name); ?></p>
+                                                                            <?php endif; ?>
+
+                                                                            <select name="technician_id" class="form-control">
+                                                                                <option value="">Select Technician</option>
+                                                                                <?php $__currentLoopData = $technicians; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $technician): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                                                    <option value="<?php echo e($technician->id); ?>" <?php echo e($order->technician_id == $technician->id ? 'selected' : ''); ?>>
+                                                                                        <?php echo e($technician->name); ?>
+
+                                                                                    </option>
+                                                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                                            </select>
+
+                                                                            <input type="submit" value="Update" class="btn btn-info">
+                                                                        </form>
+
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -258,6 +284,7 @@
                                                 </div>
                                                 <br>
                                                 
+
                                             </div>
                                         </div>
                                     </div>

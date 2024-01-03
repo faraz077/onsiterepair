@@ -16,6 +16,7 @@ return [
     'defaults' => [
         'guard' => 'web',
         'passwords' => 'users',
+
     ],
 
     /*
@@ -40,6 +41,17 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ],
+        'technician' => [
+            'driver' => 'session',
+            'provider' => 'technicians',
+        ],
+
+
     ],
 
     /*
@@ -63,6 +75,15 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
+        ],
+
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\User::class,
+        ],
+        'technicians' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Technician::class,
         ],
 
         // 'users' => [

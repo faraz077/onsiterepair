@@ -1,5 +1,4 @@
-@extends('layouts.app')
-@section('content')
+<?php $__env->startSection('content'); ?>
 <!-- hero section started -->
 <section class="technician-sections">
 	<div class="container-fluid">
@@ -10,8 +9,8 @@
 						<h4><b>Hi </b> Faraz!</h4>
 					</div>
 					<div class="right col-lg-6 d-flex justify-content-end">
-                        <form action="{{ route('technician.logout') }}" method="POST">
-                            @csrf
+                        <form action="<?php echo e(route('technician.logout')); ?>" method="POST">
+                            <?php echo csrf_field(); ?>
                             <button class="btn btn-danger" type="submit" >Logout</button>
                         </form>
                     </div>
@@ -95,4 +94,6 @@
 </div>
 </div>
 </section>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\work1\onsiterepair\resources\views/technician-new-order-page.blade.php ENDPATH**/ ?>

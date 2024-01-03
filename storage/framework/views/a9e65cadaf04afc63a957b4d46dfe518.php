@@ -1,5 +1,4 @@
-@extends('dashboard.layouts.app')
-@section('content')
+<?php $__env->startSection('content'); ?>
 <!--  PAPER WRAP -->
 <div class="wrap-fluid" style="width: auto; margin-left: 250px;">
     <div class="container-fluid paper-wrap bevel tlbr">
@@ -72,23 +71,23 @@
                     </div>
                 </li>
             </ul>
-            @if (count($errors) > 0)
+            <?php if(count($errors) > 0): ?>
                 <div class="alert alert-danger">
                 <strong>Whoops!</strong> There were some problems with your input.<br><br>
                 <ul>
-                    @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                    @endforeach
+                    <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <li><?php echo e($error); ?></li>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </ul>
                 </div>
-            @endif
-            @if(session('success'))
+            <?php endif; ?>
+            <?php if(session('success')): ?>
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <strong>{{ session('success') }}</strong>
+                    <strong><?php echo e(session('success')); ?></strong>
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
 
-            @endif
+            <?php endif; ?>
             <!-- END OF BREADCRUMB -->
             <div class="content-wrap">
                 <div class="row">
@@ -110,8 +109,8 @@
                             </div>
                             <div class="body-nest" id="validation">
                                 <div class="form_center">
-                                    <form action="{{ route('reg-technician.store') }}" id="contact-form" method="POST" class="form-horizontal" enctype="multipart/form-data">
-                                        @csrf
+                                    <form action="<?php echo e(route('reg-technician.store')); ?>" id="contact-form" method="POST" class="form-horizontal" enctype="multipart/form-data">
+                                        <?php echo csrf_field(); ?>
                                         <fieldset>
                                             <div class="control-group">
                                                 <label class="control-label" for="name">Name</label>
@@ -192,4 +191,6 @@
                 </div>
             </div>
             <!-- /END OF CONTENT -->
-            @endsection()
+            <?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('dashboard.layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\work1\onsiterepair\resources\views/dashboard/add-technician.blade.php ENDPATH**/ ?>

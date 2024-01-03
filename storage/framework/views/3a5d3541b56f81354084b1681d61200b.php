@@ -126,6 +126,9 @@
                                                                 <th data-hide="phone">
                                                                     Price
                                                                 </th>
+                                                                   <th data-hide="phone">
+                                                                    Status
+                                                                </th>
                                                                 <th data-hide="phone">
                                                                     Date
                                                                 </th>
@@ -146,6 +149,8 @@
                                                                 <td><?php echo e($order->customer_phone); ?></td>
                                                                 <td><?php echo e($order->model->name); ?></td>
                                                                 <td><?php echo e($order->total_price); ?></td>
+                                                                <td><b><?php echo e($order->status); ?></b></td>
+
                                                                 <td><?php echo e($order->created_at->format('d M, Y')); ?></td>
                                                                 <td><a href="<?php echo e(route('order.edit', $order->id)); ?>" class="btn btn-info">Edit</a></td>
                                                                 <td>

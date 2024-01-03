@@ -22,6 +22,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
 
+
         <!-- Scripts -->
 
         @vite(['resources/sass/app.scss', 'resources/js/app.js'])
@@ -149,6 +150,7 @@
   <script src="{{asset('public/slick/slick.js')}}" type="text/javascript" charset="utf-8"></script>
   <!-- Latest compiled JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
 
   <!-- Add this script at the end of your Blade file, just before the closing body tag -->
 
@@ -530,6 +532,22 @@ $('.continue-issue-btn').on('click', function () {
     });
 </script>
 
+
+
+  <script>
+
+    Pusher.logToConsole = true;
+
+    var pusher = new Pusher('a4fcd770af1ff0cbeabb', {
+        cluster: 'ap2'
+    });
+
+    var channel = pusher.subscribe('orders.' + technicianId);
+    channel.bind('App\\Events\\OrderAssigned', function (data) {
+        alert('New order assigned: Order ID ' + data.order.id);
+        // You can customize how you want to notify the technician about the new order assignment
+    });
+  </script>
 
 
     </body>
