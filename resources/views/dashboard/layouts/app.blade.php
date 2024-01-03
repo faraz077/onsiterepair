@@ -175,6 +175,16 @@
                                                     </a>
                                                 </li>
 
+
+                                                  <li>
+                                                    <a class="tooltip-tip ajax-load" href="{{route('reg-technician.index')}}" title="Mail">
+                                                        <i class="icon-mail"></i>
+                                                        <span>Technician</span>
+                                                    </a>
+                                                </li>
+
+
+
                                                 <li>
                                                     <a class="tooltip-tip ajax-load" href="{{route('contacts.index')}}" title="Mail">
                                                         <i class="icon-mail"></i>

@@ -125,6 +125,9 @@
                                                                 <th data-hide="phone">
                                                                     Price
                                                                 </th>
+                                                                   <th data-hide="phone">
+                                                                    Status
+                                                                </th>
                                                                 <th data-hide="phone">
                                                                     Date
                                                                 </th>
@@ -145,6 +148,8 @@
                                                                 <td>{{ $order->customer_phone }}</td>
                                                                 <td>{{ $order->model->name }}</td>
                                                                 <td>{{ $order->total_price }}</td>
+                                                                <td><b>{{ $order->status }}</b></td>
+
                                                                 <td>{{ $order->created_at->format('d M, Y') }}</td>
                                                                 <td><a href="{{ route('order.edit', $order->id) }}" class="btn btn-info">Edit</a></td>
                                                                 <td>

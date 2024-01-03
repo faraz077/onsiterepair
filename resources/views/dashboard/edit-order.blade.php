@@ -209,6 +209,22 @@
                                                                             <input type="submit" value="update" class="btn btn-info">
                                                                         </form>
                                                                     </div>
+
+
+                                                                      <div class="col-lg-4">
+
+                                                                        <label class="order-action">Assigned this order </label>
+                                                                        <form action="#" class="order-action-section">
+                                                                  
+                                                                          <select name="" id="" class="form-control">
+                                                                              <option value="">Fahad</option>
+                                                                              <option value="">Faisal</option>
+                                                                              <option value="">Abdullah</option>
+
+                                                                          </select>
+                                                                            <input type="submit" value="update" class="btn btn-info">
+                                                                        </form>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -261,6 +277,7 @@
                                                     <br>
                                                     <input type="submit" value="update" class="btn btn-success">
                                                 </form> --}}
+
                                             </div>
                                         </div>
                                     </div>

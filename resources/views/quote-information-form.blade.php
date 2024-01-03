@@ -4,7 +4,7 @@
 <section class="instant-form-head-section">
 	<div class="container instant-form-section">
 
-		<div class="row">
+		<div class="row mt-5">
 			<div class="col-lg-12">
 				<h2 class="get-heading">Fill Your Information</h2>
 			</div>
