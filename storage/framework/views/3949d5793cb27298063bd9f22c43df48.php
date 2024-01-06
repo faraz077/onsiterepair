@@ -20,6 +20,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <!-- Latest compiled and minified CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" />
 
 
 
@@ -151,9 +152,10 @@
   <!-- Latest compiled JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
 
   <!-- Add this script at the end of your Blade file, just before the closing body tag -->
-
+<?php echo $__env->yieldContent('scriptjs'); ?>
 <script>
 $(document).ready(function(){
     // Hide sections initially
@@ -534,20 +536,23 @@ $('.continue-issue-btn').on('click', function () {
 
 
 
-  <script>
-
+<script>
     Pusher.logToConsole = true;
 
     var pusher = new Pusher('a4fcd770af1ff0cbeabb', {
         cluster: 'ap2'
     });
 
-    var channel = pusher.subscribe('orders.' + technicianId);
-    channel.bind('App\\Events\\OrderAssigned', function (data) {
-        alert('New order assigned: Order ID ' + data.order.id);
-        // You can customize how you want to notify the technician about the new order assignment
-    });
-  </script>
+    <?php if(auth()->guard()->check()): ?>
+        var channel = pusher.subscribe('orders.' + <?php echo e(auth()->user()->id); ?>);
+        channel.bind('my-event', function (data) {
+            console.log(data);
+            alert('New order assigned: Order ID ' + data.order.order_no);
+            // You can customize how you want to notify the technician about the new order assignment
+        });
+    <?php endif; ?>
+</script>
+
 
 
     </body>

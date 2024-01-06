@@ -104,10 +104,11 @@ class OrderController extends Controller
 
         $order = Order::findOrFail($orderId);
         $order->technician_id = $request->input('technician_id');
+        $order->status = 'processing';
         $order->save();
 
         // Trigger Pusher event
-        Broadcast::event(new OrderAssigned($order));
+        event(new OrderAssigned($order));
 
         return redirect()->back()->with('success', 'Technician assigned successfully.');
     }

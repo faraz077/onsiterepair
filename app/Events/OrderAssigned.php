@@ -11,7 +11,7 @@ use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
-class OrderAssigned
+class OrderAssigned implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
@@ -25,5 +25,10 @@ class OrderAssigned
     public function broadcastOn()
     {
         return new Channel('orders.' . $this->order->technician_id);
+    }
+
+    public function broadcastAs()
+    {
+        return 'my-event';
     }
 }

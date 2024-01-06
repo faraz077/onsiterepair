@@ -89,10 +89,18 @@ Route::post('/technician/login', [App\Http\Controllers\website\TechnicianAuthCon
 
 Route::middleware(['auth:technician'])->group(function () {
     Route::get('/technician-new-order', [App\Http\Controllers\website\TechnicianController::class, 'newOrder'])->name('technician-new-order');
-    Route::get('/technician-complete-order', [App\Http\Controllers\website\TechnicianController::class, 'completeOrder'])->name('technician-active-order');
+    Route::get('/technician-complete-order', [App\Http\Controllers\website\TechnicianController::class, 'completeOrder'])->name('technician-complete-order');
     Route::get('/technician-profile-edit', [App\Http\Controllers\website\TechnicianController::class, 'profileEdit'])->name('technician-profile-edit');
-    Route::get('/technician-order-detail', [App\Http\Controllers\website\TechnicianController::class, 'technicianOrderDetail'])->name('technician-order-detail');
+    Route::get('/technician-order-detail/{order_id}', [App\Http\Controllers\website\TechnicianController::class, 'technicianOrderDetail'])->name('technician-order-detail');
     Route::get('/technician-active-order-detail', [App\Http\Controllers\website\TechnicianController::class, 'technicianActiveOrderDetail'])->name('technician-active-order-detail');
+
+
+
+    Route::get('/getManufacturers/{deviceId}', [App\Http\Controllers\website\TechnicianController::class, 'getManufacturers'])->name('technician-manufacturers');
+    Route::get('/getModels/{manufacturerId}', [App\Http\Controllers\website\TechnicianController::class, 'getModels'])->name('technician-models');
+    Route::get('/getIssues/{modelId}', [App\Http\Controllers\website\TechnicianController::class, 'getIssues'])->name('technician-issues');
+
+    Route::post('/store-order', [App\Http\Controllers\website\TechnicianController::class, 'storeOrder'])->name('technician-order');
 
 
 

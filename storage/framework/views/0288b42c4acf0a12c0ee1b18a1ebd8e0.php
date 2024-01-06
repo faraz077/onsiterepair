@@ -9,11 +9,8 @@
 						<h4><b>Hi </b> Faraz!</h4>
 					</div>
 					<div class="right col-lg-6 d-flex justify-content-end">
-                        <form action="<?php echo e(route('technician.logout')); ?>" method="POST">
-                            <?php echo csrf_field(); ?>
-                            <button class="btn btn-danger" type="submit" >Logout</button>
-                        </form>
-                    </div>
+						<a href="#">Logout</a>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -30,7 +27,7 @@
 				</div>
 			</div>
 			<div class="col-lg-10">
-				<h4 class="m-3 text-danger">Active Orders</h4>
+				<h4 class="m-3 text-danger">Completed Orders</h4>
 
 				<table class="table">
 					<tr>
@@ -63,4 +60,4 @@
 </section>
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\work1\onsiterepair\resources\views/technician-new-order-page.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\work1\onsiterepair\resources\views/technician-completed-orderpage.blade.php ENDPATH**/ ?>
