@@ -18,6 +18,20 @@
     <div class="row">
       <div class="col-lg-2 m-0 p-0">
         <div class="left-sidebar">
+            @if(session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+            @endif
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
           <h3>Orders Detail</h3>
           <ul>
             <li><a href="technician">dashboard</a></li>
@@ -106,28 +120,17 @@
                           <input type="hidden" name="contact_through" value="{{ $order->contact_through }}">
                           <input type="hidden" name="contact_through" value="{{ $order->contact_through }}">
                           <input type="hidden" name="location" value="{{ $order->location }}">
-                          <input type="hidden" name="status" value="completed">
-                          <input type="hidden" name="payment_status" value="paid">
+                          <input type="hidden" name="status" value="processing">
+                          <input type="hidden" name="payment_status" value="unpaid">
+                          <input type="hidden" name="technician_id" value="{{ $order->technician_id }}">
 
                           <br>
 
                           <div class="col-lg-12 mt-3 d-flex justify-content-center">
-                            <input type="submit" value="Update Order" class="btn btn-warning">
+                            <input type="submit" value="Create Order" class="btn btn-warning">
                           </div>
                         </form>
-                         <div class="row">
-                        <div class="col-md-8 col-lg-9">
 
-                          <p><b>Manufacturer : </b> Apple </p>
-                          <p><b>Model : </b> iPhone 14 Pro Max </p>
-                          <p><b>Issue : </b> Screen break </p>
-
-
-                        </div>
-                        <div class="col-md-4 col-lg-3 d-flex align-items-end">
-                          <h6> <b>80.00 AED</b></h6>
-                        </div>
-                      </div>
                     </div>
                     <div class="row my-4">
                       <div class="col-md-4 offset-md-8 col-lg-3 offset-lg-9">
