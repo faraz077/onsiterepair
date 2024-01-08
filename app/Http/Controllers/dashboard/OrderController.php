@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\dashboard;
 
 use App\Models\Order;
+use App\Models\Technician;
 use Illuminate\Http\Request;
+use App\Events\OrderAssigned;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Broadcast;
 
 class OrderController extends Controller
 {
@@ -56,15 +59,15 @@ class OrderController extends Controller
     {
 
         // Retrieve the order with its related models
-        $order = Order::with('device', 'manufacturer', 'model', 'orderedIssues')->find($id);
-
+        $order = Order::with('device', 'manufacturer', 'model', 'orderedIssues','technician')->find($id);
+        $technicians = Technician::all();
         // Check if the order exists
         if (!$order) {
             abort(404, 'Order not found');
         }
 
         // Pass the order data to the view
-        return view('dashboard.edit-order', ['order' => $order]);
+        return view('dashboard.edit-order', ['order' => $order, 'technicians' => $technicians]);
     }
 
     public function updateStatus(Request $request, $id)
@@ -91,6 +94,23 @@ class OrderController extends Controller
         $order->update(['payment_status' => $request->input('payment_status')]);
 
         return redirect()->back()->with('success', 'Order Payment status updated successfully');
+    }
+
+    public function updateTechnician(Request $request, $orderId)
+    {
+        $request->validate([
+            'technician_id' => 'required|exists:technicians,id',
+        ]);
+
+        $order = Order::findOrFail($orderId);
+        $order->technician_id = $request->input('technician_id');
+        $order->status = 'processing';
+        $order->save();
+
+        // Trigger Pusher event
+        event(new OrderAssigned($order));
+
+        return redirect()->back()->with('success', 'Technician assigned successfully.');
     }
 
     /**

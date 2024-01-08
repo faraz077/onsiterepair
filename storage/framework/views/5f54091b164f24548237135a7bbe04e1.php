@@ -1,5 +1,4 @@
-@extends('layouts.app')
-@section('content')
+<?php $__env->startSection('content'); ?>
 <!-- hero section started -->
 <section class="technician-sections">
   <div class="container-fluid">
@@ -18,25 +17,26 @@
     <div class="row">
       <div class="col-lg-2 m-0 p-0">
         <div class="left-sidebar">
-            @if(session('success'))
+            <?php if(session('success')): ?>
             <div class="alert alert-success">
-                {{ session('success') }}
+                <?php echo e(session('success')); ?>
+
             </div>
-            @endif
-            @if ($errors->any())
+            <?php endif; ?>
+            <?php if($errors->any()): ?>
                 <div class="alert alert-danger">
                     <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
+                        <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <li><?php echo e($error); ?></li>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </ul>
                 </div>
-            @endif
+            <?php endif; ?>
           <h3>Orders Detail</h3>
           <ul>
             <li><a href="technician">dashboard</a></li>
-            <li><a href="{{ route('technician-new-order') }}">Active orders</a></li>
-			<li><a href="{{ route('technician-complete-order') }}">completed orders</a></li>
+            <li><a href="<?php echo e(route('technician-new-order')); ?>">Active orders</a></li>
+			<li><a href="<?php echo e(route('technician-complete-order')); ?>">completed orders</a></li>
             <li><a href="technician-profile-edit">Edit profile</a></li>
           </ul>
         </div>
@@ -52,23 +52,23 @@
                     <div class="row">
                       <div class="col mb-3">
                         <p class="small text-muted mb-1"><b>Date</b></p>
-                        <p>{{ $order->created_at->format('d-M-Y') }}</p>
+                        <p><?php echo e($order->created_at->format('d-M-Y')); ?></p>
                       </div>
                       <div class="col mb-3">
                         <p class="small text-muted mb-1"><b>Order No.</b></p>
-                        <p>{{ $order->order_no }}</p>
+                        <p><?php echo e($order->order_no); ?></p>
                       </div>
                     </div>
                     <div class="mx-n5 px-5 py-4" style="background-color: #f2f2f2;">
                       <div class="row">
                         <div class="col-md-8 col-lg-9">
-                          <p><b>Client Name : </b> {{ $order->customer_name }} </p>
-                          <p><b>Phone Number : </b> {{ $order->customer_phone }} </p>
-                          <p><b>Cotnact Via : </b> {{ $order->contact_through }} </p>
-                          <p><b>Location : </b> {{ $order->location }} </p>
-                          <p><b>Device : </b> {{ $order->device->name }} </p>
-                          <p><b>Manufacturer : </b> {{ $order->manufacturer->name }} </p>
-                          <p><b>Model : </b> {{ $order->model->name }} </p>
+                          <p><b>Client Name : </b> <?php echo e($order->customer_name); ?> </p>
+                          <p><b>Phone Number : </b> <?php echo e($order->customer_phone); ?> </p>
+                          <p><b>Cotnact Via : </b> <?php echo e($order->contact_through); ?> </p>
+                          <p><b>Location : </b> <?php echo e($order->location); ?> </p>
+                          <p><b>Device : </b> <?php echo e($order->device->name); ?> </p>
+                          <p><b>Manufacturer : </b> <?php echo e($order->manufacturer->name); ?> </p>
+                          <p><b>Model : </b> <?php echo e($order->model->name); ?> </p>
                           <p><b>Issue : </b> Screen break </p>
 
 
@@ -81,14 +81,14 @@
 
                       <br>
                       <h5 class="text-danger">Add More Issues</h5>
-                      <form action="{{ route('technician-order') }}" method="POST" class="row">
-                        @csrf
+                      <form action="<?php echo e(route('technician-order')); ?>" method="POST" class="row">
+                        <?php echo csrf_field(); ?>
                         <div class="col-lg-6 mt-3">
                           <select name="device_id" id="" class="form-control">
                             <option value="">Select Device</option>
-                            @foreach ($devices as $device)
-                                <option value="{{ $device->id }}">{{ $device->name }}</option>
-                            @endforeach
+                            <?php $__currentLoopData = $devices; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $device): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <option value="<?php echo e($device->id); ?>"><?php echo e($device->name); ?></option>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                           </select>
                         </div>
@@ -114,15 +114,15 @@
                             </select>
                           </div>
 
-                          <input type="hidden" name="customer_name" value="{{ $order->customer_name }}">
-                          <input type="hidden" name="customer_phone" value="{{ $order->customer_phone }}">
-                          <input type="hidden" name="customer_email" value="{{ $order->customer_email }}">
-                          <input type="hidden" name="contact_through" value="{{ $order->contact_through }}">
-                          <input type="hidden" name="contact_through" value="{{ $order->contact_through }}">
-                          <input type="hidden" name="location" value="{{ $order->location }}">
+                          <input type="hidden" name="customer_name" value="<?php echo e($order->customer_name); ?>">
+                          <input type="hidden" name="customer_phone" value="<?php echo e($order->customer_phone); ?>">
+                          <input type="hidden" name="customer_email" value="<?php echo e($order->customer_email); ?>">
+                          <input type="hidden" name="contact_through" value="<?php echo e($order->contact_through); ?>">
+                          <input type="hidden" name="contact_through" value="<?php echo e($order->contact_through); ?>">
+                          <input type="hidden" name="location" value="<?php echo e($order->location); ?>">
                           <input type="hidden" name="status" value="processing">
                           <input type="hidden" name="payment_status" value="unpaid">
-                          <input type="hidden" name="technician_id" value="{{ $order->technician_id }}">
+                          <input type="hidden" name="technician_id" value="<?php echo e($order->technician_id); ?>">
 
                           <br>
 
@@ -134,7 +134,7 @@
                     </div>
                     <div class="row my-4">
                       <div class="col-md-4 offset-md-8 col-lg-3 offset-lg-9">
-                        <p class="lead fw-bold mb-0" style="color: #f37a27;">AED {{ $order->total_price }}</p>
+                        <p class="lead fw-bold mb-0" style="color: #f37a27;">AED <?php echo e($order->total_price); ?></p>
                       </div>
                     </div>
 
@@ -157,11 +157,11 @@
     </div>
   </div>
 </section>
-@endsection
+<?php $__env->stopSection(); ?>
 
 
 
-@section('scriptjs')
+<?php $__env->startSection('scriptjs'); ?>
 
 <script>
     $(document).ready(function() {
@@ -195,7 +195,7 @@
         // Fetch manufacturers based on the selected device
         if (deviceId) {
             $.ajax({
-            url: '{{ route("technician-manufacturers", ":deviceId") }}'.replace(':deviceId', deviceId),
+            url: '<?php echo e(route("technician-manufacturers", ":deviceId")); ?>'.replace(':deviceId', deviceId),
             type: 'GET',
             success: function(manufacturers) {
                 $.each(manufacturers, function(key, manufacturer) {
@@ -220,7 +220,7 @@
         // Fetch models based on the selected manufacturer
         if (manufacturerId) {
           $.ajax({
-            url: '{{ route("technician-models", ":manufacturerId") }}'.replace(':manufacturerId', manufacturerId),
+            url: '<?php echo e(route("technician-models", ":manufacturerId")); ?>'.replace(':manufacturerId', manufacturerId),
             type: 'GET',
             success: function(models) {
               $.each(models, function(key, model) {
@@ -241,7 +241,7 @@
         // Fetch issues based on the selected model
         if (modelId) {
           $.ajax({
-            url: '{{ route("technician-issues", ":modelId") }}'.replace(':modelId', modelId),
+            url: '<?php echo e(route("technician-issues", ":modelId")); ?>'.replace(':modelId', modelId),
             type: 'GET',
             success: function(issues) {
               // Append issues to the Select2 dropdown
@@ -261,4 +261,6 @@
   </script>
 
 
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\work1\onsiterepair\resources\views/technician-order-detail.blade.php ENDPATH**/ ?>

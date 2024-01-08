@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Model;
 use App\Models\Device;
+use App\Models\Technician;
 use App\Models\Manufacturer;
 use App\Models\OrderedIssue;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -32,6 +33,11 @@ class Order extends EloquentModel
     public function model()
     {
         return $this->belongsTo(Model::class, 'model_id', 'id');
+    }
+
+    public function technician()
+    {
+        return $this->belongsTo(Technician::class);
     }
 
 }

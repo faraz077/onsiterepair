@@ -1,5 +1,4 @@
-@extends('dashboard.layouts.app')
-@section('content')
+<?php $__env->startSection('content'); ?>
 <!--  PAPER WRAP -->
 <div class="wrap-fluid" style="width: auto; margin-left: 250px;">
 	<div class="container-fluid paper-wrap bevel tlbr">
@@ -64,7 +63,7 @@
 					</li>
 					<li><i class="fa fa-lg fa-angle-right"></i>
 					</li>
-					<li><a href="{{route('reg-technician.create')}}" title="Sample page 1">Add Technician</a>
+					<li><a href="<?php echo e(route('reg-technician.create')); ?>" title="Sample page 1">Add Technician</a>
 				</li>
 				<li class="pull-right">
 					<div class="input-group input-widget">
@@ -73,23 +72,25 @@
 				</li>
 			</ul>
 			<!-- END OF BREADCRUMB -->
-			@if(session('success'))
+			<?php if(session('success')): ?>
 			<div class="alert alert-success">
-				{{ session('success') }}
+				<?php echo e(session('success')); ?>
+
 			</div>
-			@endif
-			@if(session('error'))
+			<?php endif; ?>
+			<?php if(session('error')): ?>
 			<div class="alert alert-danger">
-				{{ session('error') }}
+				<?php echo e(session('error')); ?>
+
 			</div>
-			@endif
+			<?php endif; ?>
 			<div class="content-wrap">
 				<div class="row">
 					<div class="col-sm-12">
 						<div class="nest" id="validationClose">
 							<div class="title-alt">
 								<h6>
-								<a class="btn btn-success" href="{{route('reg-technician.create')}}" >Add Technician</a></h6>
+								<a class="btn btn-success" href="<?php echo e(route('reg-technician.create')); ?>" >Add Technician</a></h6>
 								<div class="titleClose">
 									<a class="gone" href="#validationClose">
 										<span class="entypo-cancel"></span>
@@ -152,25 +153,25 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            @foreach ($technicians as $technician)
+                                                            <?php $__currentLoopData = $technicians; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $technician): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                             <tr>
-                                                                <td>{{ $loop->iteration }}</td>
-                                                                <td>{{ $technician->name }}</td>
+                                                                <td><?php echo e($loop->iteration); ?></td>
+                                                                <td><?php echo e($technician->name); ?></td>
                                                                 <td>
-                                                                    <img src="{{ asset('public/images/technicians/' . $technician->image) }}" alt="" height="50" width="50">
+                                                                    <img src="<?php echo e(asset('public/images/technicians/' . $technician->image)); ?>" alt="" height="50" width="50">
                                                                 </td>
-                                                                <td>{{ $technician->phone }}</td>
-                                                                <td>{{ $technician->email }}</td>
-                                                                <td>{{ $technician->address }}</td>
-                                                                <td>{{ $technician->expertise }}</td>
+                                                                <td><?php echo e($technician->phone); ?></td>
+                                                                <td><?php echo e($technician->email); ?></td>
+                                                                <td><?php echo e($technician->address); ?></td>
+                                                                <td><?php echo e($technician->expertise); ?></td>
                                                                 <td>
-                                                                    <a href="/edit-technician/{{ $technician->id }}" class="btn btn-info">Edit</a>
+                                                                    <a href="/edit-technician/<?php echo e($technician->id); ?>" class="btn btn-info">Edit</a>
                                                                 </td>
                                                                 <td>
                                                                     <a href="" class="btn btn-danger">Delete</a>
                                                                 </td>
                                                             </tr>
-                                                            @endforeach
+                                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                         </tbody>
                                                     </table>
 
@@ -185,4 +186,6 @@
 				</div>
 			</div>
 			<!-- /END OF CONTENT -->
-			@endsection()
+			<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('dashboard.layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\work1\onsiterepair\resources\views/dashboard/technician.blade.php ENDPATH**/ ?>

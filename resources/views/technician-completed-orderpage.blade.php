@@ -21,8 +21,8 @@
 					<h3>Orders Detail</h3>
 					<ul>
 						<li><a href="technician">dashboard</a></li>
-						<li><a href="technician-new-order">Active order</a></li>
-						<li><a href="technician-complete-order">complete order</a></li>
+						<li><a href="{{ route('technician-new-order') }}">Active orders</a></li>
+						<li><a href="{{ route('technician-complete-order') }}">completed orders</a></li>
 						<li><a href="">Edit profile</a></li>
 					</ul>
 				</div>
@@ -31,63 +31,30 @@
 				<h4 class="m-3 text-danger">Completed Orders</h4>
 
 				<table class="table">
-					<tr>	<th>Sr#</th>
-					<th>Client Name</th>
-					<th>Phone Number</th>
-					<th>Model</th>
-					<th>Issue </th>
-					<th>Price </th>
-					<th>Location </th>
-					<th>Status </th>
-					<th><a href="#" class="btn btn-info text-white" >View</a> </th>
-				</tr>
+					<tr>
+                        <th>Sr#</th>
+                        <th>Client Name</th>
+                        <th>Phone Number</th>
+                        <th>Device</th>
+                        <th>Model</th>
+                        <th>Price </th>
+                        <th>Status </th>
+                        <th>Action </th>
+				    </tr>
+                    @foreach ($orders as $order)
+                    <tr>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $order->customer_name }}</td>
+                        <td>{{ $order->customer_phone }}</td>
+                        <td>{{ $order->device->name }}</td>
+                        <td>{{ $order->model->name }}</td>
+                        <td>{{ $order->total_price }} <b>AED</b> </td>
+                        <td>{{ $order->status }}</td>
+                        <th><a href="{{ route('technician-order-detail', $order->id) }}" class="btn btn-info text-white" >View</a> </th>
+                    </tr>
+                    @endforeach
+		        </table>
 
-				<tr>	
-					<td>1</td>
-				<td>Sheikh Tlaha</td>
-				<td>+9203239905077</td>
-				<td>iPhone 14 pro Max</td>
-				<td>Screen </td>
-				<td>14400 <b>AED</b> </td>
-				<td>Down Town </td>
-				<td>Completed</td>
-				<th><a href="#" class="btn btn-info text-white" >View</a> </th>
-			</tr>
-							<tr>	
-					<td>1</td>
-				<td>Sheikh Tlaha</td>
-				<td>+9203239905077</td>
-				<td>iPhone 14 pro Max</td>
-				<td>Screen </td>
-				<td>14400 <b>AED</b> </td>
-				<td>Down Town </td>
-				<td>Completed</td>
-				<th><a href="#" class="btn btn-info text-white" >View</a> </th>
-			</tr>
-							<tr>	
-					<td>1</td>
-				<td>Sheikh Tlaha</td>
-				<td>+9203239905077</td>
-				<td>iPhone 14 pro Max</td>
-				<td>Screen </td>
-				<td>14400 <b>AED</b> </td>
-				<td>Down Town </td>
-				<td>Completed</td>
-				<th><a href="#" class="btn btn-info text-white" >View</a> </th>
-			</tr>
-							<tr>	
-					<td>1</td>
-				<td>Sheikh Tlaha</td>
-				<td>+9203239905077</td>
-				<td>iPhone 14 pro Max</td>
-				<td>Screen </td>
-				<td>14400 <b>AED</b> </td>
-				<td>Down Town </td>
-				<td>Completed</td>
-				<th><a href="#" class="btn btn-info text-white" >View</a> </th>
-			</tr>
-		</table>
-		
 	</div>
 </div>
 </div>

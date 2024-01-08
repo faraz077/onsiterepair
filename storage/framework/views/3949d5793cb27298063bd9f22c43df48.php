@@ -1,18 +1,18 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="<?php echo e(str_replace('_', '-', app()->getLocale())); ?>">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- CSRF Token -->
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+        <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
 
         <title>On Site Repairs</title>
         <!-- Fonts -->
         <link rel="dns-prefetch" href="//fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="{{asset('public/css/app.css')}}">
-          <link rel="stylesheet" type="text/css" href="{{asset('public/slick/slick.css')}}">
-  <link rel="stylesheet" type="text/css" href="{{asset('public/slick/slick-theme.css')}}">
+        <link rel="stylesheet" type="text/css" href="<?php echo e(asset('public/css/app.css')); ?>">
+          <link rel="stylesheet" type="text/css" href="<?php echo e(asset('public/slick/slick.css')); ?>">
+  <link rel="stylesheet" type="text/css" href="<?php echo e(asset('public/slick/slick-theme.css')); ?>">
         <!-- font- family -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,7 +26,7 @@
 
         <!-- Scripts -->
 
-        @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+        <?php echo app('Illuminate\Foundation\Vite')(['resources/sass/app.scss', 'resources/js/app.js']); ?>
     </head>
     <body>
         <div id="app">
@@ -55,7 +55,7 @@
                             <div class="col-lg-12">
                                 <nav class="navbar navbar-expand-lg">
                                     <div class="container-fluid">
-                                        <a class="navbar-brand" href="/"><img src="{{asset('public/img/header-logo.png')}}" alt=""></a>
+                                        <a class="navbar-brand" href="/"><img src="<?php echo e(asset('public/img/header-logo.png')); ?>" alt=""></a>
                                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
                                         <span class="navbar-toggler-icon"></span>
                                         </button>
@@ -98,14 +98,14 @@
                 </div>
             </header>
         </div>
-                @yield('content')
+                <?php echo $__env->yieldContent('content'); ?>
          <footer>
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="column-1">
                             <div class="logo">
-                                <img src="{{asset('public/img/white-logo.png')}}" alt="" >
+                                <img src="<?php echo e(asset('public/img/white-logo.png')); ?>" alt="" >
                                 <p class="about-footer">
                                     OnSiteRepairs is your go-to solution for convenient smartphone repairs. Our expert technicians come to your doorstep, offering quick and quality fixes for cracked screens, battery issues, and more. Say goodbye to the hassle of repair shops and hello to the future of on-the-spot phone repairs with OnSiteRepairs!
                                 </p>
@@ -148,14 +148,14 @@
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" type="text/javascript"></script>
   <script src="https://code.jquery.com/jquery-migrate-3.4.0.min.js"></script>
-  <script src="{{asset('public/slick/slick.js')}}" type="text/javascript" charset="utf-8"></script>
+  <script src="<?php echo e(asset('public/slick/slick.js')); ?>" type="text/javascript" charset="utf-8"></script>
   <!-- Latest compiled JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
 
   <!-- Add this script at the end of your Blade file, just before the closing body tag -->
-@yield('scriptjs')
+<?php echo $__env->yieldContent('scriptjs'); ?>
 <script>
 $(document).ready(function(){
     // Hide sections initially
@@ -178,7 +178,7 @@ $(document).ready(function(){
 
     // Ajax request to store device_id in session and get manufacturers
     $.ajax({
-        url: '{{ route("store-device-in-session") }}',
+        url: '<?php echo e(route("store-device-in-session")); ?>',
         method: 'POST',
         data: { device_id: device_id },
         success: function(response) {
@@ -191,7 +191,7 @@ $(document).ready(function(){
             $.each(response.manufacturers, function(index, manufacturer) {
                 var manufacturerHtml = '<div class="col-lg-3 col-6">';
                 manufacturerHtml += '<div class="item" data-manufacturer-id="' + manufacturer.id + '">';
-                manufacturerHtml += '<img src="{{ asset('public/images/manufacturers/') }}/' + manufacturer.image + '" alt="" class="img-fluid">';
+                manufacturerHtml += '<img src="<?php echo e(asset('public/images/manufacturers/')); ?>/' + manufacturer.image + '" alt="" class="img-fluid">';
                 manufacturerHtml += '<h5>' + manufacturer.name + '</h5>';
                 manufacturerHtml += '</div>';
                 manufacturerHtml += '</div>';
@@ -219,7 +219,7 @@ $(document).on('click', '.instant-form-two-section .item', function(){
 
     // Ajax request to store manufacturer_id in session and get models
     $.ajax({
-        url: '{{ route("store-manufacturer-in-session") }}',
+        url: '<?php echo e(route("store-manufacturer-in-session")); ?>',
         method: 'POST',
         data: { manufacturer_id: manufacturer_id },
         success: function(response) {
@@ -232,7 +232,7 @@ $(document).on('click', '.instant-form-two-section .item', function(){
             $.each(response.models, function(index, model) {
                 var modelHtml = '<div class="col-lg-3 col-6">';
                 modelHtml += '<div class="item" data-model-id="' + model.id + '">';
-                modelHtml += '<img src="{{ asset('public/images/models/') }}/' + model.image + '" alt="" class="img-fluid">';
+                modelHtml += '<img src="<?php echo e(asset('public/images/models/')); ?>/' + model.image + '" alt="" class="img-fluid">';
                 modelHtml += '<h5>' + model.name + '</h5>';
                 modelHtml += '</div>';
                 modelHtml += '</div>';
@@ -261,7 +261,7 @@ $(document).on('click', '.instant-form-three-section .item', function(){
 
 
     $.ajax({
-        url: '{{ route("store-model-in-session") }}',
+        url: '<?php echo e(route("store-model-in-session")); ?>',
         method: 'POST',
         data: { model_id: model_id },
         success: function(response) {
@@ -273,7 +273,7 @@ $(document).on('click', '.instant-form-three-section .item', function(){
             $.each(response.issues, function(index, issue) {
             var issueHtml = '<div class="col-lg-3 col-6">';
             issueHtml += '<div class="item" data-issue-id="' + issue.id + '">';
-            issueHtml += '<img src="{{ asset('public/images/issues/') }}/' + issue.image + '" alt="" class="img-fluid">';
+            issueHtml += '<img src="<?php echo e(asset('public/images/issues/')); ?>/' + issue.image + '" alt="" class="img-fluid">';
             issueHtml += '<h5>' + issue.name + '</h5>';
             issueHtml += '</div>';
             issueHtml += '</div>';
@@ -325,7 +325,7 @@ $(document).on('click', '.instant-form-four-section .item', function () {
 function updateSession(selectedIssues) {
     // Add the selected issues to the session using AJAX
     $.ajax({
-        url: '{{ route("store-issues-in-session") }}',
+        url: '<?php echo e(route("store-issues-in-session")); ?>',
         method: 'POST',
         data: { selected_issues: selectedIssues }, // Use the correct variable name here
         success: function (response) {
@@ -366,12 +366,12 @@ $('.continue-issue-btn').on('click', function () {
 
     // Send the selected location to the server using AJAX
     $.ajax({
-        url: '{{ route("store-location-in-session") }}',
+        url: '<?php echo e(route("store-location-in-session")); ?>',
         method: 'POST',
         data: { selected_location: selectedLocation },
         success: function (response) {
             console.log(response);
-            window.location.href = '{{ route("store-order-data") }}';
+            window.location.href = '<?php echo e(route("store-order-data")); ?>';
             // If needed, you can perform additional actions on success
         },
         error: function (error) {
@@ -401,7 +401,7 @@ $('.continue-issue-btn').on('click', function () {
 });
 </script>
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-<script src="https://maps.googleapis.com/maps/api/js?key={{ config('services.google_maps.key') }}&libraries=places&callback=initMap" async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<?php echo e(config('services.google_maps.key')); ?>&libraries=places&callback=initMap" async defer></script>
 <script>
     // Initialize the map
     function initMap() {
@@ -543,17 +543,18 @@ $('.continue-issue-btn').on('click', function () {
         cluster: 'ap2'
     });
 
-    @auth
-        var channel = pusher.subscribe('orders.' + {{ auth()->user()->id }});
+    <?php if(auth()->guard()->check()): ?>
+        var channel = pusher.subscribe('orders.' + <?php echo e(auth()->user()->id); ?>);
         channel.bind('my-event', function (data) {
             console.log(data);
             alert('New order assigned: Order ID ' + data.order.order_no);
             // You can customize how you want to notify the technician about the new order assignment
         });
-    @endauth
+    <?php endif; ?>
 </script>
 
 
 
     </body>
 </html>
+<?php /**PATH C:\xampp\htdocs\work1\onsiterepair\resources\views/layouts/app.blade.php ENDPATH**/ ?>
