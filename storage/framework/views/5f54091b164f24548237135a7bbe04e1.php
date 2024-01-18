@@ -3,39 +3,28 @@
 <section class="technician-sections">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-lg-12">
-        <div class="technician-topbar row">
-          <div class="left col-lg-6 d-flex align-items-center">
-            <h4><b>Hi </b> Faraz!</h4>
-          </div>
-          <div class="right col-lg-6 d-flex justify-content-end">
-            <a href="#">Logout</a>
-          </div>
+        <div class="col-lg-12">
+            <div class="technician-topbar row">
+                <div class="left col-lg-6 d-flex align-items-center">
+                    <h4><b>Hi </b> <?php echo e(Auth::user()->name); ?>!</h4>
+                </div>
+                <div class="right col-lg-6 d-flex justify-content-end">
+                    <form action="<?php echo e(route('technician.logout')); ?>" method="POST">
+                        <?php echo csrf_field(); ?>
+                        <button class="btn btn-danger" type="submit" >Logout</button>
+                    </form>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
     <div class="row">
       <div class="col-lg-2 m-0 p-0">
         <div class="left-sidebar">
-            <?php if(session('success')): ?>
-            <div class="alert alert-success">
-                <?php echo e(session('success')); ?>
 
-            </div>
-            <?php endif; ?>
-            <?php if($errors->any()): ?>
-                <div class="alert alert-danger">
-                    <ul>
-                        <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <li><?php echo e($error); ?></li>
-                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                    </ul>
-                </div>
-            <?php endif; ?>
           <h3>Orders Detail</h3>
           <ul>
             <li><a href="technician">dashboard</a></li>
-            <li><a href="<?php echo e(route('technician-new-order')); ?>">Active orders</a></li>
+            <li><a href="<?php echo e(route('technician-new-order')); ?>">Active orders (<?php echo e($new_orders->count()); ?>)</a></li>
 			<li><a href="<?php echo e(route('technician-complete-order')); ?>">completed orders</a></li>
             <li><a href="technician-profile-edit">Edit profile</a></li>
           </ul>
@@ -48,6 +37,21 @@
               <div class="col-lg-8 col-xl-6">
                 <div class="card border-top border-bottom border-3" style="border-color: #f37a27 !important;">
                   <div class="card-body p-5">
+                    <?php if(session('success')): ?>
+                    <div class="alert alert-success">
+                        <?php echo e(session('success')); ?>
+
+                    </div>
+                    <?php endif; ?>
+                    <?php if($errors->any()): ?>
+                        <div class="alert alert-danger">
+                            <ul>
+                                <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <li><?php echo e($error); ?></li>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                            </ul>
+                        </div>
+                    <?php endif; ?>
                     <p class="lead fw-bold mb-5" style="color: #f37a27;">Order Detail</p>
                     <div class="row">
                       <div class="col mb-3">
@@ -80,6 +84,7 @@
 
 
                       <br>
+                      <?php if($order->status == 'processing'): ?>
                       <h5 class="text-danger">Add More Issues</h5>
                       <form action="<?php echo e(route('technician-order')); ?>" method="POST" class="row">
                         <?php echo csrf_field(); ?>
@@ -131,18 +136,25 @@
                           </div>
                         </form>
 
+                        <?php endif; ?>
+
                     </div>
                     <div class="row my-4">
                       <div class="col-md-4 offset-md-8 col-lg-3 offset-lg-9">
                         <p class="lead fw-bold mb-0" style="color: #f37a27;">AED <?php echo e($order->total_price); ?></p>
                       </div>
                     </div>
-
+                    <?php if($order->status == 'processing'): ?>
                     <div class="row">
-                      <div class="col-lg-12 d-flex justify-content-center">
-                        <a href="#" class="btn btn-success large">Accept The Order</a>
-                      </div>
+                        <div class="col-lg-12 d-flex justify-content-center">
+                            <form action="<?php echo e(route('change-order-status')); ?>" method="post">
+                                <?php echo csrf_field(); ?>
+                                <input type="hidden" name="order_id" value="<?php echo e($order->id); ?>">
+                                <button type="submit" class="btn btn-success large">Order Completed</button>
+                            </form>
+                        </div>
                     </div>
+                    <?php endif; ?>
                     <p class="mt-4 pt-2 mb-0">Want any help? <a href="#!" style="color: #f37a27;">Please contact
                     us</a></p>
                   </div>

@@ -93,6 +93,7 @@ Route::middleware(['auth:technician'])->group(function () {
     Route::get('/technician-profile-edit', [App\Http\Controllers\website\TechnicianController::class, 'profileEdit'])->name('technician-profile-edit');
     Route::get('/technician-order-detail/{order_id}', [App\Http\Controllers\website\TechnicianController::class, 'technicianOrderDetail'])->name('technician-order-detail');
     Route::get('/technician-active-order-detail', [App\Http\Controllers\website\TechnicianController::class, 'technicianActiveOrderDetail'])->name('technician-active-order-detail');
+    Route::post('/change-order-status', [App\Http\Controllers\website\TechnicianController::class, 'changeStatus'])->name('change-order-status');
 
 
 

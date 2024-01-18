@@ -7,7 +7,7 @@
 			<div class="col-lg-12">
 				<div class="technician-topbar row">
 					<div class="left col-lg-6 d-flex align-items-center">
-						<h4><b>Hi </b> Faraz!</h4>
+						<h4><b>Hi </b> {{ Auth::user()->name }}!</h4>
 					</div>
 					<div class="right col-lg-6 d-flex justify-content-end">
                         <form action="{{ route('technician.logout') }}" method="POST">
@@ -24,13 +24,27 @@
 					<h3>Orders Detail</h3>
 					<ul>
 						<li><a href="technician">dashboard</a></li>
-						<li><a href="{{ route('technician-new-order') }}">Active orders</a></li>
+						<li><a href="{{ route('technician-new-order') }}">Active orders ({{ $orders->count() }})</a></li>
 						<li><a href="{{ route('technician-complete-order') }}">completed orders</a></li>
 						<li><a href="">Edit profile</a></li>
 					</ul>
 				</div>
 			</div>
 			<div class="col-lg-10">
+                @if(session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+                @endif
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
 				<h4 class="m-3 text-danger">Active Orders</h4>
 
 				<table class="table">

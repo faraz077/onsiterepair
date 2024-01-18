@@ -38,7 +38,7 @@
      
         <div class="row">
             <?php $__currentLoopData = $devices; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $device): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <div class="col-lg-3">
+                <div class="col-lg-3 col-6">
                     <div class="item" data-device-id="<?php echo e($device->id); ?>">
                         <img src="<?php echo e(asset('public/images/devices/' . $device->image)); ?>" alt="" class="img-fluid">
                         <h5><?php echo e($device->name); ?></h5>
@@ -115,7 +115,7 @@
 
 
 <!-- hero section started -->
-<section class="hero-section mt-5">
+<section class="hero-section mt-5 repair-page-section">
 	<div class="container-fluid">
 
 		<div class="row">

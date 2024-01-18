@@ -155,7 +155,7 @@
                                                             @foreach ($technicians as $technician)
                                                             <tr>
                                                                 <td>{{ $loop->iteration }}</td>
-                                                                <td>{{ $technician->name }}</td>
+                                                                <td><a href="{{ route('reg-technician.show', $technician->id) }}">{{ $technician->name }}</a></td>
                                                                 <td>
                                                                     <img src="{{ asset('public/images/technicians/' . $technician->image) }}" alt="" height="50" width="50">
                                                                 </td>

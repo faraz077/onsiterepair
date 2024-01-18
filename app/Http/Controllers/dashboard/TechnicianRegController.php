@@ -94,7 +94,8 @@ class TechnicianRegController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $tech = Technician::find($id);
+        return view('dashboard.technician-show', compact('tech'));
     }
 
     /**
