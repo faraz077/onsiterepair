@@ -43,8 +43,13 @@ class TechnicianController extends Controller
         ->where('technician_id', Auth::id()) // Assuming 'technician_id' is the column name in your orders table
         ->where('status', 'completed')
         ->get();
+
+        $new_orders = Order::with('device', 'manufacturer', 'model', 'orderedIssues', 'technician')
+        ->where('technician_id', Auth::id()) // Assuming 'technician_id' is the column name in your orders table
+        ->where('status', 'processing')
+        ->get();
         // dd($orders);
-        return view('technician-completed-orderpage', compact('orders'));
+        return view('technician-completed-orderpage', compact('orders','new_orders'));
     }
 
     public function profileEdit()
@@ -56,9 +61,27 @@ class TechnicianController extends Controller
     {
         $order = Order::with('device', 'manufacturer', 'model', 'orderedIssues','technician')->find($id);
         $devices = Device::all();
+        $new_orders = Order::with('device', 'manufacturer', 'model', 'orderedIssues', 'technician')
+        ->where('technician_id', Auth::id()) // Assuming 'technician_id' is the column name in your orders table
+        ->where('status', 'processing')
+        ->get();
 
-        return view('technician-order-detail', compact('order','devices'));
+        return view('technician-order-detail', compact('order','devices','new_orders'));
     }
+
+    public function changeStatus(Request $request) {
+        $orderId = $request->input('order_id');
+
+        // Update the order status and payment status in the database
+        // Example:
+        Order::where('id', $orderId)->update([
+            'status' => 'completed',
+            'payment_status' => 'paid',
+        ]);
+
+        return redirect()->route('technician-new-order')->with('success', 'Order Completed successfully');
+    }
+
 
 
 

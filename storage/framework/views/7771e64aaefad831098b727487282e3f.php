@@ -6,7 +6,7 @@
 			<div class="col-lg-12">
 				<div class="technician-topbar row">
 					<div class="left col-lg-6 d-flex align-items-center">
-						<h4><b>Hi </b> Faraz!</h4>
+						<h4><b>Hi </b> <?php echo e(Auth::user()->name); ?>!</h4>
 					</div>
 					<div class="right col-lg-6 d-flex justify-content-end">
                         <form action="<?php echo e(route('technician.logout')); ?>" method="POST">
@@ -23,13 +23,28 @@
 					<h3>Orders Detail</h3>
 					<ul>
 						<li><a href="technician">dashboard</a></li>
-						<li><a href="<?php echo e(route('technician-new-order')); ?>">Active orders</a></li>
+						<li><a href="<?php echo e(route('technician-new-order')); ?>">Active orders (<?php echo e($orders->count()); ?>)</a></li>
 						<li><a href="<?php echo e(route('technician-complete-order')); ?>">completed orders</a></li>
 						<li><a href="">Edit profile</a></li>
 					</ul>
 				</div>
 			</div>
 			<div class="col-lg-10">
+                <?php if(session('success')): ?>
+                <div class="alert alert-success">
+                    <?php echo e(session('success')); ?>
+
+                </div>
+                <?php endif; ?>
+                <?php if($errors->any()): ?>
+                    <div class="alert alert-danger">
+                        <ul>
+                            <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <li><?php echo e($error); ?></li>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        </ul>
+                    </div>
+                <?php endif; ?>
 				<h4 class="m-3 text-danger">Active Orders</h4>
 
 				<table class="table">
