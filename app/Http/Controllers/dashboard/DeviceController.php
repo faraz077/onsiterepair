@@ -19,7 +19,7 @@ class DeviceController extends Controller
     public function index()
     {
         $devices = Device::all();
-        return view('dashboard.devices', compact('devices'));
+        return view('dashboard.device.devices', compact('devices'));
     }
 
     /**
@@ -27,7 +27,7 @@ class DeviceController extends Controller
      */
     public function create()
     {
-        return view('dashboard.add-device');
+        return view('dashboard.device.add-device');
     }
 
     /**
@@ -100,7 +100,10 @@ class DeviceController extends Controller
      */
     public function edit(string $id)
     {
-        return view('dashboard.edit-device');
+        $device = Device::findOrFail($id);
+
+        // Pass the device data to the view
+        return view('dashboard.device.edit-device', compact('device'));
 
     }
 
@@ -109,7 +112,39 @@ class DeviceController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        // dd($request->all());
+        // Validate the form data
+        $validator = Validator::make($request->all(),[
+            'name' => 'required|string',
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust the image validation rules as needed
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()
+                ->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        // Retrieve the device by ID from the database
+        $device = Device::findOrFail($id);
+
+        // Update the device with the form data
+        $device->name = $request->input('name');
+
+        // Handle image upload if a new image is provided
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('images/devices'), $imageName);
+            $device->image = $imageName;
+        }
+
+        // Save the changes
+        $device->save();
+
+        // Redirect back with a success message
+        return redirect()->route('devices.index')->with('success', 'Device updated successfully');
     }
 
     /**
@@ -117,6 +152,9 @@ class DeviceController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $device = Device::findOrFail($id);
+        $device->delete();
+
+        return redirect()->route('devices.index')->with('success', 'Device deleted successfully');
     }
 }

@@ -15,7 +15,7 @@ class TechnicianRegController extends Controller
     public function index()
     {
         $technicians = Technician::all();
-        return view('dashboard.technician', compact('technicians'));
+        return view('dashboard.technician.technician', compact('technicians'));
     }
 
     /**
@@ -23,7 +23,7 @@ class TechnicianRegController extends Controller
      */
     public function create()
     {
-        return view('dashboard.add-technician');
+        return view('dashboard.technician.add-technician');
     }
 
     /**
@@ -95,7 +95,7 @@ class TechnicianRegController extends Controller
     public function show(string $id)
     {
         $tech = Technician::find($id);
-        return view('dashboard.technician-show', compact('tech'));
+        return view('dashboard.technician.technician-show', compact('tech'));
     }
 
     /**
@@ -103,7 +103,11 @@ class TechnicianRegController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        // Retrieve the technician by ID from the database
+        $technician = Technician::findOrFail($id); // Replace 'Technician' with your actual model name
+
+        // Pass the technician data to the view for editing
+        return view('dashboard.technician.edit-technician', compact('technician'));
     }
 
     /**
@@ -111,7 +115,66 @@ class TechnicianRegController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        // Validate the form data
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string',
+            'phone' => 'required|string',
+            'email' => 'required|email',
+            'password' => 'nullable|min:6|confirmed', // Add any password validation rules if needed
+            'address' => 'required|string',
+            'expertise' => 'required|string',
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'cnic_front' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'cnic_back' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()
+                ->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        // Retrieve the technician by ID from the database
+        $technician = Technician::findOrFail($id);
+
+        // Update the technician with the form data
+        $technician->name = $request->input('name');
+        $technician->phone = $request->input('phone');
+        $technician->email = $request->input('email');
+        $technician->address = $request->input('address');
+        $technician->expertise = $request->input('expertise');
+
+        // Update the password if provided
+        if ($request->filled('password')) {
+            $technician->password = bcrypt($request->input('password'));
+        }
+
+        // Handle image uploads
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('images/technicians'), $imageName);
+            $technician->image = $imageName;
+        }
+        if ($request->hasFile('cnic_front')) {
+            $imagecf = $request->file('cnic_front');
+            $imageNamecf = time() . '.' . $imagecf->getClientOriginalExtension();
+            $imagecf->move(public_path('images/technicians/cnic'), $imageNamecf);
+            $technician->cnic_front = $imageNamecf;
+        }
+        if ($request->hasFile('cnic_back')) {
+            $imagecb = $request->file('cnic_back');
+            $imageNamecb = time() . '.' . $imagecb->getClientOriginalExtension();
+            $imagecb->move(public_path('images/technicians/cnic'), $imageNamecb);
+            $technician->cnic_back = $imageNamecb;
+        }
+
+        // Save the changes
+        $technician->save();
+
+        // Redirect back with a success message
+        return redirect()->route('reg-technician.index')->with('success', 'Technician updated successfully');
     }
 
     /**
@@ -119,6 +182,9 @@ class TechnicianRegController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $technician = Technician::findOrFail($id);
+        $technician->delete();
+
+        return redirect()->route('reg-technician.index')->with('success', 'Technician deleted successfully');
     }
 }

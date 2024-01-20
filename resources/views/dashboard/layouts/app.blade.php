@@ -480,6 +480,7 @@
     <script src="{{ asset('public/dashboard/assets/js/footable/js/footable.filter.js?v=2-0-1') }}" type="text/javascript"></script>
     <script src="{{ asset('public/dashboard/assets/js/footable/js/footable.paginate.js?v=2-0-1') }}" type="text/javascript"></script>
     <script src="{{ asset('public/dashboard/assets/js/footable/js/footable.paginate.js?v=2-0-1') }}" type="text/javascript"></script>
+    <script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
 
 
 
@@ -530,3 +531,23 @@
         });
     });
     </script>
+
+
+<script>
+    Pusher.logToConsole = true;
+
+    var pusher = new Pusher('a4fcd770af1ff0cbeabb', {
+        cluster: 'ap2'
+    });
+
+        var channel = pusher.subscribe('orders2');
+        channel.bind('order-event', function (data) {
+            console.log(data);
+            alert('order Completed: Order No ' + data.order.order_no);
+            // You can customize how you want to notify the technician about the new order assignment
+        });
+
+</script>
+
+    </body>
+</html>

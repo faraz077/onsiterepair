@@ -1,5 +1,4 @@
-@extends('dashboard.layouts.app')
-@section('content')
+<?php $__env->startSection('content'); ?>
 <!--  PAPER WRAP -->
 <div class="wrap-fluid" style="width: auto; margin-left: 250px;">
     <div class="container-fluid paper-wrap bevel tlbr">
@@ -93,66 +92,105 @@
                             </div>
                             <div class="body-nest" id="validation">
                                 <div class="form_center">
-                                    <form action="{{ route('models.store') }}" id="contact-form" method="POST" class="form-horizontal" enctype="multipart/form-data">
-                                        @csrf
+                                    <form action="<?php echo e(route('reg-technician.update', $technician->id)); ?>" id="contact-form" method="POST" class="form-horizontal" enctype="multipart/form-data">
+                                        <?php echo csrf_field(); ?>
+                                        <?php echo method_field('PUT'); ?> <!-- Assuming you are using the PUT method for updates -->
+
                                         <fieldset>
                                             <div class="control-group">
                                                 <label class="control-label" for="name">Name</label>
                                                 <div class="controls">
-                                                    <input type="text" class="form-control" name="name" id="name">
-                                                    
+                                                    <input type="text" class="form-control" name="name" id="name" value="<?php echo e($technician->name); ?>">
                                                 </div>
                                             </div>
+
                                             <div class="control-group">
-                                                <label class="control-label" for="name">Phone</label>
+                                                <label class="control-label" for="phone">Phone</label>
                                                 <div class="controls">
-                                                    <input type="text" class="form-control" name="name" id="name">
-                                                    
+                                                    <input type="text" class="form-control" name="phone" id="phone" value="<?php echo e($technician->phone); ?>">
                                                 </div>
                                             </div>
+
                                             <div class="control-group">
-                                                <label class="control-label" for="name">Email</label>
+                                                <label class="control-label" for="email">Email</label>
                                                 <div class="controls">
-                                                    <input type="text" class="form-control" name="name" id="name">
-                                                    
+                                                    <input type="text" class="form-control" name="email" id="email" value="<?php echo e($technician->email); ?>">
                                                 </div>
                                             </div>
+
                                             <div class="control-group">
-                                                <label class="control-label" for="name">Address</label>
+                                                <label class="control-label" for="password">New Password</label>
                                                 <div class="controls">
-                                                    <input type="text" class="form-control" name="name" id="name">
-                                                    
+                                                    <input type="password" class="form-control" name="password" id="password">
                                                 </div>
                                             </div>
+
                                             <div class="control-group">
-                                                <label class="control-label" for="name">Expert in</label>
+                                                <label class="control-label" for="password_confirmation">Confirm Password</label>
                                                 <div class="controls">
-                                                    <select name="manufacturer_id" id="" class="form-control">
-                                                        <option value="">Android</option>
-                                                        <option value="">Android</option>
+                                                    <input type="password" class="form-control" name="password_confirmation" id="password_confirmation">
+                                                </div>
+                                            </div>
+
+                                            <div class="control-group">
+                                                <label class="control-label" for="address">Address</label>
+                                                <div class="controls">
+                                                    <input type="text" class="form-control" name="address" id="address" value="<?php echo e($technician->address); ?>">
+                                                </div>
+                                            </div>
+
+                                            <div class="control-group">
+                                                <label class="control-label" for="expertise">Expert in</label>
+                                                <div class="controls">
+                                                    <select name="expertise" class="form-control">
+                                                        <option value="Android" <?php echo e($technician->expertise == 'Android' ? 'selected' : ''); ?>>Android</option>
+                                                        <option value="iOS" <?php echo e($technician->expertise == 'iOS' ? 'selected' : ''); ?>>iOS</option>
+                                                        <!-- Add more options as needed -->
                                                     </select>
                                                 </div>
                                             </div>
+
                                             <div class="control-group">
                                                 <label class="control-label" for="image">Upload Image</label>
                                                 <div class="controls">
                                                     <input type="file" class="form-control" name="image" id="image">
-                                                </div>
-                                            </div>
-                                            <h3>Upload CNIC Card</h3>
-                                            <div class="control-group">
-                                                <label class="control-label" for="image">Front Side</label>
-                                                <div class="controls">
-                                                    <input type="file" class="form-control" name="image" id="image">
+                                                    <?php if($technician->image): ?>
+                                                        <p>Existing Image:</p>
+                                                        <img src="<?php echo e(asset('public/images/technicians/' . $technician->image)); ?>" alt="<?php echo e($technician->name); ?>" style="max-width: 200px; max-height: 200px;">
+                                                    <?php else: ?>
+                                                        <p>No existing image</p>
+                                                    <?php endif; ?>
                                                 </div>
                                             </div>
 
-                                              <div class="control-group">
-                                                <label class="control-label" for="image">Back Side</label>
+                                            <h3>Upload CNIC Card</h3>
+
+                                            <div class="control-group">
+                                                <label class="control-label" for="cnic_front">Front Side</label>
                                                 <div class="controls">
-                                                    <input type="file" class="form-control" name="image" id="image">
+                                                    <input type="file" class="form-control" name="cnic_front" id="cnic_front">
+                                                    <?php if($technician->cnic_front): ?>
+                                                        <p>Existing Image:</p>
+                                                        <img src="<?php echo e(asset('public/images/technicians/cnic/' . $technician->cnic_front)); ?>" alt="<?php echo e($technician->name); ?>" style="max-width: 200px; max-height: 200px;">
+                                                    <?php else: ?>
+                                                        <p>No existing image</p>
+                                                    <?php endif; ?>
                                                 </div>
                                             </div>
+
+                                            <div class="control-group">
+                                                <label class="control-label" for="cnic_back">Back Side</label>
+                                                <div class="controls">
+                                                    <input type="file" class="form-control" name="cnic_back" id="cnic_back">
+                                                    <?php if($technician->cnic_back): ?>
+                                                        <p>Existing Image:</p>
+                                                        <img src="<?php echo e(asset('public/images/technicians/cnic/' . $technician->cnic_back)); ?>" alt="<?php echo e($technician->name); ?>" style="max-width: 200px; max-height: 200px;">
+                                                    <?php else: ?>
+                                                        <p>No existing image</p>
+                                                    <?php endif; ?>
+                                                </div>
+                                            </div>
+
                                             <div class="form-actions" style="margin:20px 0 0 0;">
                                                 <button type="submit" class="btn btn-primary">Submit</button>
                                                 <button type="reset" class="btn">Cancel</button>
@@ -166,4 +204,6 @@
                 </div>
             </div>
             <!-- /END OF CONTENT -->
-            @endsection()
+            <?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('dashboard.layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\work1\onsiterepair\resources\views/dashboard/technician/edit-technician.blade.php ENDPATH**/ ?>

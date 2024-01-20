@@ -12,6 +12,8 @@ class Model extends EloquentModel
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function manufacturer(): BelongsTo
     {
         return $this->belongsTo(Manufacturer::class);

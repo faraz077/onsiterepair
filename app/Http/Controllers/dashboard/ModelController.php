@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\dashboard;
 
 use App\Models\Model;
+use App\Models\Device;
+use App\Models\Manufacturer;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Manufacturer;
 use Illuminate\Support\Facades\Validator;
 
 class ModelController extends Controller
@@ -19,7 +20,7 @@ class ModelController extends Controller
     {
         $models = Model::with('manufacturer.device')->get();
         //  dd($models);
-        return view('dashboard.models', compact('models'));
+        return view('dashboard.device-model.models', compact('models'));
     }
 
     /**
@@ -28,7 +29,7 @@ class ModelController extends Controller
     public function create()
     {
         $manufacturers = Manufacturer::all();
-        return view('dashboard.add-models' , compact('manufacturers'));
+        return view('dashboard.device-model.add-models' , compact('manufacturers'));
 
     }
 
@@ -104,7 +105,9 @@ class ModelController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $model = Model::findOrFail($id);
+        $manufacturers = Manufacturer::all();
+        return view('dashboard.device-model.edit-models' , compact('model','manufacturers'));
     }
 
     /**
@@ -112,7 +115,38 @@ class ModelController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        // dd($request->all());
+        // Validate the form data
+        $validator = Validator::make($request->all(),[
+            'name' => 'required|string',
+            'manufacturer_id' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust the image validation rules as needed
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()
+                ->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $model = Model::findOrFail($id);
+
+        $model->name = $request->input('name');
+        $model->manufacturer_id = $request->input('manufacturer_id');
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('images/models'), $imageName);
+            $model->image = $imageName;
+        }
+
+        // Save the changes
+        $model->save();
+
+        // Redirect back with a success message
+        return redirect()->route('models.index')->with('success', 'Model updated successfully');
     }
 
     /**
@@ -120,6 +154,9 @@ class ModelController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $model = Model::findOrFail($id);
+        $model->delete();
+
+        return redirect()->route('models.index')->with('success', 'Model deleted successfully');
     }
 }

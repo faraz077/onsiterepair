@@ -18,7 +18,7 @@ class ManufacturerController extends Controller
     public function index()
     {
         $manufacturers = Manufacturer::with('device')->get();
-        return view('dashboard.manufacturers', compact('manufacturers'));
+        return view('dashboard.manufacturer.manufacturers', compact('manufacturers'));
     }
 
     /**
@@ -27,7 +27,7 @@ class ManufacturerController extends Controller
     public function create()
     {
         $devices = Device::all();
-        return view('dashboard.add-manufacturer', compact('devices'));
+        return view('dashboard.manufacturer.add-manufacturer', compact('devices'));
 
     }
 
@@ -68,7 +68,7 @@ class ManufacturerController extends Controller
 
         // If validation passes, proceed with storing the data
 
-        // Example: Storing the device
+        // Example: Storing the manufacturer
         $manufacturer = new Manufacturer;
         $manufacturer->name = $request->input('name');
         $manufacturer->device_id = $request->input('device_id');
@@ -81,7 +81,7 @@ class ManufacturerController extends Controller
             $manufacturer->image = $imageName;
         }
 
-        // Save the device
+        // Save the manufacturer
         $manufacturer->save();
 
         // Redirect with success message
@@ -103,7 +103,10 @@ class ManufacturerController extends Controller
      */
     public function edit(string $id)
     {
-        return view('dashboard.edit-manufacturer');
+        $manufacturer = Manufacturer::findOrFail($id);
+        $devices = Device::all(); // Assuming you have a Device model
+
+        return view('dashboard.manufacturer.edit-manufacturer', compact('manufacturer', 'devices'));
     }
 
     /**
@@ -111,7 +114,36 @@ class ManufacturerController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validator = Validator::make($request->all(),[
+            'name' => 'required|string',
+            'device_id' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust the image validation rules as needed
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()
+                ->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $manufacturer = Manufacturer::findOrFail($id);
+
+        $manufacturer->name = $request->input('name');
+        $manufacturer->device_id = $request->input('device_id');
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('images/manufacturers'), $imageName);
+            $manufacturer->image = $imageName;
+        }
+
+        // Save the changes
+        $manufacturer->save();
+
+        // Redirect back with a success message
+        return redirect()->route('manufacturer.index')->with('success', 'Manufacturer updated successfully');
     }
 
     /**
@@ -119,6 +151,9 @@ class ManufacturerController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $manufacturer = Manufacturer::findOrFail($id);
+        $manufacturer->delete();
+
+        return redirect()->route('manufacturer.index')->with('success', 'Manufacturer deleted successfully');
     }
 }

@@ -151,27 +151,7 @@
 
                             <div class="body-nest" id="Filtering">
 
-                                <div class="row" style="margin-bottom:10px;">
-                                    <div class="col-sm-4">
-                                        <input class="form-control" id="filter" placeholder="Search..." type="text" />
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <select class="filter-status form-control">
-                                            <option value="active">Active</option>
-                                            <option value="disabled">Disabled</option>
-                                            <option value="suspended">Suspended</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-sm-6">
 
-                                        <a href="#clear" style="margin-left:10px;" class="pull-right btn btn-info clear-filter" title="clear filter">clear</a>
-                                        <a href="#api" class="pull-right btn btn-info filter-api" title="Filter using the Filter API">filter API</a>
-
-
-
-                                    </div>
-
-                                </div>
 
                                 <table id="footable-res2" class="demo table" data-filter="#filter" data-filter-text-only="true">
                                     <thead>
@@ -209,8 +189,14 @@
 
 
 
-                                            <td><a href="/edit-manufacturer/1" class="btn btn-info">Edit</a></td>
-                                            <td><a href="" class="btn btn-danger">Delete</a></td>
+                                            <td><a href="{{ route('manufacturer.edit', $manufacturer->id) }}" class="btn btn-info">Edit</a></td>
+                                            <td>
+                                                <form action="{{ route('manufacturer.destroy', $manufacturer->id) }}" method="post" onsubmit="return confirm('Are you sure you want to delete this manufacturer?')">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                                </form>
+                                            </td>
                                         </tr>
                                         @endforeach
 

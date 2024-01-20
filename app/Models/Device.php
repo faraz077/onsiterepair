@@ -11,6 +11,8 @@ class Device extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function manufacturers(): HasMany
     {
         return $this->hasMany(Manufacturer::class);
