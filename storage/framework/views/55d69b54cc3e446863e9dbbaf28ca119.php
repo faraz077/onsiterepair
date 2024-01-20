@@ -1,5 +1,4 @@
-@extends('dashboard.layouts.app')
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 
  <!--  PAPER WRAP -->
@@ -16,8 +15,8 @@
                 <div id="paper-top">
                     <div class="col-sm-3">
                         <h2 class="tittle-content-header">
-                            <i class="icon-map"></i> 
-                            <span>Add Manufacturer
+                            <i class="icon-map"></i>
+                            <span>Edit Device
                             </span>
                         </h2>
 
@@ -80,7 +79,7 @@
                 </li>
                 <li><i class="fa fa-lg fa-angle-right"></i>
                 </li>
-                <li><a href="#" title="Sample page 1">Add Manufacturer</a>
+                <li><a href="#" title="Sample page 1">Edit Device</a>
                 </li>
                 <li class="pull-right">
                     <div class="input-group input-widget">
@@ -100,7 +99,7 @@
                         <div class="nest" id="validationClose">
                             <div class="title-alt">
                                 <h6>
-                                    Add Manufacturer</h6>
+                                    Edit Device</h6>
                                 <div class="titleClose">
                                     <a class="gone" href="#validationClose">
                                         <span class="entypo-cancel"></span>
@@ -119,35 +118,38 @@
                             <div class="body-nest" id="validation">
                                 <div class="form_center">
 
-                                    <form action="contact" id="contact-form" class="form-horizontal">
-                                        <fieldset>
+                                    <form action="<?php echo e(route('devices.update', $device->id)); ?>" method="POST" id="contact-form" class="form-horizontal" enctype="multipart/form-data">
+                                        <?php echo csrf_field(); ?>
+                                        <?php echo method_field('PUT'); ?>
 
+                                        <!-- Display the existing values in the form -->
+                                        <div class="control-group">
+                                            <label class="control-label" for="name">Device Name</label>
+                                            <div class="controls">
+                                                <input type="text" class="form-control" name="name" id="name" value="<?php echo e($device->name); ?>">
+                                            </div>
+                                        </div>
 
-                                            <div class="control-group">
-                                                <label class="control-label" for="name">Manufacturer Name</label>
-                                                <div class="controls">
-                                                    <input type="text" class="form-control" name="name" id="name">
-                                                </div>
+                                        <div class="control-group">
+                                            <label class="control-label" for="email">Change Image</label>
+                                            <div class="controls">
+                                                <input type="file" class="form-control" name="image" id="image">
+
+                                                <?php if($device->image): ?>
+                                                    <p>Existing Image:</p>
+                                                    <img src="<?php echo e(asset('public/images/devices/' . $device->image)); ?>" alt="<?php echo e($device->name); ?>" style="max-width: 200px; max-height: 200px;">
+                                                <?php else: ?>
+                                                    <p>No existing image</p>
+                                                <?php endif; ?>
                                             </div>
-                                            <div class="control-group">
-                                                <label class="control-label" for="email">Upload Image</label>
-                                                <div class="controls">
-                                                    <input type="file" class="form-control" name="email" id="email">
-                                                </div>
-                                            </div>
-                                       
-                                            <div class="control-group">
-                                                <label class="control-label" for="message">Your Message</label>
-                                                <div class="controls">
-                                                    <textarea class="form-control" name="message" id="message" rows="3"></textarea>
-                                                </div>
-                                            </div>
-                                            <div class="form-actions" style="margin:20px 0 0 0;">
-                                                <button type="submit" class="btn btn-primary">Submit</button>
-                                                <button type="reset" class="btn">Cancel</button>
-                                            </div>
-                                        </fieldset>
+                                        </div>
+
+                                        <div class="form-actions" style="margin:20px 0 0 0;">
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                            <button type="reset" class="btn">Cancel</button>
+                                        </div>
                                     </form>
+
 
                                 </div>
                             </div>
@@ -161,8 +163,10 @@
 
 
 
-           
+
 
 
             <!-- /END OF CONTENT -->
-@endsection()
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('dashboard.layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\work1\onsiterepair\resources\views/dashboard/device/edit-device.blade.php ENDPATH**/ ?>

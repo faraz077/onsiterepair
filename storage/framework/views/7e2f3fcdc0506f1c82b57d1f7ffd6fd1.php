@@ -1,5 +1,4 @@
-@extends('dashboard.layouts.app')
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 
  <!--  PAPER WRAP -->
@@ -17,11 +16,12 @@
                     <div class="col-sm-3">
                         <h2 class="tittle-content-header">
                             <i class="icon-map"></i>
-                            <span>Add Issue
+                            <span>Add Device
                             </span>
                         </h2>
 
                     </div>
+
                     <div class="col-sm-7">
                         <div class="devider-vertical visible-lg"></div>
                         <div class="tittle-middle-header">
@@ -79,7 +79,7 @@
                 </li>
                 <li><i class="fa fa-lg fa-angle-right"></i>
                 </li>
-                <li><a href="#" title="Sample page 1">Add Issue</a>
+                <li><a href="#" title="Sample page 1">Add Device</a>
                 </li>
                 <li class="pull-right">
                     <div class="input-group input-widget">
@@ -90,18 +90,20 @@
             </ul>
 
             <!-- END OF BREADCRUMB -->
-
-            @if(session('success'))
+            <?php if(session('success')): ?>
                 <div class="alert alert-success">
-                    {{ session('success') }}
-                </div>
-            @endif
+                    <?php echo e(session('success')); ?>
 
-            @if(session('error'))
-                <div class="alert alert-danger">
-                    {{ session('error') }}
                 </div>
-            @endif
+            <?php endif; ?>
+
+            <?php if(session('error')): ?>
+                <div class="alert alert-danger">
+                    <?php echo e(session('error')); ?>
+
+                </div>
+            <?php endif; ?>
+
 
             <div class="content-wrap">
                 <div class="row">
@@ -109,7 +111,7 @@
                         <div class="nest" id="validationClose">
                             <div class="title-alt">
                                 <h6>
-                                    <a class="btn btn-success" href="{{ route('issues.create') }}" >Add Issue</a></h6>
+                                    <a class="btn btn-success" href="<?php echo e(route('devices.create')); ?>" >Add Device</a></h6>
                                 <div class="titleClose">
                                     <a class="gone" href="#validationClose">
                                         <span class="entypo-cancel"></span>
@@ -134,7 +136,7 @@
                         <div class="nest" id="FilteringClose">
                             <div class="title-alt">
                                 <h6>
-                                    All Issues</h6>
+                                    All Devices</h6>
                                 <div class="titleClose">
                                     <a class="gone" href="#FilteringClose">
                                         <span class="entypo-cancel"></span>
@@ -179,50 +181,40 @@
                                                 #
                                              </th>
                                             <th data-toggle="true">
-                                               Issue Name
+                                               Devices Name
                                             </th>
                                             <th>
                                                 Image
                                             </th>
-                                            <th >
-                                                Model
-                                            </th>
-                                            <th >
-                                                Manufacturer
-                                            </th>
-                                            <th >
-                                                Device type
-                                            </th>
-                                            <th >
+
+                                            <th data-hide="phone,tablet">
                                                 Edit
                                             </th>
-                                            <th >
+                                            <th data-hide="phone">
                                                Delete
                                             </th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($issues as $issue)
+                                        <?php $__currentLoopData = $devices; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $device): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+
                                         <tr>
-                                            <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $issue->name }}</td>
+                                            <td><?php echo e($loop->iteration); ?></td>
+                                            <td><?php echo e($device->name); ?></td>
                                             <td>
-                                                <img src="{{ asset('public/images/issues/' . $issue->image) }}" alt="{{ $issue->name }}" height="50" width="50">
+                                                <img src="<?php echo e(asset('public/images/devices/' . $device->image)); ?>" alt="<?php echo e($device->name); ?>" height="50" width="50">
                                             </td>
-                                            <td>{{ $issue->model->name }}</td>
-                                            <td>{{ $issue->model->manufacturer->name }}</td>
-                                            <td>{{ $issue->model->manufacturer->device->name }}</td>
 
 
-
-                                            <td><a href="/edit-manufacturer/1" class="btn btn-info">Edit</a></td>
+                                            <td><a href="<?php echo e(route('devices.edit', $device->id)); ?>" class="btn btn-info">Edit</a></td>
                                             <td><a href="" class="btn btn-danger">Delete</a></td>
                                         </tr>
-                                        @endforeach
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
 
                                     </tbody>
                                 </table>
+
                             </div>
 
                         </div>
@@ -249,4 +241,6 @@
 
 
             <!-- /END OF CONTENT -->
-@endsection()
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('dashboard.layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\work1\onsiterepair\resources\views/dashboard/device/devices.blade.php ENDPATH**/ ?>

@@ -17,12 +17,11 @@
                     <div class="col-sm-3">
                         <h2 class="tittle-content-header">
                             <i class="icon-map"></i>
-                            <span>Add Device
+                            <span>Add Issue
                             </span>
                         </h2>
 
                     </div>
-
                     <div class="col-sm-7">
                         <div class="devider-vertical visible-lg"></div>
                         <div class="tittle-middle-header">
@@ -80,7 +79,7 @@
                 </li>
                 <li><i class="fa fa-lg fa-angle-right"></i>
                 </li>
-                <li><a href="#" title="Sample page 1">Add Device</a>
+                <li><a href="#" title="Sample page 1">Add Issue</a>
                 </li>
                 <li class="pull-right">
                     <div class="input-group input-widget">
@@ -91,6 +90,7 @@
             </ul>
 
             <!-- END OF BREADCRUMB -->
+
             @if(session('success'))
                 <div class="alert alert-success">
                     {{ session('success') }}
@@ -103,14 +103,13 @@
                 </div>
             @endif
 
-
             <div class="content-wrap">
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="nest" id="validationClose">
                             <div class="title-alt">
                                 <h6>
-                                    <a class="btn btn-success" href="{{ route('devices.create') }}" >Add Device</a></h6>
+                                    <a class="btn btn-success" href="{{ route('issues.create') }}" >Add Issue</a></h6>
                                 <div class="titleClose">
                                     <a class="gone" href="#validationClose">
                                         <span class="entypo-cancel"></span>
@@ -135,7 +134,7 @@
                         <div class="nest" id="FilteringClose">
                             <div class="title-alt">
                                 <h6>
-                                    All Devices</h6>
+                                    All Issues</h6>
                                 <div class="titleClose">
                                     <a class="gone" href="#FilteringClose">
                                         <span class="entypo-cancel"></span>
@@ -151,27 +150,6 @@
 
                             <div class="body-nest" id="Filtering">
 
-                                <div class="row" style="margin-bottom:10px;">
-                                    <div class="col-sm-4">
-                                        <input class="form-control" id="filter" placeholder="Search..." type="text" />
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <select class="filter-status form-control">
-                                            <option value="active">Active</option>
-                                            <option value="disabled">Disabled</option>
-                                            <option value="suspended">Suspended</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-sm-6">
-
-                                        <a href="#clear" style="margin-left:10px;" class="pull-right btn btn-info clear-filter" title="clear filter">clear</a>
-                                        <a href="#api" class="pull-right btn btn-info filter-api" title="Filter using the Filter API">filter API</a>
-
-
-
-                                    </div>
-
-                                </div>
 
                                 <table id="footable-res2" class="demo table" data-filter="#filter" data-filter-text-only="true">
                                     <thead>
@@ -180,40 +158,57 @@
                                                 #
                                              </th>
                                             <th data-toggle="true">
-                                               Devices Name
+                                               Issue Name
                                             </th>
                                             <th>
                                                 Image
                                             </th>
-
-                                            <th data-hide="phone,tablet">
+                                            <th >
+                                                Model
+                                            </th>
+                                            <th >
+                                                Manufacturer
+                                            </th>
+                                            <th >
+                                                Device type
+                                            </th>
+                                            <th >
                                                 Edit
                                             </th>
-                                            <th data-hide="phone">
+                                            <th >
                                                Delete
                                             </th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($devices as $device)
-
+                                        @foreach ($issues as $issue)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $device->name }}</td>
+                                            <td>{{ $issue->name }}</td>
                                             <td>
-                                                <img src="{{ asset('public/images/devices/' . $device->image) }}" alt="{{ $device->name }}" height="50" width="50">
+                                                <img src="{{ asset('public/images/issues/' . $issue->image) }}" alt="{{ $issue->name }}" height="50" width="50">
                                             </td>
+                                            <td>{{ $issue->model->name }}</td>
+                                            <td>{{ $issue->model->manufacturer->name }}</td>
+                                            <td>{{ $issue->model->manufacturer->device->name }}</td>
 
 
-                                            <td><a href="/edit.device/1" class="btn btn-info">Edit</a></td>
-                                            <td><a href="" class="btn btn-danger">Delete</a></td>
+
+                                            <td><a href="{{ route('issues.edit', $issue->id) }}" class="btn btn-info">Edit</a></td>
+
+                                            <td>
+                                                <form action="{{ route('issues.destroy', $issue->id) }}" method="post" onsubmit="return confirm('Are you sure you want to delete this issue?')">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                                </form>
+                                            </td>
                                         </tr>
                                         @endforeach
 
 
                                     </tbody>
                                 </table>
-
                             </div>
 
                         </div>

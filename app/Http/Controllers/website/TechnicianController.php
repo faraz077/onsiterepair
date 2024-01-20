@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\website;
 
+use App\Events\OrderCompleted;
 use App\Models\Issue;
 use App\Models\Model;
 use App\Models\Order;
@@ -69,7 +70,8 @@ class TechnicianController extends Controller
         return view('technician-order-detail', compact('order','devices','new_orders'));
     }
 
-    public function changeStatus(Request $request) {
+    public function changeStatus(Request $request)
+    {
         $orderId = $request->input('order_id');
 
         // Update the order status and payment status in the database
@@ -78,6 +80,11 @@ class TechnicianController extends Controller
             'status' => 'completed',
             'payment_status' => 'paid',
         ]);
+
+        // Retrieve the updated order
+        $order = Order::find($orderId);
+
+        event(new OrderCompleted($order));
 
         return redirect()->route('technician-new-order')->with('success', 'Order Completed successfully');
     }

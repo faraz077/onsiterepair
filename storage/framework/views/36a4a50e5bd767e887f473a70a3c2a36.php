@@ -1,5 +1,4 @@
-@extends('dashboard.layouts.app')
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 
  <!--  PAPER WRAP -->
@@ -16,8 +15,8 @@
                 <div id="paper-top">
                     <div class="col-sm-3">
                         <h2 class="tittle-content-header">
-                            <i class="icon-map"></i> 
-                            <span>Add Device
+                            <i class="icon-map"></i>
+                            <span>Edit Model
                             </span>
                         </h2>
 
@@ -50,7 +49,7 @@
                             <ul role="menu" class="dropdown-menu">
                                 <li>
                                     <a href="#">
-                                        <span class="entypo-plus-circled margin-iconic"></span>Add New</a>
+                                        <span class="entypo-plus-circled margin-iconic"></span>Edit New</a>
                                 </li>
                                 <li>
                                     <a href="#">
@@ -80,7 +79,7 @@
                 </li>
                 <li><i class="fa fa-lg fa-angle-right"></i>
                 </li>
-                <li><a href="#" title="Sample page 1">Add Device</a>
+                <li><a href="#" title="Sample page 1">Edit Model</a>
                 </li>
                 <li class="pull-right">
                     <div class="input-group input-widget">
@@ -100,7 +99,7 @@
                         <div class="nest" id="validationClose">
                             <div class="title-alt">
                                 <h6>
-                                    Add Device</h6>
+                                    Edit Model</h6>
                                 <div class="titleClose">
                                     <a class="gone" href="#validationClose">
                                         <span class="entypo-cancel"></span>
@@ -119,32 +118,74 @@
                             <div class="body-nest" id="validation">
                                 <div class="form_center">
 
-                                    <form action="contact" id="contact-form" class="form-horizontal">
+                                    <form action="<?php echo e(route('models.update', $model->id)); ?>" id="contact-form" method="POST" class="form-horizontal" enctype="multipart/form-data">
+                                        <?php echo csrf_field(); ?>
+                                        <?php echo method_field('PUT'); ?> 
                                         <fieldset>
+
+                                            <div class="control-group">
+                                                <label class="control-label" for="name">Model Name</label>
+                                                <div class="controls">
+                                                    <input type="text" class="form-control" name="name" id="name" value="<?php echo e(old('name', $model->name)); ?>">
+                                                    <?php $__errorArgs = ['name'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                    <span class="text-danger"><?php echo e($message); ?></span>
+                                                    <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                                </div>
+                                            </div>
 
 
                                             <div class="control-group">
-                                                <label class="control-label" for="name">Device Name</label>
+                                                <label class="control-label" for="name">Select Manufacturer</label>
                                                 <div class="controls">
-                                                    <input type="text" class="form-control" name="name" id="name">
+                                                    <select name="manufacturer_id" id="" class="form-control">
+                                                        <option value="">select manufacturer</option>
+                                                        <?php $__currentLoopData = $manufacturers; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $manufacturer): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                            <option value="<?php echo e($manufacturer->id); ?>" <?php echo e(old('manufacturer_id', $model->manufacturer_id) == $manufacturer->id ? 'selected' : ''); ?>>
+                                                                <?php echo e($manufacturer->name); ?>
+
+                                                            </option>
+                                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                    </select>
+                                                    <?php $__errorArgs = ['manufacturer_id'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                    <span class="text-danger"><?php echo e($message); ?></span>
+                                                    <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                                 </div>
                                             </div>
+
                                             <div class="control-group">
                                                 <label class="control-label" for="email">Upload Image</label>
                                                 <div class="controls">
-                                                    <input type="file" class="form-control" name="email" id="email">
+                                                    <input type="file" class="form-control" name="image" id="image">
+                                                    <?php $__errorArgs = ['image'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                    <span class="text-danger"><?php echo e($message); ?></span>
+                                                    <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                                 </div>
                                             </div>
-                                       
-                                            <div class="control-group">
-                                                <label class="control-label" for="message">Your Message</label>
-                                                <div class="controls">
-                                                    <textarea class="form-control" name="message" id="message" rows="3"></textarea>
-                                                </div>
-                                            </div>
+
                                             <div class="form-actions" style="margin:20px 0 0 0;">
-                                                <button type="submit" class="btn btn-primary">Submit</button>
-                                                <button type="reset" class="btn">Cancel</button>
+                                                <button type="submit" class="btn btn-primary">Update</button>
+                                                <a href="<?php echo e(route('models.index')); ?>" class="btn">Cancel</a>
                                             </div>
                                         </fieldset>
                                     </form>
@@ -161,8 +202,10 @@
 
 
 
-           
+
 
 
             <!-- /END OF CONTENT -->
-@endsection()
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('dashboard.layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\work1\onsiterepair\resources\views/dashboard/device-model/edit-models.blade.php ENDPATH**/ ?>

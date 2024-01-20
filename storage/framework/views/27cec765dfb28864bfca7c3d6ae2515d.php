@@ -1,5 +1,4 @@
-@extends('dashboard.layouts.app')
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 
  <!--  PAPER WRAP -->
@@ -17,7 +16,7 @@
                     <div class="col-sm-3">
                         <h2 class="tittle-content-header">
                             <i class="icon-map"></i>
-                            <span>Add Model
+                            <span>Add Manutacturer
                             </span>
                         </h2>
 
@@ -80,7 +79,7 @@
                 </li>
                 <li><i class="fa fa-lg fa-angle-right"></i>
                 </li>
-                <li><a href="#" title="Sample page 1">Add Model</a>
+                <li><a href="#" title="Sample page 1">Add Manutacturer</a>
                 </li>
                 <li class="pull-right">
                     <div class="input-group input-widget">
@@ -91,17 +90,19 @@
             </ul>
 
             <!-- END OF BREADCRUMB -->
-            @if(session('success'))
+            <?php if(session('success')): ?>
                 <div class="alert alert-success">
-                    {{ session('success') }}
-                </div>
-            @endif
+                    <?php echo e(session('success')); ?>
 
-            @if(session('error'))
-                <div class="alert alert-danger">
-                    {{ session('error') }}
                 </div>
-            @endif
+            <?php endif; ?>
+
+            <?php if(session('error')): ?>
+                <div class="alert alert-danger">
+                    <?php echo e(session('error')); ?>
+
+                </div>
+            <?php endif; ?>
 
 
             <div class="content-wrap">
@@ -110,7 +111,7 @@
                         <div class="nest" id="validationClose">
                             <div class="title-alt">
                                 <h6>
-                                    <a class="btn btn-success" href="{{ route('models.create') }}" >Add Model</a></h6>
+                                    <a class="btn btn-success" href="<?php echo e(route('manufacturer.create')); ?>" >Add Manutacturer</a></h6>
                                 <div class="titleClose">
                                     <a class="gone" href="#validationClose">
                                         <span class="entypo-cancel"></span>
@@ -135,7 +136,7 @@
                         <div class="nest" id="FilteringClose">
                             <div class="title-alt">
                                 <h6>
-                                    All Models</h6>
+                                    All Manutacturers</h6>
                                 <div class="titleClose">
                                     <a class="gone" href="#FilteringClose">
                                         <span class="entypo-cancel"></span>
@@ -177,21 +178,18 @@
                                     <thead>
                                         <tr>
                                             <th data-toggle="true">
-                                                #
-                                             </th>
-                                            <th data-toggle="true">
-                                               Models Name
+                                               #
                                             </th>
                                             <th>
+                                                Name
+                                            </th>
+                                            <th >
                                                 Image
                                             </th>
-                                            <th >
-                                                Manufacturer
+                                            <th>
+                                                Device Type
                                             </th>
-                                            <th >
-                                                Device type
-                                            </th>
-                                            <th >
+                                            <th>
                                                 Edit
                                             </th>
                                             <th >
@@ -200,22 +198,22 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($models as $model)
+
+                                        <?php $__currentLoopData = $manufacturers; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $manufacturer): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <tr>
-                                            <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $model->name }}</td>
+                                            <td><?php echo e($loop->iteration); ?></td>
+                                            <td><?php echo e($manufacturer->name); ?></td>
                                             <td>
-                                                <img src="{{ asset('public/images/models/' . $model->image) }}" alt="{{ $model->name }}" height="50" width="50">
+                                                <img src="<?php echo e(asset('public/images/manufacturers/' . $manufacturer->image)); ?>" alt="<?php echo e($manufacturer->name); ?>" height="50" width="50">
                                             </td>
-                                            <td>{{ $model->manufacturer->name }}</td>
-                                            <td>{{ $model->manufacturer->device->name }}</td>
+                                            <td><?php echo e($manufacturer->device->name); ?></td>
 
 
 
-                                            <td><a href="/edit-manufacturer/1" class="btn btn-info">Edit</a></td>
+                                            <td><a href="<?php echo e(route('manufacturer.edit', $manufacturer->id)); ?>" class="btn btn-info">Edit</a></td>
                                             <td><a href="" class="btn btn-danger">Delete</a></td>
                                         </tr>
-                                        @endforeach
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
 
                                     </tbody>
@@ -247,4 +245,6 @@
 
 
             <!-- /END OF CONTENT -->
-@endsection()
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('dashboard.layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\work1\onsiterepair\resources\views/dashboard/manufacturer/manufacturers.blade.php ENDPATH**/ ?>

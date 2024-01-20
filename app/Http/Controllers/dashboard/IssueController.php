@@ -19,7 +19,7 @@ class IssueController extends Controller
     {
         $issues = Issue::with('manufacturer.device.model')->get();
         // dd($issues);
-        return view('dashboard.issues', compact('issues'));
+        return view('dashboard.issue.issues', compact('issues'));
     }
 
     /**
@@ -28,7 +28,7 @@ class IssueController extends Controller
     public function create()
     {
         $models = Model::all();
-        return view('dashboard.add-issues', compact('models'));
+        return view('dashboard.issue.add-issues', compact('models'));
 
     }
 
@@ -108,7 +108,10 @@ class IssueController extends Controller
      */
     public function edit(string $id)
     {
-         return view('dashboard.edit-issues');
+        $issue = Issue::findOrFail($id);
+
+        $models = Model::all();
+        return view('dashboard.issue.edit-issues', compact('models','issue'));
     }
 
     /**
@@ -116,7 +119,38 @@ class IssueController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        // dd($request->all());
+        // Validate the form data
+        $validator = Validator::make($request->all(),[
+            'name' => 'required|string',
+            'model_id' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust the image validation rules as needed
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()
+                ->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $issue = Issue::findOrFail($id);
+
+        $issue->name = $request->input('name');
+        $issue->model_id = $request->input('model_id');
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('images/issues'), $imageName);
+            $issue->image = $imageName;
+        }
+
+        // Save the changes
+        $issue->save();
+
+        // Redirect back with a success message
+        return redirect()->route('issues.index')->with('success', 'Issue updated successfully');
     }
 
     /**
@@ -124,6 +158,9 @@ class IssueController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $issue = Issue::findOrFail($id);
+        $issue->delete();
+
+        return redirect()->route('issues.index')->with('success', 'Issue deleted successfully');
     }
 }

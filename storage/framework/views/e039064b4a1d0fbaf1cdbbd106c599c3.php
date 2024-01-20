@@ -1,5 +1,4 @@
-@extends('dashboard.layouts.app')
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 
  <!--  PAPER WRAP -->
@@ -16,7 +15,7 @@
                 <div id="paper-top">
                     <div class="col-sm-3">
                         <h2 class="tittle-content-header">
-                            <i class="icon-map"></i> 
+                            <i class="icon-map"></i>
                             <span>Add Model
                             </span>
                         </h2>
@@ -119,32 +118,74 @@
                             <div class="body-nest" id="validation">
                                 <div class="form_center">
 
-                                    <form action="contact" id="contact-form" class="form-horizontal">
+                                    <form action="<?php echo e(route('issues.update', $issue->id)); ?>" id="contact-form" method="POST" class="form-horizontal" enctype="multipart/form-data">
+                                        <?php echo csrf_field(); ?>
+                                        <?php echo method_field('PUT'); ?> 
                                         <fieldset>
+
+                                            <div class="control-group">
+                                                <label class="control-label" for="name">Issue Name</label>
+                                                <div class="controls">
+                                                    <input type="text" class="form-control" name="name" id="name" value="<?php echo e(old('name', $issue->name)); ?>">
+                                                    <?php $__errorArgs = ['name'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                    <span class="text-danger"><?php echo e($message); ?></span>
+                                                    <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                                </div>
+                                            </div>
 
 
                                             <div class="control-group">
-                                                <label class="control-label" for="name">Model Name</label>
+                                                <label class="control-label" for="name">Select Model</label>
                                                 <div class="controls">
-                                                    <input type="text" class="form-control" name="name" id="name">
+                                                    <select name="model_id" id="" class="form-control">
+                                                        <option value="">select Model</option>
+                                                        <?php $__currentLoopData = $models; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $model): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                            <option value="<?php echo e($model->id); ?>" <?php echo e(old('model_id', $issue->model_id) == $model->id ? 'selected' : ''); ?>>
+                                                                <?php echo e($model->name); ?>
+
+                                                            </option>
+                                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                    </select>
+                                                    <?php $__errorArgs = ['model_id'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                    <span class="text-danger"><?php echo e($message); ?></span>
+                                                    <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                                 </div>
                                             </div>
+
                                             <div class="control-group">
                                                 <label class="control-label" for="email">Upload Image</label>
                                                 <div class="controls">
-                                                    <input type="file" class="form-control" name="email" id="email">
+                                                    <input type="file" class="form-control" name="image" id="image">
+                                                    <?php $__errorArgs = ['image'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                    <span class="text-danger"><?php echo e($message); ?></span>
+                                                    <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                                 </div>
                                             </div>
-                                       
-                                            <div class="control-group">
-                                                <label class="control-label" for="message">Your Message</label>
-                                                <div class="controls">
-                                                    <textarea class="form-control" name="message" id="message" rows="3"></textarea>
-                                                </div>
-                                            </div>
+
                                             <div class="form-actions" style="margin:20px 0 0 0;">
-                                                <button type="submit" class="btn btn-primary">Submit</button>
-                                                <button type="reset" class="btn">Cancel</button>
+                                                <button type="submit" class="btn btn-primary">Update</button>
+                                                <a href="<?php echo e(route('models.index')); ?>" class="btn">Cancel</a>
                                             </div>
                                         </fieldset>
                                     </form>
@@ -161,8 +202,10 @@
 
 
 
-           
+
 
 
             <!-- /END OF CONTENT -->
-@endsection()
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('dashboard.layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\work1\onsiterepair\resources\views/dashboard/issue/edit-issues.blade.php ENDPATH**/ ?>
