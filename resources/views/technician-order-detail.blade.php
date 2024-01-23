@@ -73,12 +73,45 @@
                           <p><b>Device : </b> {{ $order->device->name }} </p>
                           <p><b>Manufacturer : </b> {{ $order->manufacturer->name }} </p>
                           <p><b>Model : </b> {{ $order->model->name }} </p>
-                          <p><b>Issue : </b> Screen break </p>
+                          
+                
+
 
 
                         </div>
                         <div class="col-md-4 col-lg-3 d-flex align-items-end">
-                          <h6> <b>85.00 AED</b></h6>
+                          
+                        
+
+                        </div>
+                      </div>
+                      <div class="row">
+
+
+                    <table>
+                      <tr>
+                        <th>    <p><b>Issue </b> </p></th>
+                        <th>  <h6> <b>Price</b></h6></th>
+                      </tr>
+                       <tr>
+                        <td>    <p>Screen break  </p></td>
+                        <td>  <h6> <b>85.00 AED</b></h6></td>
+                      </tr>
+                      <tr>
+                        <td>    <p>Screen break  </p></td>
+                        <td>  <h6> <b>85.00 AED</b></h6></td>
+                      </tr>
+                      <tr>
+                        <td>    <p>Screen break  </p></td>
+                        <td>  <h6> <b>85.00 AED</b></h6></td>
+                      </tr>
+                    </table>
+                        <div class="col-md-8 col-lg-9">
+                      
+
+                        </div>
+                        <div class="col-md-4 col-lg-3 d-flex align-items-end">
+                        
                         </div>
                       </div>
 
