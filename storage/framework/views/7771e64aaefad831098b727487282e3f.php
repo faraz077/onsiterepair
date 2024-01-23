@@ -22,10 +22,10 @@
 				<div class="left-sidebar">
 					<h3>Orders Detail</h3>
 					<ul>
-						<li><a href="technician">dashboard</a></li>
-						<li><a href="<?php echo e(route('technician-new-order')); ?>">Active orders (<?php echo e($orders->count()); ?>)</a></li>
-						<li><a href="<?php echo e(route('technician-complete-order')); ?>">completed orders</a></li>
-						<li><a href="">Edit profile</a></li>
+
+						<li><a href="<?php echo e(route('technician-new-order')); ?>">Active orders (<?php echo e($new_orders->count()); ?>)</a></li>
+                        <li><a href="<?php echo e(route('technician-complete-order')); ?>">completed orders (<?php echo e($comp_orders->count()); ?>)</a></li>
+                        <li><a href="<?php echo e(route('technician-profile-edit')); ?>">Edit profile</a></li>
 					</ul>
 				</div>
 			</div>
@@ -58,7 +58,7 @@
                         <th>Status </th>
                         <th>Action </th>
 				    </tr>
-                    <?php $__currentLoopData = $orders; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $order): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <?php $__currentLoopData = $new_orders; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $order): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <tr>
                         <td><?php echo e($loop->iteration); ?></td>
                         <td><?php echo e($order->customer_name); ?></td>

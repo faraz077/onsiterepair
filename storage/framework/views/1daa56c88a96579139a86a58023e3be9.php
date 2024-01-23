@@ -1,5 +1,4 @@
-@extends('layouts.app')
-@section('content')
+<?php $__env->startSection('content'); ?>
 <!-- hero section started -->
 <section class="technician-sections">
 	<div class="container-fluid">
@@ -20,9 +19,9 @@
 	<div class="left-sidebar">
 			<h3>Orders Detail</h3>
 		<ul>
-            <li><a href="{{ route('technician-new-order') }}">Active orders ({{ $new_orders->count() }})</a></li>
-			<li><a href="{{ route('technician-complete-order') }}">completed orders ({{ $comp_orders->count() }})</a></li>
-            <li><a href="{{ route('technician-profile-edit') }}">Edit profile</a></li>
+            <li><a href="<?php echo e(route('technician-new-order')); ?>">Active orders (<?php echo e($new_orders->count()); ?>)</a></li>
+			<li><a href="<?php echo e(route('technician-complete-order')); ?>">completed orders (<?php echo e($comp_orders->count()); ?>)</a></li>
+            <li><a href="<?php echo e(route('technician-profile-edit')); ?>">Edit profile</a></li>
 		</ul>
 	</div>
 
@@ -42,34 +41,35 @@
         </nav>
       </div>
     </div>
-    @if(session('success'))
+    <?php if(session('success')): ?>
     <div class="alert alert-success">
-        {{ session('success') }}
+        <?php echo e(session('success')); ?>
+
     </div>
-    @endif
-    @if ($errors->any())
+    <?php endif; ?>
+    <?php if($errors->any()): ?>
         <div class="alert alert-danger">
             <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
+                <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <li><?php echo e($error); ?></li>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </ul>
         </div>
-    @endif
-    <form action="{{ route('technician-profile-update', $technician->id) }}" id="contact-form" method="POST" class="form-horizontal" enctype="multipart/form-data">
-    @csrf
-    @method('PUT')
+    <?php endif; ?>
+    <form action="<?php echo e(route('technician-profile-update', $technician->id)); ?>" id="contact-form" method="POST" class="form-horizontal" enctype="multipart/form-data">
+    <?php echo csrf_field(); ?>
+    <?php echo method_field('PUT'); ?>
     <div class="row">
       <div class="col-lg-4">
         <div class="card mb-4">
           <div class="card-body text-center">
-            <img src="{{ asset('public/images/technicians/' . $technician->image) }}" alt="{{ $technician->name }}"
+            <img src="<?php echo e(asset('public/images/technicians/' . $technician->image)); ?>" alt="<?php echo e($technician->name); ?>"
               class="rounded-circle img-fluid" style="width: 150px;">
-            <h4 class="my-3">{{ $technician->name }}</h4>
-            <h6 class="my-2">{{ $technician->email }}</h6>
+            <h4 class="my-3"><?php echo e($technician->name); ?></h4>
+            <h6 class="my-2"><?php echo e($technician->email); ?></h6>
 
-            <p class="text-muted mb-1">{{ $technician->expertise }} Expert</p>
-            <p class="text-muted mb-4">{{ $technician->address }}</p>
+            <p class="text-muted mb-1"><?php echo e($technician->expertise); ?> Expert</p>
+            <p class="text-muted mb-4"><?php echo e($technician->address); ?></p>
 
           </div>
         </div>
@@ -84,7 +84,7 @@
                 <p class="mb-0">Full Name</p>
               </div>
               <div class="col-sm-9">
-                <input type="text" name="name" id="name" class="form-control" value="{{ $technician->name }}">
+                <input type="text" name="name" id="name" class="form-control" value="<?php echo e($technician->name); ?>">
               </div>
             </div>
             <hr>
@@ -94,7 +94,7 @@
                 <p class="mb-0">Phone</p>
               </div>
               <div class="col-sm-9">
-                <input type="text" name="phone" id="phone" class="form-control" value="{{ $technician->phone }}">
+                <input type="text" name="phone" id="phone" class="form-control" value="<?php echo e($technician->phone); ?>">
               </div>
             </div>
             <hr>
@@ -104,7 +104,7 @@
                 <p class="mb-0">Address</p>
               </div>
               <div class="col-sm-9">
-                <textarea name="address" id="address" cols="10" rows="2" class="form-control" >{{ $technician->address }}</textarea>
+                <textarea name="address" id="address" cols="10" rows="2" class="form-control" ><?php echo e($technician->address); ?></textarea>
               </div>
             </div>
             <hr>
@@ -114,8 +114,8 @@
                 </div>
                 <div class="col-sm-9">
                     <select name="expertise" class="form-control">
-                        <option value="Android" {{ $technician->expertise == 'Android' ? 'selected' : '' }}>Android</option>
-                        <option value="iOS" {{ $technician->expertise == 'iOS' ? 'selected' : '' }}>iOS</option>
+                        <option value="Android" <?php echo e($technician->expertise == 'Android' ? 'selected' : ''); ?>>Android</option>
+                        <option value="iOS" <?php echo e($technician->expertise == 'iOS' ? 'selected' : ''); ?>>iOS</option>
                         <!-- Add more options as needed -->
                     </select>
                 </div>
@@ -178,4 +178,6 @@
 </section>
 
 
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\work1\onsiterepair\resources\views/technician-profile-edit.blade.php ENDPATH**/ ?>

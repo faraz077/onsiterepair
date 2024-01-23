@@ -21,7 +21,7 @@
                             <button type="button" class="close" data-dismiss="alert">×</button>
                             <span class="tittle-alert entypo-info-circled"></span>
                             Welcome back,&nbsp;
-                            <strong>Dave mattew!</strong>&nbsp;&nbsp;Your last sig in at Yesterday, 16:54 PM
+                            <strong>Admin!</strong>
                         </div>
                     </div>
                 </div>
@@ -100,28 +100,28 @@
                                                 <label class="control-label" for="name">Name</label>
                                                 <div class="controls">
                                                     <input type="text" class="form-control" name="name" id="name">
-                                                    
+
                                                 </div>
                                             </div>
                                             <div class="control-group">
                                                 <label class="control-label" for="name">Phone</label>
                                                 <div class="controls">
                                                     <input type="text" class="form-control" name="name" id="name">
-                                                    
+
                                                 </div>
                                             </div>
                                             <div class="control-group">
                                                 <label class="control-label" for="name">Email</label>
                                                 <div class="controls">
                                                     <input type="text" class="form-control" name="name" id="name">
-                                                    
+
                                                 </div>
                                             </div>
                                             <div class="control-group">
                                                 <label class="control-label" for="name">Address</label>
                                                 <div class="controls">
                                                     <input type="text" class="form-control" name="name" id="name">
-                                                    
+
                                                 </div>
                                             </div>
                                             <div class="control-group">

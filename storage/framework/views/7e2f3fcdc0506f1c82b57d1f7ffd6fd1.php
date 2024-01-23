@@ -30,7 +30,7 @@
                                 <button type="button" class="close" data-dismiss="alert">×</button>
                                 <span class="tittle-alert entypo-info-circled"></span>
                                 Welcome back,&nbsp;
-                                <strong>Dave mattew!</strong>&nbsp;&nbsp;Your last sig in at Yesterday, 16:54 PM
+                                <strong>Admin!</strong>
                             </div>
 
 
@@ -152,27 +152,6 @@
 
                             <div class="body-nest" id="Filtering">
 
-                                <div class="row" style="margin-bottom:10px;">
-                                    <div class="col-sm-4">
-                                        <input class="form-control" id="filter" placeholder="Search..." type="text" />
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <select class="filter-status form-control">
-                                            <option value="active">Active</option>
-                                            <option value="disabled">Disabled</option>
-                                            <option value="suspended">Suspended</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-sm-6">
-
-                                        <a href="#clear" style="margin-left:10px;" class="pull-right btn btn-info clear-filter" title="clear filter">clear</a>
-                                        <a href="#api" class="pull-right btn btn-info filter-api" title="Filter using the Filter API">filter API</a>
-
-
-
-                                    </div>
-
-                                </div>
 
                                 <table id="footable-res2" class="demo table" data-filter="#filter" data-filter-text-only="true">
                                     <thead>
@@ -207,7 +186,13 @@
 
 
                                             <td><a href="<?php echo e(route('devices.edit', $device->id)); ?>" class="btn btn-info">Edit</a></td>
-                                            <td><a href="" class="btn btn-danger">Delete</a></td>
+                                            <td>
+                                                <form action="<?php echo e(route('devices.destroy', $device->id)); ?>" method="post" onsubmit="return confirm('Are you sure you want to delete this device?')">
+                                                    <?php echo csrf_field(); ?>
+                                                    <?php echo method_field('DELETE'); ?>
+                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                                </form>
+                                            </td>
                                         </tr>
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 

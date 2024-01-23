@@ -21,7 +21,7 @@
                             <button type="button" class="close" data-dismiss="alert">×</button>
                             <span class="tittle-alert entypo-info-circled"></span>
                             Welcome back,&nbsp;
-                            <strong>Dave mattew!</strong>&nbsp;&nbsp;Your last sig in at Yesterday, 16:54 PM
+                            <strong>Admin!</strong>
                         </div>
                     </div>
                 </div>
@@ -141,7 +141,7 @@
                                                         </thead>
                                                         <tbody>
                                                             @foreach ($orders as $order)
-                                                            <tr>
+                                                            <tr style="{{ $order->status === 'on_hold' ? 'background-color: darkgrey;' : '' }}">
                                                                 <td>{{ $loop->iteration }}</td>
                                                                 <td><a href="{{ route('order.edit', $order->id) }}">{{ $order->order_no }}</a></td>
                                                                 <td>{{ $order->customer_name }}</td>

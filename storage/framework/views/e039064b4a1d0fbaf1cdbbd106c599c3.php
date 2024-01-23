@@ -30,7 +30,7 @@
                                 <button type="button" class="close" data-dismiss="alert">×</button>
                                 <span class="tittle-alert entypo-info-circled"></span>
                                 Welcome back,&nbsp;
-                                <strong>Dave mattew!</strong>&nbsp;&nbsp;Your last sig in at Yesterday, 16:54 PM
+                                <strong>Admin!</strong>
                             </div>
 
 
@@ -120,7 +120,7 @@
 
                                     <form action="<?php echo e(route('issues.update', $issue->id)); ?>" id="contact-form" method="POST" class="form-horizontal" enctype="multipart/form-data">
                                         <?php echo csrf_field(); ?>
-                                        <?php echo method_field('PUT'); ?> 
+                                        <?php echo method_field('PUT'); ?>
                                         <fieldset>
 
                                             <div class="control-group">
