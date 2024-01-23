@@ -122,7 +122,7 @@
                             <!-- SIDE MENU -->
                             <div id="skin-select">
                                 <div id="logo">
-                                  <img src="<?php echo e(asset('public/img/white-logo.png')); ?>" alt="">
+                                  <a href="/onsiterepair"><img src="<?php echo e(asset('public/img/white-logo.png')); ?>" alt=""></a>
                                 </div>
 
                                 <div class="skin-part">
@@ -194,7 +194,7 @@
                                                 <li>
                                                     <a class="tooltip-tip" href="<?php echo e(route('order.index')); ?>" title="Extra Pages">
                                                         <i class="icon-document-new"></i>
-                                                        <span>Order</span>
+                                                        <span>Orders (200)</span>
                                                     </a>
 
                                                 </li>
@@ -480,6 +480,7 @@
     <script src="<?php echo e(asset('public/dashboard/assets/js/footable/js/footable.filter.js?v=2-0-1')); ?>" type="text/javascript"></script>
     <script src="<?php echo e(asset('public/dashboard/assets/js/footable/js/footable.paginate.js?v=2-0-1')); ?>" type="text/javascript"></script>
     <script src="<?php echo e(asset('public/dashboard/assets/js/footable/js/footable.paginate.js?v=2-0-1')); ?>" type="text/javascript"></script>
+    <script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
 
 
 
@@ -530,4 +531,24 @@
         });
     });
     </script>
+
+
+<script>
+    Pusher.logToConsole = true;
+
+    var pusher = new Pusher('a4fcd770af1ff0cbeabb', {
+        cluster: 'ap2'
+    });
+
+        var channel = pusher.subscribe('orders2');
+        channel.bind('order-event', function (data) {
+            console.log(data);
+            alert('order Completed: Order No ' + data.order.order_no);
+            // You can customize how you want to notify the technician about the new order assignment
+        });
+
+</script>
+
+    </body>
+</html>
 <?php /**PATH E:\Development\xampp\htdocs\onsiterepair\resources\views/dashboard/layouts/app.blade.php ENDPATH**/ ?>

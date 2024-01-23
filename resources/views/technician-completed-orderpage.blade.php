@@ -23,10 +23,10 @@
 				<div class="left-sidebar">
 					<h3>Orders Detail</h3>
 					<ul>
-						<li><a href="technician">dashboard</a></li>
+		
 						<li><a href="{{ route('technician-new-order') }}">Active orders ({{ $new_orders->count() }})</a></li>
-						<li><a href="{{ route('technician-complete-order') }}">completed orders</a></li>
-						<li><a href="">Edit profile</a></li>
+						<li><a href="{{ route('technician-complete-order') }}">completed orders (200)</a></li>
+						<li><a href="technician-profile-edit">Edit profile</a></li>
 					</ul>
 				</div>
 			</div>
