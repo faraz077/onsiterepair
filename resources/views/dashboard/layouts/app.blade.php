@@ -122,7 +122,7 @@
                             <!-- SIDE MENU -->
                             <div id="skin-select">
                                 <div id="logo">
-                                  <img src="{{asset('public/img/white-logo.png')}}" alt="">
+                                  <a href="/onsiterepair"><img src="{{asset('public/img/white-logo.png')}}" alt=""></a>
                                 </div>
 
                                 <div class="skin-part">
@@ -194,7 +194,7 @@
                                                 <li>
                                                     <a class="tooltip-tip" href="{{route('order.index')}}" title="Extra Pages">
                                                         <i class="icon-document-new"></i>
-                                                        <span>Order</span>
+                                                        <span>Orders (200)</span>
                                                     </a>
 
                                                 </li>

@@ -20,9 +20,8 @@
 	<div class="left-sidebar">
 			<h3>Orders Detail</h3>
 		<ul>
-			<li><a href="technician">dashboard</a></li>
-			<li><a href="technician-new-order">Active order</a></li>
-			<li><a href="technician-complete-order">complete order</a></li>
+			<li><a href="technician-new-order">Active order (200)</a></li>
+			<li><a href="technician-complete-order">complete order (200)</a></li>
 			<li><a href="technician-profile-edit">Edit profile</a></li>
 		</ul>
 	</div>

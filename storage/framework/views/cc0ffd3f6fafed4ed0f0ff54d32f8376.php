@@ -20,6 +20,8 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <!-- Latest compiled and minified CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" />
+
 
 
         <!-- Scripts -->
@@ -86,7 +88,7 @@
                                                     <a class="nav-link" href="contact-us" tabindex="-1" aria-disabled="true">Contact Us</a>
                                                 </li>
                                             </ul>
-                                            <button class="sign-in-btn"><a href="">Sign in</a></button>
+                                            <button class="sign-in-btn"><a href="technician/login">Technician Login</a></button>
                                         </div>
                                     </div>
                                 </nav>
@@ -149,9 +151,11 @@
   <script src="<?php echo e(asset('public/slick/slick.js')); ?>" type="text/javascript" charset="utf-8"></script>
   <!-- Latest compiled JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
 
   <!-- Add this script at the end of your Blade file, just before the closing body tag -->
-
+<?php echo $__env->yieldContent('scriptjs'); ?>
 <script>
 $(document).ready(function(){
     // Hide sections initially
@@ -397,7 +401,7 @@ $('.continue-issue-btn').on('click', function () {
 });
 </script>
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFr0neA3lI3Pn4h_NPcfqIDI1hnfryAns&libraries=places&callback=initMap" async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<?php echo e(config('services.google_maps.key')); ?>&libraries=places&callback=initMap" async defer></script>
 <script>
     // Initialize the map
     function initMap() {
@@ -528,6 +532,25 @@ $('.continue-issue-btn').on('click', function () {
         infinite: true
       });
     });
+</script>
+
+
+
+<script>
+    Pusher.logToConsole = true;
+
+    var pusher = new Pusher('a4fcd770af1ff0cbeabb', {
+        cluster: 'ap2'
+    });
+
+    <?php if(auth()->guard()->check()): ?>
+        var channel = pusher.subscribe('orders.' + <?php echo e(auth()->user()->id); ?>);
+        channel.bind('my-event', function (data) {
+            console.log(data);
+            alert('New order assigned: Order ID ' + data.order.order_no);
+            // You can customize how you want to notify the technician about the new order assignment
+        });
+    <?php endif; ?>
 </script>
 
 
