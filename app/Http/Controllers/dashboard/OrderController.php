@@ -22,7 +22,7 @@ class OrderController extends Controller
             'model' => function ($query) {
                 $query->select('id', 'name');
             }
-        ])->get();
+        ])->orderBy('created_at', 'desc')->get();
 
         // dd($orders);
         return view('dashboard.order', compact('orders'));
