@@ -194,7 +194,7 @@
                                                 <li>
                                                     <a class="tooltip-tip" href="{{route('order.index')}}" title="Extra Pages">
                                                         <i class="icon-document-new"></i>
-                                                        <span>Orders (200)</span>
+                                                        <span>Orders ({{ $admin_new_orders->count() }})</span>
                                                     </a>
 
                                                 </li>
@@ -248,7 +248,7 @@
                                             <p id="clock"></p>
                                         </div>
                                         <div class="copyright">Make with Love
-                                            <span class="entypo-heart"></span> 2023 <a href="http://gamatechno.com"> OnSiteRepair </a> All Rights Reserved</div>
+                                            <span class="entypo-heart"></span> 2023 <a href="http://onsiterepairs.ae"> OnSiteRepair </a> All Rights Reserved</div>
                                             <div class="devider-footer"></div>
                                         </div>
                                         <!-- / END OF FOOTER -->

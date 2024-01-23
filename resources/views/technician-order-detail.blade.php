@@ -7,7 +7,7 @@
         <div class="col-lg-12">
             <div class="technician-topbar row">
                 <div class="left col-lg-6 d-flex align-items-center">
-                    <h4><b>Hi </b> {{ Auth::user()->name }}!</h4>
+                    <h4><b>Hi </b> Admin!</h4>
                 </div>
                 <div class="right col-lg-6 d-flex justify-content-end">
                     <form action="{{ route('technician.logout') }}" method="POST">
@@ -24,10 +24,10 @@
 
           <h3>Orders Detail</h3>
           <ul>
-        
+
             <li><a href="{{ route('technician-new-order') }}">Active orders ({{ $new_orders->count() }})</a></li>
-			<li><a href="{{ route('technician-complete-order') }}">completed orders</a></li>
-            <li><a href="technician-profile-edit">Edit profile</a></li>
+			<li><a href="{{ route('technician-complete-order') }}">completed orders ({{ $comp_orders->count() }})</a></li>
+            <li><a href="{{ route('technician-profile-edit') }}">Edit profile</a></li>
           </ul>
         </div>
       </div>
@@ -73,15 +73,15 @@
                           <p><b>Device : </b> {{ $order->device->name }} </p>
                           <p><b>Manufacturer : </b> {{ $order->manufacturer->name }} </p>
                           <p><b>Model : </b> {{ $order->model->name }} </p>
-                          
-                
+
+
 
 
 
                         </div>
                         <div class="col-md-4 col-lg-3 d-flex align-items-end">
-                          
-                        
+
+
 
                         </div>
                       </div>
@@ -107,11 +107,11 @@
                       </tr>
                     </table>
                         <div class="col-md-8 col-lg-9">
-                      
+
 
                         </div>
                         <div class="col-md-4 col-lg-3 d-flex align-items-end">
-                        
+
                         </div>
                       </div>
 

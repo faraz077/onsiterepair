@@ -21,7 +21,7 @@
                             <button type="button" class="close" data-dismiss="alert">×</button>
                             <span class="tittle-alert entypo-info-circled"></span>
                             Welcome back,&nbsp;
-                            <strong>Faraz</strong>&nbsp;&nbsp;Your last sig in at Yesterday, 16:54 PM
+                            <strong>Faraz</strong>
                         </div>
                     </div>
                 </div>
@@ -97,7 +97,7 @@
                                     <span>%S</span>
                                 </div>
                             </div>
-                            
+
                         </div>
                     </div>
                     <div class="col-sm-3">
@@ -119,7 +119,7 @@
                                 <canvas id="canvas4" width="70" height="70"></canvas>
                                 <i class="pull-right">/Min</i>
                             </div>
-                            
+
                         </div>
                     </div>
                     <div class="col-sm-3">
@@ -167,7 +167,7 @@
                                 <div style="width: 50%" class="bar"></div>
                             </div>
                             <div class="profit-line">
-                                
+
                             </div>
                         </div>
                     </div>
@@ -528,7 +528,8 @@
                                     </div>
                                 </div>
                                 <!-- /END OF CONTENT -->
-                                
-                                
+
+
                                 <?php $__env->stopSection(); ?>
+
 <?php echo $__env->make('dashboard.layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\work1\onsiterepair\resources\views/dashboard/index.blade.php ENDPATH**/ ?>

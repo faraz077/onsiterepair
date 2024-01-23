@@ -16,7 +16,7 @@
                 <div id="paper-top">
                     <div class="col-sm-3">
                         <h2 class="tittle-content-header">
-                            <i class="icon-map"></i> 
+                            <i class="icon-map"></i>
                             <span>Add Manufacturer
                             </span>
                         </h2>
@@ -31,7 +31,7 @@
                                 <button type="button" class="close" data-dismiss="alert">×</button>
                                 <span class="tittle-alert entypo-info-circled"></span>
                                 Welcome back,&nbsp;
-                                <strong>Dave mattew!</strong>&nbsp;&nbsp;Your last sig in at Yesterday, 16:54 PM
+                                <strong>Admin!</strong>
                             </div>
 
 
@@ -149,7 +149,7 @@
                                                     <input type="file" class="form-control" name="email" id="email">
                                                 </div>
                                             </div>
-                                       
+
                                             <div class="control-group">
                                                 <label class="control-label" for="message">Your Message</label>
                                                 <div class="controls">
@@ -175,7 +175,7 @@
 
 
 
-           
+
 
 
             <!-- /END OF CONTENT -->

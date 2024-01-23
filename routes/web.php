@@ -91,6 +91,7 @@ Route::middleware(['auth:technician'])->group(function () {
     Route::get('/technician-new-order', [App\Http\Controllers\website\TechnicianController::class, 'newOrder'])->name('technician-new-order');
     Route::get('/technician-complete-order', [App\Http\Controllers\website\TechnicianController::class, 'completeOrder'])->name('technician-complete-order');
     Route::get('/technician-profile-edit', [App\Http\Controllers\website\TechnicianController::class, 'profileEdit'])->name('technician-profile-edit');
+    Route::put('/technician-profile-update/{id}', [App\Http\Controllers\website\TechnicianController::class, 'updateProfile'])->name('technician-profile-update');
     Route::get('/technician-order-detail/{order_id}', [App\Http\Controllers\website\TechnicianController::class, 'technicianOrderDetail'])->name('technician-order-detail');
     Route::get('/technician-active-order-detail', [App\Http\Controllers\website\TechnicianController::class, 'technicianActiveOrderDetail'])->name('technician-active-order-detail');
     Route::post('/change-order-status', [App\Http\Controllers\website\TechnicianController::class, 'changeStatus'])->name('change-order-status');

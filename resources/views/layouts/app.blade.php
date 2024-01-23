@@ -88,7 +88,7 @@
                                                     <a class="nav-link" href="contact-us" tabindex="-1" aria-disabled="true">Contact Us</a>
                                                 </li>
                                             </ul>
-                                            <button class="sign-in-btn"><a href="technician/login">Technician Login</a></button>
+                                            <a href="{{ url('/technician/login') }}" class="sign-in-btn text-light" style="text-decoration: none;">Technician Login</a>
                                         </div>
                                     </div>
                                 </nav>

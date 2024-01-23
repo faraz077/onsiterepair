@@ -55,7 +55,7 @@ width: 300px;
 }
 .sign-in-btn{
 border:none;
-padding: 16px 48px;
+padding: 15px 30px;
 justify-content: center;
 align-items: center;
 border-radius: 10px;
@@ -1353,7 +1353,7 @@ padding: 20px;
 /*responsives code started*/
 
 
-@media 
+@media
   screen and (min-device-width: 500px) and (max-device-width:1800px)
   {
 
@@ -1391,9 +1391,9 @@ a.navbar-brand {
 }
 
 .three-step-section {
- 
+
     padding: 50px;
-   
+
 }
 
 
@@ -1403,12 +1403,12 @@ a.navbar-brand {
 }
 
 .three-step-img {
- 
+
     width: 44%;
 }
 
 .three-step-section .item p {
-    
+
     font-size: 14px;
 }
 .testimonial-heading h1 {
@@ -1438,7 +1438,7 @@ a.navbar-brand {
 
 }
 .what-we-repair .heading-section h1 {
-  
+
     font-size: 46px;
 }
 .hero-content-section p {
@@ -1450,9 +1450,9 @@ a.navbar-brand {
     font-size: 44.241px;
 }
 .hero-content-section.repair-done-fast {
- 
+
     display: block;
-  
+
 }
 
 
@@ -1588,7 +1588,7 @@ ul.navbar-nav.me-auto.my-2.my-lg-0.navbar-nav-scroll {
 }
 .hero-content-section h1 {
     font-size: 24px;
-    padding: 0px 20px;	
+    padding: 0px 20px;
 }
 .hero-content-section p {
     font-size: 16px;
@@ -1601,30 +1601,30 @@ ul.navbar-nav.me-auto.my-2.my-lg-0.navbar-nav-scroll {
 }
 
 .testimonial-heading h1 {
-    
+
     font-size: 28.241px;
-  
+
 }
 
 .sign-in-btn {
     border: none;
-    padding: 10px 28px 
+    padding: 10px 28px
 }
 .sign-in-btn a {
 
     font-size: 16px;
 }
 .get-aqoute .line {
- 
+
     width: 80px;
 }
 .three-step-section {
     padding: 50px;
 }
 .three-step-section .item p {
-   
+
     font-size: 14px;
-   
+
     width: 100%;
 }
 .three-step-section .item-top h2 {
@@ -1633,7 +1633,7 @@ ul.navbar-nav.me-auto.my-2.my-lg-0.navbar-nav-scroll {
     margin-left: 20px;
 }
 .three-step-section .item-top {
-  
+
     align-items: center;
 }
 .testimonial-section {
@@ -1696,12 +1696,12 @@ footer .logo img{
 footer ul a {
     font-size: 16px;
     line-height: 32px;
- 
+
 }
 .get-aqoute a {
     padding: 16px 24px;
     font-size: 12px;
-   
+
 }
 .get-heading{
 	font-size: 22px;
@@ -1730,7 +1730,7 @@ section.select-location.instant-form-five-section .col-lg-6 {
     border-radius: 0px;
 
     padding: 50px 10px;
- 
+
 }
 textarea.text-area-qoute {
     width: 100%;
@@ -1877,7 +1877,7 @@ display: none;
 
 .licensed{
 font-size: 16px;
-} 
+}
 
 .instant-form-subheading {
     font-size: 16px;

@@ -21,7 +21,7 @@
 							<button type="button" class="close" data-dismiss="alert">×</button>
 							<span class="tittle-alert entypo-info-circled"></span>
 							Welcome back,&nbsp;
-							<strong>Dave mattew!</strong>&nbsp;&nbsp;Your last sig in at Yesterday, 16:54 PM
+							<strong>Admin!</strong>
 						</div>
 					</div>
 				</div>
@@ -172,7 +172,7 @@
 															</tr>
 														</thead>
 														<tbody>
-															
+
 															<tr>
 																<td>1</td>
 																<td>Faraz</td>
@@ -228,7 +228,7 @@
 																<td><a href="/edit-manufacturer/1" class="btn btn-info">Edit</a></td>
 																<td><a href="" class="btn btn-danger">Delete</a></td>
 															</tr>
-															
+
 														</tbody>
 													</table>
 												</div>

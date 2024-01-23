@@ -20,7 +20,7 @@
                             <button type="button" class="close" data-dismiss="alert">×</button>
                             <span class="tittle-alert entypo-info-circled"></span>
                             Welcome back,&nbsp;
-                            <strong>Dave mattew!</strong>&nbsp;&nbsp;Your last sig in at Yesterday, 16:54 PM
+                            <strong>Admin!</strong>
                         </div>
                     </div>
                 </div>
@@ -142,7 +142,7 @@
                                                         </thead>
                                                         <tbody>
                                                             <?php $__currentLoopData = $orders; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $order): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                            <tr>
+                                                            <tr style="<?php echo e($order->status === 'on_hold' ? 'background-color: darkgrey;' : ''); ?>">
                                                                 <td><?php echo e($loop->iteration); ?></td>
                                                                 <td><a href="<?php echo e(route('order.edit', $order->id)); ?>"><?php echo e($order->order_no); ?></a></td>
                                                                 <td><?php echo e($order->customer_name); ?></td>

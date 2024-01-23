@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers\website;
 
-use App\Events\OrderCompleted;
 use App\Models\Issue;
 use App\Models\Model;
 use App\Models\Order;
 use App\Models\Device;
+use App\Models\Technician;
 use App\Models\Manufacturer;
 use App\Models\OrderedIssue;
 use Illuminate\Http\Request;
+use App\Events\OrderCompleted;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -28,19 +29,24 @@ class TechnicianController extends Controller
     public function newOrder()
     {
 
-        $orders = Order::with('device', 'manufacturer', 'model', 'orderedIssues', 'technician')
+        $new_orders = Order::with('device', 'manufacturer', 'model', 'orderedIssues', 'technician')
         ->where('technician_id', Auth::id()) // Assuming 'technician_id' is the column name in your orders table
         ->where('status', 'processing')
         ->get();
+
+        $comp_orders = Order::with('device', 'manufacturer', 'model', 'orderedIssues', 'technician')
+        ->where('technician_id', Auth::id()) // Assuming 'technician_id' is the column name in your orders table
+        ->where('status', 'completed')
+        ->get();
         // dd($orders);
-        return view('technician-new-order-page', compact('orders'));
+        return view('technician-new-order-page', compact('new_orders','comp_orders'));
     }
 
 
 
     public function completeOrder()
     {
-        $orders = Order::with('device', 'manufacturer', 'model', 'orderedIssues', 'technician')
+        $comp_orders = Order::with('device', 'manufacturer', 'model', 'orderedIssues', 'technician')
         ->where('technician_id', Auth::id()) // Assuming 'technician_id' is the column name in your orders table
         ->where('status', 'completed')
         ->get();
@@ -50,12 +56,73 @@ class TechnicianController extends Controller
         ->where('status', 'processing')
         ->get();
         // dd($orders);
-        return view('technician-completed-orderpage', compact('orders','new_orders'));
+        return view('technician-completed-orderpage', compact('comp_orders','new_orders'));
     }
 
     public function profileEdit()
     {
-        return view('technician-profile-edit');
+
+        $technician = Auth::guard('technician')->user();
+
+
+        $new_orders = Order::with('device', 'manufacturer', 'model', 'orderedIssues', 'technician')
+        ->where('technician_id', Auth::id()) // Assuming 'technician_id' is the column name in your orders table
+        ->where('status', 'processing')
+        ->get();
+
+        $comp_orders = Order::with('device', 'manufacturer', 'model', 'orderedIssues', 'technician')
+        ->where('technician_id', Auth::id()) // Assuming 'technician_id' is the column name in your orders table
+        ->where('status', 'completed')
+        ->get();
+        return view('technician-profile-edit', compact('new_orders','technician','comp_orders'));
+    }
+
+    public function updateProfile(Request $request, string $id)
+    {
+        // Validate the form data
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string',
+            'phone' => 'required|string',
+            'password' => 'nullable|min:6|confirmed', // Add any password validation rules if needed
+            'address' => 'required|string',
+            'expertise' => 'required|string',
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()
+                ->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        // Retrieve the technician by ID from the database
+        $technician = Technician::findOrFail($id);
+
+        // Update the technician with the form data
+        $technician->name = $request->input('name');
+        $technician->phone = $request->input('phone');
+        $technician->address = $request->input('address');
+        $technician->expertise = $request->input('expertise');
+
+        // Update the password if provided
+        if ($request->filled('password')) {
+            $technician->password = bcrypt($request->input('password'));
+        }
+
+        // Handle image uploads
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('images/technicians'), $imageName);
+            $technician->image = $imageName;
+        }
+
+        // Save the changes
+        $technician->save();
+
+        // Redirect back with a success message
+        return redirect()->back()->with('success', 'Profile updated successfully');
     }
 
     public function technicianOrderDetail($id)
@@ -67,7 +134,12 @@ class TechnicianController extends Controller
         ->where('status', 'processing')
         ->get();
 
-        return view('technician-order-detail', compact('order','devices','new_orders'));
+        $comp_orders = Order::with('device', 'manufacturer', 'model', 'orderedIssues', 'technician')
+        ->where('technician_id', Auth::id()) // Assuming 'technician_id' is the column name in your orders table
+        ->where('status', 'completed')
+        ->get();
+
+        return view('technician-order-detail', compact('order','devices','new_orders','comp_orders'));
     }
 
     public function changeStatus(Request $request)
